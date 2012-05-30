@@ -6,18 +6,18 @@ function loadBlogginAtXebiaFr() {
 	feed.load(function(result) {
 		if (!result.error) {
 			var container = document.getElementById("blogginAtXebiaFr");
-			var list = document.createElement("ul");
 			for (var i = 0; i < result.feed.entries.length; i++) {
 				var entry = result.feed.entries[i];
-				var listItem = document.createElement("li");
-				
+				var div = document.createElement("div");
+				var icone = document.createElement("i");
+				icone.setAttribute("class", "icon-play-circle");
+				div.appendChild(icone);
 				var link = document.createElement("a");
 				link.setAttribute("href", entry.link);
-				link.appendChild(document.createTextNode(entry.title));
-				listItem.appendChild(link);
-				list.appendChild(listItem);
+				link.appendChild(document.createTextNode(" " + entry.title));
+				div.appendChild(link);
+				container.appendChild(div);
 			}
-			container.appendChild(list);
 		}
 	});
 }
