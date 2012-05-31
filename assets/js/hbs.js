@@ -42,7 +42,7 @@ $(document).ready(function() {
 			var forkedDiv = document.createElement("div");
 			for(var i = 0; i < returndata.data.length; i++) {
 				var entryDiv = document.createElement("div");
-				console.log(returndata.data[i]);
+				// console.log(returndata.data[i]);
 				var icone = document.createElement("i");
 				icone.setAttribute("class", "icon-play-circle");
 				entryDiv.appendChild(icone);
