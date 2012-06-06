@@ -14,8 +14,10 @@ function loadBloggingAtXebiaFr() {
 				var icone = document.createElement("i");
 				icone.setAttribute("class", "icon-play-circle");
 				div.appendChild(icone);
+				div.appendChild(document.createTextNode(" "));
 				var link = document.createElement("a");
 				link.setAttribute("href", entry.link);
+				link.setAttribute("target", "_blank");
 				link.appendChild(document.createTextNode(" " + entry.title));
 				div.appendChild(link);
 				container.appendChild(div);
@@ -30,7 +32,6 @@ google.setOnLoadCallback(loadBloggingAtXebiaFr);
 
 // Github integration -----------------
 
-// Raw
 $(document).ready(function() {
 
 	$.ajax({
@@ -46,8 +47,10 @@ $(document).ready(function() {
 				var icone = document.createElement("i");
 				icone.setAttribute("class", "icon-play-circle");
 				entryDiv.appendChild(icone);
+				entryDiv.appendChild(document.createTextNode(" "));
 				var link = document.createElement("a");
 				link.setAttribute("href", returndata.data[i].html_url);
+				link.setAttribute("target", "_blank");
 				link.appendChild(document.createTextNode(" " + returndata.data[i].name));
 				entryDiv.appendChild(link);
 				if(returndata.data[i].fork) {

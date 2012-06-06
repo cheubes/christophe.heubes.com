@@ -1,0 +1,19 @@
+/*
+ * Orange : #FF6633 #EE5522
+ * Blue : #00B8FF
+ * Green : #94BD5E
+ * Grey : #333333
+ */
+
+/*
+.navbar-inner {
+	background-color: #2C2C2C;
+	background-image: -moz-linear-gradient(top, #FF6633, #EE5522);
+	background-image: -ms-linear-gradient(top, #FF6633, #EE5522);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FF6633), to(#EE5522));
+	background-image: -webkit-linear-gradient(top, #FF6633, #EE5522);
+	background-image: -o-linear-gradient(top, #FF6633, #EE5522);
+	background-image: linear-gradient(top, #FF6633, #EE5522);
+	filter: progid :dximagetransform.microsoft.gradient(startColorstr='#FF6633',endColorstr='#EE5522',GradientType=0);
+}
+*/
