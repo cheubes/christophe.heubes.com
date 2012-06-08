@@ -5,15 +5,36 @@
  * Grey : #333333
  */
 
-/*
-.navbar-inner {
-	background-color: #2C2C2C;
-	background-image: -moz-linear-gradient(top, #FF6633, #EE5522);
-	background-image: -ms-linear-gradient(top, #FF6633, #EE5522);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FF6633), to(#EE5522));
-	background-image: -webkit-linear-gradient(top, #FF6633, #EE5522);
-	background-image: -o-linear-gradient(top, #FF6633, #EE5522);
-	background-image: linear-gradient(top, #FF6633, #EE5522);
-	filter: progid :dximagetransform.microsoft.gradient(startColorstr='#FF6633',endColorstr='#EE5522',GradientType=0);
+@import url(http://fonts.googleapis.com/css?family=Nova+Mono);
+
+.navbar .brand {
+	font-family: 'Nova Mono', cursive;
+	color: #FF6633;
+	font-size: 25px;
 }
-*/
+
+.navbar .nav > li > a {
+	font-family: 'Nova Mono', cursive;
+	color: #94BD5E;
+	line-height: 25px;
+}
+
+h1 {
+	font-family: 'Nova Mono', cursive;
+	font-size: 25px;
+	line-height: 36px;
+}
+
+h1 a {
+	color: #94BD5E;
+}
+
+h1 a:hover {
+	color: #94BD5E;
+}
+
+h1 a:visited {
+	color: #94BD5E;
+}
+
+
