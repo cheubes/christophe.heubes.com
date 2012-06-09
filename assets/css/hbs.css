@@ -5,18 +5,40 @@
  * Grey : #333333
  */
 
-@import url(http://fonts.googleapis.com/css?family=Nova+Mono);
+@import url(http://fonts.googleapis.com/css?family=Nova+Mono|Rock+Salt|Special+Elite|Swanky+and+Moo+Moo);
+
 
 .navbar .brand {
-	font-family: 'Nova Mono', cursive;
+	font-family: 'Rock Salt', cursive;
 	color: #FF6633;
-	font-size: 25px;
 }
 
 .navbar .nav > li > a {
 	font-family: 'Nova Mono', cursive;
 	color: #94BD5E;
+	font-size:15px;
 	line-height: 25px;
+}
+
+.gh-repo {
+	font-family: 'Special Elite', cursive;
+	margin-bottom: 10px;
+}
+
+.gh-repo [class^="icon-"], .gh-repo [class*=" icon-"] {
+	margin-top: -2px;
+	margin-right: 5px;
+}
+
+.blog-post {
+	font-family: 'Swanky and Moo Moo', cursive;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.blog-post [class^="icon-"], .blog-post [class*=" icon-"] {
+	margin-top: 7px;
+	margin-right: 5px;
 }
 
 h1 {
@@ -36,5 +58,4 @@ h1 a:hover {
 h1 a:visited {
 	color: #94BD5E;
 }
-
 

@@ -11,6 +11,7 @@ function loadBloggingAtXebiaFr() {
 			for(var i = 0; i < result.feed.entries.length; i++) {
 				var entry = result.feed.entries[i];
 				var div = document.createElement("div");
+				div.setAttribute("class", "blog-post");
 				var icone = document.createElement("i");
 				icone.setAttribute("class", "icon-play-circle");
 				div.appendChild(icone);
@@ -43,6 +44,7 @@ $(document).ready(function() {
 			var forkedDiv = document.createElement("div");
 			for(var i = 0; i < returndata.data.length; i++) {
 				var entryDiv = document.createElement("div");
+				entryDiv.setAttribute("class", "gh-repo");
 				// console.log(returndata.data[i]);
 				var icone = document.createElement("i");
 				icone.setAttribute("class", "icon-play-circle");
@@ -60,7 +62,7 @@ $(document).ready(function() {
 				}
 			}
 			container.appendChild(originalsDiv);
-			container.appendChild(document.createElement("hr"));			
+			container.appendChild(document.createElement("hr"));
 			container.appendChild(forkedDiv);
 		}
 	});
