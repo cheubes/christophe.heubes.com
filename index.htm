@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<title>Christophe Heubès</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- status bar -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <!-- hide safari chrome -->
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+		<!-- status bar -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<!-- hide safari chrome -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="description" content="Christophe Heubès, ingénieur EPITA, Consultant Senior et Associé chez Xebia">
 		<meta name="author" content="Christophe Heubès">
 
@@ -94,7 +94,9 @@
 					<div class="well" id="github">
 						<div class="page-header">
 							<img src="./assets/img/github-logo.png" style="float: right;" />
-							<h1><a href="https://github.com/cheubes/" target="_blank">On Github</a><br />&nbsp;</h1>
+							<h1><a href="https://github.com/cheubes/" target="_blank">On Github</a>
+							<br />
+							&nbsp;</h1>
 						</div>
 					</div>
 					<!-- Livre blanc ESB -->
@@ -132,5 +134,21 @@
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script src="./assets/js/hbs.js"></script>
 
+
+		<!-- Analytics -->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-32525530-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
 	</body>
 </html>
