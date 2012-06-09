@@ -7,7 +7,6 @@
 
 @import url(http://fonts.googleapis.com/css?family=Nova+Mono|Rock+Salt|Special+Elite|Swanky+and+Moo+Moo);
 
-
 .navbar .brand {
 	font-family: 'Rock Salt', cursive;
 	color: #FF6633;
@@ -16,7 +15,7 @@
 .navbar .nav > li > a {
 	font-family: 'Nova Mono', cursive;
 	color: #94BD5E;
-	font-size:15px;
+	font-size: 15px;
 	line-height: 25px;
 }
 
@@ -57,5 +56,11 @@ h1 a:hover {
 
 h1 a:visited {
 	color: #94BD5E;
+}
+
+.well {
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
 }
 
