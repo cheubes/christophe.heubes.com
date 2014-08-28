@@ -1,3 +1,7 @@
+.img-center {
+    margin: auto auto;
+}
+
 .timeline {
     position: relative;
     padding: 0;
