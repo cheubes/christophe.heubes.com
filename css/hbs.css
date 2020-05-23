@@ -20,3 +20,11 @@ div, body{
   height: 100%;
   width: 100%;
 }
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: dimgrey;
+}
