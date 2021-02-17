@@ -1,6 +1,15 @@
+
+@blue: #2C374C;
+@gold: #C7B299;
+
+@light-grey: #ACB2B8;
+@grey: #666;
+@dark-grey: #444;
+
 html, body{
   height: 100%;
   font-family: Ubuntu, sans-serif;
+  color: @grey;
   text-align: justify;
 }
 body {
@@ -14,13 +23,20 @@ div, body{
 
 strong {
   font-weight: bold;
-  color: black;
+  color: @dark-grey;
+}
+
+i {
+  color: @light-grey;
 }
 
 a {
-  color: black;
+  color: @blue;
+  i {
+    color: @blue;
+  }
   :hover {
-    color: dimgrey;
+    color: @gold;
     text-decoration: none;
   }
 }
