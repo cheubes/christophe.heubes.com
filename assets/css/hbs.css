@@ -1,6 +1,7 @@
 html, body{
   height: 100%;
   font-family: Ubuntu, sans-serif;
+  text-align: justify;
 }
 body {
   background-color: #FFF;
@@ -46,4 +47,12 @@ a:hover {
   height: 150px;
   width: 150px;
   box-shadow: 2px 2px 4px black;
+}
+
+#about {
+
+}
+
+#resume {
+
 }
