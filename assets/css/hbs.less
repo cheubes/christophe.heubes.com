@@ -12,15 +12,6 @@ div, body{
   padding: 0;
 }
 
-main {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-h1 {
-  font-weight: bolder;
-}
-
 strong {
   font-weight: bold;
   color: black;
@@ -28,20 +19,18 @@ strong {
 
 a {
   color: black;
-}
-
-a:hover {
-  color: dimgrey;
-  text-decoration: none;
+  :hover {
+    color: dimgrey;
+    text-decoration: none;
+  }
 }
 
 #vcard {
   background-image: url(/assets/img/bg.jpg) ;
   background-position: center center;
   background-repeat:  no-repeat;
-  /* background-attachment: fixed; */
   background-size:  cover;
-  background-color: #000;
+  background-color: #FFF;
   padding-top: 50px;
   padding-bottom: 50px;
   text-shadow: 2px 2px 4px dimgrey;
@@ -54,20 +43,22 @@ a:hover {
   box-shadow: 2px 2px 4px black;
 }
 
-#about .row {
-  margin-bottom: 30px;
-  /* border-top: 1px solid black; */
+#about {
+  .row {
+    margin-bottom: 30px;
+  }
+  .icon {
+    font-size: 32px;
+    text-align: center;
+  }
 }
 
-.icon {
-  font-size: 32px;
-  text-align: center;
-}
 
-#resume .row {
-  margin-bottom: 30px;
-}
-
-.resume-logo {
-  height: 48px;
+#resume {
+  .row {
+    margin-bottom: 30px;
+  }
+  .resume-logo {
+    height: 48px;
+  }
 }
