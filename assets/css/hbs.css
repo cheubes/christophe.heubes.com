@@ -54,8 +54,9 @@ a:hover {
   box-shadow: 2px 2px 4px black;
 }
 
-#about {
-
+#about .row {
+  margin-bottom: 30px;
+  /* border-top: 1px solid black; */
 }
 
 .icon {
@@ -63,6 +64,10 @@ a:hover {
   text-align: center;
 }
 
-#resume {
+#resume .row {
+  margin-bottom: 30px;
+}
 
+.resume-logo {
+  height: 48px;
 }
