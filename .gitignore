@@ -4,3 +4,4 @@
 .project
 
 _site/*
+.jekyll-cache/*
