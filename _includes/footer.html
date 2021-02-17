@@ -1,23 +1,19 @@
-<footer class="navbar navbar-light bg-light fixed-bottom">
-
-  <div id="social-media">
-    <a href="http://fr.linkedin.com/in/heubes/" target="_blank"><i class="fab fa-linkedin-in ml-3"></i></a>
-    <a href="http://www.viadeo.com/fr/profile/christophe.heubes/" target="_blank"><i class="fab fa-viadeo ml-3"></i></a>
-    <a href="https://github.com/cheubes/" target="_blank"><i class="fab fa-github ml-3"></i></a>
-    <a href="https://twitter.com/Christophe_ITC" target="_blank"><i class="fab fa-twitter ml-3"></i></a>
-  </div>
-
-  <div id="license">
-    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ page.lang }}" target="_blank">
-      <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
-    </a>
-  </div>
-
-  <div id="lang">
-    {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
-    {% for page in pages %}
-        &nbsp;<a href="{{ page.url }}">{{ page.flag }}</a>&nbsp;
-    {% endfor %}
-  </div>
-
-</footer>
+  <footer class="navbar navbar-light bg-light fixed-bottom">
+    <div id="social-media">
+      <a href="http://fr.linkedin.com/in/heubes/" target="_blank"><i class="fab fa-linkedin-in ml-3"></i></a>
+      <a href="http://www.viadeo.com/fr/profile/christophe.heubes/" target="_blank"><i class="fab fa-viadeo ml-3"></i></a>
+      <a href="https://github.com/cheubes/" target="_blank"><i class="fab fa-github ml-3"></i></a>
+      <a href="https://twitter.com/Christophe_ITC" target="_blank"><i class="fab fa-twitter ml-3"></i></a>
+    </div>
+    <div id="license">
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ page.lang }}" target="_blank">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+      </a>
+    </div>
+    <div id="lang">
+      {%- assign pages=site.pages | where:"ref", page.ref | sort: 'lang' -%}
+      {%- for page in pages -%}
+          &nbsp;<a href="{{ page.url }}">{{ page.flag }}</a>&nbsp;
+      {%- endfor -%}
+    </div>
+  </footer>
