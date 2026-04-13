@@ -5,3 +5,5 @@
 
 _site/*
 .jekyll-cache/*
+.claude/settings.json
+assets/dist/css/hbs.css
