@@ -85,6 +85,23 @@
 
   </div>
 
+  <footer id="mobile-footer">
+    <div id="lang">
+      {%- assign pages=site.pages | where:"ref", page.ref | sort: 'lang' -%}
+      {%- for page in pages -%}
+        &nbsp;<a href="{{ page.url }}">{{ page.flag }}</a>&nbsp;
+      {%- endfor -%}
+    </div>
+    <div id="license">
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ page.lang }}" target="_blank">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+      </a>
+    </div>
+    <div id="org-link">
+      <a href="https://christophe.heubes.org" target="_blank" rel="noopener noreferrer" aria-label="christophe.heubes.org"><img src="/assets/img/org.jpg" class="rounded-circle sidebar-org-img" alt="heubes.org"/></a>
+    </div>
+  </footer>
+
 {% include scripts.html %}
 </body>
 

@@ -240,6 +240,11 @@ section {
   }
 }
 
+// --- Mobile footer ---
+#mobile-footer {
+  display: none;
+}
+
 // --- Responsive (mobile) ---
 @media (max-width: 767px) {
   .page-wrapper {
@@ -288,5 +293,23 @@ section {
   .content-wrapper {
     margin-left: 0;
     padding: 1.5rem 1.25rem;
+  }
+
+  #mobile-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background-color: @blue;
+    #lang a {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+    #license img { opacity: 0.7; }
+    #org-link .sidebar-org-img {
+      width: 28px;
+      height: 28px;
+      opacity: 0.85;
+    }
   }
 }
