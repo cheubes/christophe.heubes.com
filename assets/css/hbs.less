@@ -11,10 +11,11 @@
 html, body {
   height: 100%;
   font-family: Ubuntu, sans-serif;
+  font-size: 17px;
   color: @grey;
 }
 body {
-  background-color: #fff;
+  background-color: #FAFAFA;
   margin: 0;
   padding: 0;
 }
@@ -32,7 +33,11 @@ i {
 a {
   color: @blue;
   text-decoration: none;
-  i { color: @blue; }
+  transition: color 0.2s ease;
+  i {
+    color: @blue;
+    transition: color 0.2s ease;
+  }
   &:hover { color: @gold; }
 }
 p {
@@ -209,6 +214,9 @@ section {
     height: 44px;
     display: block;
     margin: 0 auto;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+    &:hover { opacity: 1; }
   }
   .col-10 > p:first-child {
     display: flex;
