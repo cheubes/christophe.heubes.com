@@ -5,17 +5,17 @@
 
 <body>
 
-  <div id="vcard" class="container-fluid">
+  <header id="vcard" class="container-fluid">
     <div class="row align-items-center">
       <div class="col-md-4 text-center"><img id="profile-picture" class="rounded-circle" src="/assets/img/photo.jpg" alt="Christophe Heubès"/></div>
-      <div class="col-md-2 text-center py-3">&nbsp;</div>
-      <div class="col-md-2 text-center py-3">&nbsp;</div>
-      <div class="col-md-2 text-center py-3"><a href="https://www.linkedin.com/in/heubes/" target="_blank"><i class="fab fa-linkedin-in fa-5x"></i></a></div>
-      <div class="col-md-2 text-center py-3"><a href="https://github.com/cheubes/" target="_blank"><i class="fab fa-github fa-5x"></i></a></div>
+      <div class="col-md-2 text-center py-3"></div>
+      <div class="col-md-2 text-center py-3"></div>
+      <div class="col-md-2 text-center py-3"><a href="https://www.linkedin.com/in/heubes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-5x" aria-hidden="true"></i></a></div>
+      <div class="col-md-2 text-center py-3"><a href="https://github.com/cheubes/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-5x" aria-hidden="true"></i></a></div>
     </div>
-  </div>
+  </header>
 
-  <div class="container-fluid">
+  <main class="container-fluid">
     <div class="row">
       <div id="about" class="col-md-6 px-5 py-5">
         <div class="row">
@@ -37,7 +37,7 @@
       </div>
       <div id="resume" class="col-md-6 px-5 py-5">
         <div class="row">
-          <div class="col-md-2"><img class="resume-logo" src="/assets/img/flint.png" alt="Xebia"/></div>
+          <div class="col-md-2"><img class="resume-logo" src="/assets/img/flint.png" alt="Flint"/></div>
           <div class="col-md-10">{{ page.resume-flint }}</div>
         </div>
         <div class="row">
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 
 {% include footer.html %}
 
