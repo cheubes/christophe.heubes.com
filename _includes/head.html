@@ -11,8 +11,41 @@
 
   {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
   {% for page in pages %}
-  <link rel="alternate" hreflang="{{ page.lang }}" href="{{ page.url }}" />
+  <link rel="alternate" hreflang="{{ page.lang }}" href="{{ site.url }}{{ page.url }}" />
   {% endfor %}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/img/photo.jpg">
+  <meta property="og:locale" content="{% if page.lang == 'en' %}en_GB{% else %}fr_FR{% endif %}">
+  <meta property="profile:first_name" content="Christophe">
+  <meta property="profile:last_name" content="Heubès">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/photo.jpg">
+  <meta name="twitter:site" content="@ChristopheHbs">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Christophe Heubès",
+    "jobTitle": "COO",
+    "url": "{{ site.url }}/",
+    "image": "{{ site.url }}/assets/img/photo.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/heubes/",
+      "https://github.com/cheubes/"
+    ]
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu" />
