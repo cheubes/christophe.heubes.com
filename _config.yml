@@ -1,0 +1,11 @@
+url: "https://christophe.heubes.com"
+title: "Christophe Heubès"
+author: "Christophe Heubès"
+lang: fr
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - README.md
+  - "*.map"
