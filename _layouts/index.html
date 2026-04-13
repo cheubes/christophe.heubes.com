@@ -5,65 +5,87 @@
 
 <body>
 
-  <header id="vcard" class="container-fluid">
-    <div class="row align-items-center">
-      <div class="col-md-4 text-center"><picture><source srcset="/assets/img/photo.webp" type="image/webp"><img id="profile-picture" class="rounded-circle" src="/assets/img/photo.jpg" alt="Christophe Heubès"/></picture></div>
-      <div class="col-md-4 text-center py-3"><h1>{{ page.h1 }}</h1></div>
-      <div class="col-md-2 text-center py-3"><a href="https://www.linkedin.com/in/heubes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-5x" aria-hidden="true"></i></a></div>
-      <div class="col-md-2 text-center py-3"><a href="https://github.com/cheubes/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-5x" aria-hidden="true"></i></a></div>
-    </div>
-  </header>
+  <div class="page-wrapper">
 
-  <main class="container-fluid">
-    <div class="row">
-      <div id="about" class="col-md-6 px-5 py-5">
-        <div class="row">
-          <div class="col-md-2 icon" aria-hidden="true">👊</div>
-          <div class="col-md-10">{{ page.about-intro }}</div>
+    <aside id="sidebar">
+      <div class="sidebar-top">
+        <picture><source srcset="/assets/img/photo.webp" type="image/webp"><img id="profile-picture" class="rounded-circle" src="/assets/img/photo.jpg" alt="Christophe Heubès"/></picture>
+        <h1>{{ page.h1 }}</h1>
+        <p class="sidebar-tagline">{{ page.tagline }}</p>
+      </div>
+      <hr class="sidebar-divider">
+      <div class="sidebar-social">
+        <a href="https://www.linkedin.com/in/heubes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></a>
+        <a href="https://github.com/cheubes/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+        <a href="https://christophe.heubes.org" target="_blank" rel="noopener noreferrer" aria-label="christophe.heubes.org"><img src="/assets/img/org.jpg" class="rounded-circle sidebar-org-img" alt="heubes.org"/></a>
+      </div>
+      <div class="sidebar-footer">
+        <div id="lang">
+          {%- assign pages=site.pages | where:"ref", page.ref | sort: 'lang' -%}
+          {%- for page in pages -%}
+            &nbsp;<a href="{{ page.url }}">{{ page.flag }}</a>&nbsp;
+          {%- endfor -%}
         </div>
-        <div class="row">
-          <div class="col-md-2 icon" aria-hidden="true">🛠</div>
-          <div class="col-md-10">{{ page.about-skills }}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-2 icon" aria-hidden="true">🚀</div>
-          <div class="col-md-10">{{ page.about-xebia }}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-2 icon" aria-hidden="true">🌱</div>
-          <div class="col-md-10">{{ page.about-invest }}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-2 icon" aria-hidden="true">🧑‍🎓</div>
-          <div class="col-md-10">{{ page.about-epita }}</div>
+        <div id="license">
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ page.lang }}" target="_blank">
+            <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+          </a>
         </div>
       </div>
-      <div id="resume" class="col-md-6 px-5 py-5">
-        <div class="row">
-          <div class="col-md-2"><img class="resume-logo" src="/assets/img/flint.png" alt="Flint"/></div>
-          <div class="col-md-10">{{ page.resume-flint }}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-2"><img class="resume-logo" src="/assets/img/xebia.png" alt="Xebia"/></div>
-          <div class="col-md-10">{{ page.resume-xebia-coo }}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-2"><img class="resume-logo" src="/assets/img/xebia.png" alt="Xebia"/></div>
-          <div class="col-md-10">{{ page.resume-xebia }}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-2"><img class="resume-logo" src="/assets/img/dreamsoft.png" alt="Dreamsoft"/></div>
-          <div class="col-md-10">{{ page.resume-dreamsoft }}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-2"><img class="resume-logo" src="/assets/img/epita.png" alt="EPITA"/></div>
-          <div class="col-md-10">{{ page.resume-epita }}</div>
-        </div>
-      </div>
-    </div>
-  </main>
+    </aside>
 
-{% include footer.html %}
+    <div class="content-wrapper">
+      <main>
+        <section id="about">
+          <h2>{{ page.section-about }}</h2>
+          <div class="row">
+            <div class="col-2 icon" aria-hidden="true">👊</div>
+            <div class="col-10">{{ page.about-intro }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2 icon" aria-hidden="true">🛠</div>
+            <div class="col-10">{{ page.about-skills }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2 icon" aria-hidden="true">🚀</div>
+            <div class="col-10">{{ page.about-xebia }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2 icon" aria-hidden="true">🌱</div>
+            <div class="col-10">{{ page.about-invest }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2 icon" aria-hidden="true">🧑‍🎓</div>
+            <div class="col-10">{{ page.about-epita }}</div>
+          </div>
+        </section>
+        <section id="resume">
+          <h2>{{ page.section-resume }}</h2>
+          <div class="row">
+            <div class="col-2"><img class="resume-logo" src="/assets/img/flint.png" alt="Flint"/></div>
+            <div class="col-10">{{ page.resume-flint }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2"><img class="resume-logo" src="/assets/img/xebia.png" alt="Xebia"/></div>
+            <div class="col-10">{{ page.resume-xebia-coo }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2"><img class="resume-logo" src="/assets/img/xebia.png" alt="Xebia"/></div>
+            <div class="col-10">{{ page.resume-xebia }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2"><img class="resume-logo" src="/assets/img/dreamsoft.png" alt="Dreamsoft"/></div>
+            <div class="col-10">{{ page.resume-dreamsoft }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2"><img class="resume-logo" src="/assets/img/epita.png" alt="EPITA"/></div>
+            <div class="col-10">{{ page.resume-epita }}</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+  </div>
 
 {% include scripts.html %}
 </body>
