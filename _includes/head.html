@@ -27,20 +27,13 @@
   <meta property="profile:first_name" content="Christophe">
   <meta property="profile:last_name" content="Heubès">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:description" content="{{ page.description }}">
-  <meta name="twitter:image" content="{{ site.url }}/assets/img/photo.jpg">
-  <meta name="twitter:site" content="@ChristopheHbs">
-
   <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Christophe Heubès",
-    "jobTitle": "COO",
+    "jobTitle": "{% if page.lang == 'en' %}Aligning Vision, Execution & People{% else %}Aligner Vision, Exécution & Humain{% endif %}",
     "url": "{{ site.url }}/",
     "image": "{{ site.url }}/assets/img/photo.jpg",
     "sameAs": [
