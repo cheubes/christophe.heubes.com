@@ -3,9 +3,16 @@ title: "Christophe Heubès"
 author: "Christophe Heubès"
 lang: fr
 
+collections:
+  illustrations:
+    output: true
+    permalink: /illustrations/:name/
+
 exclude:
   - Gemfile
   - Gemfile.lock
   - package.json
   - README.md
   - "*.map"
+  - generator/
+  - brief-illustrations.md

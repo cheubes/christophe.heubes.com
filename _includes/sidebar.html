@@ -1,0 +1,41 @@
+<aside id="sidebar">
+  <div class="sidebar-top">
+    <a href="/" class="sidebar-home-link" aria-label="Accueil">
+      <picture><source srcset="/assets/img/photo.webp" type="image/webp"><img id="profile-picture" class="rounded-circle" src="/assets/img/photo.jpg" alt="Christophe Heubès"/></picture>
+      <h1>{{ page.h1 | default: "Christophe Heubès" }}</h1>
+    </a>
+    <p class="sidebar-tagline">{% if page.tagline %}{{ page.tagline }}{% elsif page.lang == 'en' %}Aligning Vision, Execution &amp; People{% else %}Aligner Vision, Exécution &amp; Humain{% endif %}</p>
+  </div>
+  <hr class="sidebar-divider">
+  <div class="sidebar-social">
+    <a href="https://www.linkedin.com/in/heubes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></a>
+    <a href="https://github.com/cheubes/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+  </div>
+  {% include hamburger.html %}
+  <hr class="sidebar-divider">
+  <div class="sidebar-illustrations">
+    <a href="{% if page.lang == 'en' %}/en/illustrations/{% else %}/illustrations/{% endif %}">
+      <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> {% if page.lang == 'en' %}Thought Figures{% else %}Figures de pensée{% endif %}
+    </a>
+  </div>
+  <div class="sidebar-footer">
+    <div id="lang">
+      {%- if include.collection == 'illustrations' -%}
+        {%- assign _sidebar_pages = site.illustrations | where: "ref", page.ref | sort: 'lang' -%}
+      {%- else -%}
+        {%- assign _sidebar_pages = site.pages | where: "ref", page.ref | sort: 'lang' -%}
+      {%- endif -%}
+      {%- for p in _sidebar_pages -%}
+        &nbsp;<a href="{{ p.url }}">{{ p.flag }}</a>&nbsp;
+      {%- endfor -%}
+    </div>
+    <div id="license">
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ page.lang | default: 'fr' }}" target="_blank">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+      </a>
+    </div>
+    <div id="org-link">
+      <a href="https://christophe.heubes.org" target="_blank" rel="noopener noreferrer" aria-label="christophe.heubes.org"><img src="/assets/img/org.jpg" class="rounded-circle sidebar-org-img" alt="heubes.org"/></a>
+    </div>
+  </div>
+</aside>

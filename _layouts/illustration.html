@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'fr' }}">
+
+{% include head.html %}
+
+<body>
+
+  <div class="page-wrapper">
+
+    {% include sidebar.html collection="illustrations" %}
+
+    <div class="content-wrapper">
+      <main id="illustration-detail">
+
+        <nav class="ill-breadcrumb">
+          {% if page.lang == 'en' %}
+          <a href="/en/illustrations/">← Thought Figures</a>
+          {% else %}
+          <a href="/illustrations/">← Figures de pensée</a>
+          {% endif %}
+        </nav>
+
+        <div class="ill-meta">
+          <span class="ill-category-badge">{{ page.category }}</span>
+        </div>
+
+        <h1 class="ill-title">{{ page.title }}</h1>
+        <p class="ill-tagline">{{ page.tagline }}</p>
+
+        <div class="ill-svg-wrapper">
+          <img src="/assets/illustrations/{{ page.slug }}{% if page.lang == 'en' %}-en{% endif %}.svg"
+               alt="{{ page.title }} : {{ page.tagline }}"
+               class="ill-svg-img" width="100%" loading="eager"/>
+        </div>
+
+        <div class="ill-content">
+          {{ content }}
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+  <footer id="mobile-footer">
+    <div id="lang">
+      {%- assign alt_pages = site.illustrations | where: "ref", page.ref | sort: 'lang' -%}
+      {%- for alt in alt_pages -%}
+        &nbsp;<a href="{{ alt.url }}">{{ alt.flag }}</a>&nbsp;
+      {%- endfor -%}
+    </div>
+    <div id="license">
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ page.lang | default: 'fr' }}" target="_blank">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+      </a>
+    </div>
+    <div id="org-link">
+      <a href="https://christophe.heubes.org" target="_blank" rel="noopener noreferrer"><img src="/assets/img/org.jpg" class="rounded-circle sidebar-org-img" alt="heubes.org"/></a>
+    </div>
+  </footer>
+
+{% include scripts.html %}
+</body>
+
+</html>

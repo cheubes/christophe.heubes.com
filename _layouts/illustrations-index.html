@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'fr' }}">
+
+{% include head.html %}
+
+<body>
+
+  <div class="page-wrapper">
+
+    {% include sidebar.html %}
+
+    <div class="content-wrapper">
+      <main>
+        <section id="illustrations">
+          <h2>{% if page.lang == 'en' %}Thought Figures{% else %}Figures de pensée{% endif %}</h2>
+          <p class="ill-intro">{% if page.lang == 'en' %}Minimalist illustrations of intellectual concepts, cognitive laws and biases.{% else %}Illustrations minimalistes de concepts intellectuels, lois cognitives et biais.{% endif %}</p>
+
+          <!-- Filtres par catégorie -->
+          {% assign illustrations_lang = site.illustrations | where: "lang", page.lang | sort: "number" %}
+          <div class="ill-filters" role="group" aria-label="{% if page.lang == 'en' %}Filter by category{% else %}Filtrer par catégorie{% endif %}">
+            <button class="ill-filter-btn active" data-filter="all">{% if page.lang == 'en' %}All{% else %}Tous{% endif %}</button>
+            {% assign categories = illustrations_lang | map: 'category' | uniq | sort %}
+            {% for cat in categories %}
+            <button class="ill-filter-btn" data-filter="{{ cat | downcase | replace: ' ', '-' | replace: 'é', 'e' | replace: 'è', 'e' | replace: 'ê', 'e' | replace: 'ô', 'o' }}">{{ cat }}</button>
+            {% endfor %}
+          </div>
+
+          <!-- Grille -->
+          <div class="illustrations-grid">
+            {% for ill in illustrations_lang %}
+            <a href="{{ ill.url }}"
+               class="illustration-card"
+               data-category="{{ ill.category | downcase | replace: ' ', '-' | replace: 'é', 'e' | replace: 'è', 'e' | replace: 'ê', 'e' | replace: 'ô', 'o' }}"
+               aria-label="{{ ill.title }} : {{ ill.tagline }}">
+              <div class="ill-card-img-wrap">
+                <img src="/assets/illustrations/{{ ill.slug }}{% if ill.lang == 'en' %}-en{% endif %}.svg"
+                     alt="{{ ill.title }}"
+                     loading="lazy"
+                     width="400" height="400"/>
+              </div>
+              <div class="ill-card-overlay">
+                <span class="ill-card-number">{{ ill.number }}</span>
+                <strong class="ill-card-title">{{ ill.title }}</strong>
+                <span class="ill-card-tagline">{{ ill.tagline }}</span>
+                <span class="ill-card-cat">{{ ill.category }}</span>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+
+        </section>
+      </main>
+    </div>
+
+  </div>
+
+  <footer id="mobile-footer">
+    <div id="lang">
+      {%- assign pages=site.pages | where:"ref", page.ref | sort: 'lang' -%}
+      {%- for p in pages -%}
+        &nbsp;<a href="{{ p.url }}">{{ p.flag }}</a>&nbsp;
+      {%- endfor -%}
+    </div>
+    <div id="license">
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ page.lang | default: 'fr' }}" target="_blank">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+      </a>
+    </div>
+    <div id="org-link">
+      <a href="https://christophe.heubes.org" target="_blank" rel="noopener noreferrer"><img src="/assets/img/org.jpg" class="rounded-circle sidebar-org-img" alt="heubes.org"/></a>
+    </div>
+  </footer>
+
+{% include scripts.html %}
+
+<script>
+  // Filtres catégorie
+  document.querySelectorAll('.ill-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ill-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.illustration-card').forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+
+</html>

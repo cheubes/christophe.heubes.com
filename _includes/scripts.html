@@ -1,1 +1,23 @@
 <script src="https://kit.fontawesome.com/7dfeb2d2f7.js" crossorigin="anonymous"></script>
+<script>
+(function () {
+  var btn  = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('hamburger-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = btn.classList.toggle('active');
+    btn.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-hidden',  String(!open));
+    menu.classList.toggle('open', open);
+  });
+  document.addEventListener('click', function (e) {
+    if (!menu.contains(e.target)) {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      menu.classList.remove('open');
+    }
+  });
+}());
+</script>

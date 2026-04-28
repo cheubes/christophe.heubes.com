@@ -1,0 +1,8 @@
+<button id="hamburger-btn" aria-label="Menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<nav id="hamburger-menu" aria-hidden="true">
+  <a href="{% if page.lang == 'en' %}/en/illustrations/{% else %}/illustrations/{% endif %}">
+    <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> {% if page.lang == 'en' %}Thought Figures{% else %}Figures de pensée{% endif %}
+  </a>
+</nav>

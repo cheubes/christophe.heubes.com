@@ -1,0 +1,13 @@
+{
+  "name": "illustrations-generator",
+  "version": "1.0.0",
+  "description": "Générateur SVG pour la série Concepts & Lois",
+  "type": "commonjs",
+  "scripts": {
+    "generate": "node index.js",
+    "generate:all": "node index.js --all"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  }
+}
