@@ -680,6 +680,58 @@ section {
     padding: 1.5rem 1.25rem;
   }
 
+  #about {
+    .row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .col-2 {
+      width: 100%;
+      max-width: 100%;
+      flex: none;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .col-10 {
+      width: 100%;
+      max-width: 100%;
+      flex: none;
+    }
+    .icon {
+      font-size: 1.75rem;
+    }
+  }
+
+  #resume {
+    .row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .col-2 {
+      width: 100%;
+      max-width: 100%;
+      flex: none;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .col-10 {
+      width: 100%;
+      max-width: 100%;
+      flex: none;
+    }
+    .resume-logo {
+      height: 52px;
+      margin: 0 auto;
+    }
+    .col-10 > p:first-child {
+      flex-direction: column;
+      gap: 0.25rem;
+      > i {
+        font-size: 0.85rem;
+      }
+    }
+  }
+
   #mobile-footer {
     display: flex;
     align-items: center;
