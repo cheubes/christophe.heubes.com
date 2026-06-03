@@ -610,21 +610,36 @@ section {
     .sidebar-top {
       display: flex;
       align-items: center;
-      gap: 1rem;
       text-align: left;
       flex: 1;
+      min-width: 0;
+    }
+    .sidebar-home-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+    .sidebar-home-text {
+      display: flex;
+      flex-direction: column;
       min-width: 0;
     }
     #profile-picture {
       width: 60px;
       height: 60px;
       margin-bottom: 0;
+      flex-shrink: 0;
     }
     h1 {
       font-size: 1.1rem;
+      white-space: normal;
+      min-width: 0;
+      margin-bottom: 0.1rem;
     }
     .sidebar-tagline {
-      display: none;
+      font-size: 0.75rem;
+      text-align: left;
     }
     .sidebar-divider {
       display: none;
