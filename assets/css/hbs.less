@@ -159,8 +159,16 @@ p {
         text-decoration: none;
       }
     }
-    #license img { opacity: 0.7; }
-    #license:hover img { opacity: 1; }
+    #license a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: fadeout(#fff, 40%);
+      font-size: 0.75rem;
+      i { color: inherit; }
+      span { color: inherit; }
+      &:hover { color: @gold; }
+    }
     #org-link { margin-top: 0.75rem; }
   }
 }
@@ -742,7 +750,16 @@ section {
       color: #fff;
       font-size: 1.2rem;
     }
-    #license img { opacity: 0.7; }
+    #license a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: fadeout(#fff, 40%);
+      font-size: 0.75rem;
+      i { color: inherit; }
+      span { color: inherit; }
+      &:hover { color: @gold; }
+    }
     #org-link .sidebar-org-img {
       width: 28px;
       height: 28px;
