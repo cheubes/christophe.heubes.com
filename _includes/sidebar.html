@@ -21,13 +21,9 @@
   </div>
   <div class="sidebar-footer">
     <div id="lang">
-      {%- if include.collection == 'illustrations' -%}
-        {%- assign _sidebar_pages = site.illustrations | where: "ref", page.ref | sort: 'lang' -%}
-      {%- else -%}
-        {%- assign _sidebar_pages = site.pages | where: "ref", page.ref | sort: 'lang' -%}
-      {%- endif -%}
-      {%- for p in _sidebar_pages -%}
-        &nbsp;<a href="{{ p.url }}">{{ p.flag }}</a>&nbsp;
+      {%- assign alt_pages = include.lang_pages | where: "ref", page.ref | sort: 'lang' -%}
+      {%- for alt in alt_pages -%}
+        &nbsp;<a href="{{ alt.url }}">{{ alt.flag }}</a>&nbsp;
       {%- endfor -%}
     </div>
     <div id="license">
