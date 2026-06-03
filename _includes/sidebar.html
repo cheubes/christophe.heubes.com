@@ -4,7 +4,8 @@
       <picture><source srcset="/assets/img/photo.webp" type="image/webp"><img id="profile-picture" class="rounded-circle" src="/assets/img/photo.jpg" alt="Christophe Heubès"/></picture>
       <h1>{{ page.h1 | default: "Christophe Heubès" }}</h1>
     </a>
-    <p class="sidebar-tagline">{% if page.tagline %}{{ page.tagline }}{% elsif page.lang == 'en' %}Aligning Vision, Execution &amp; People{% else %}Aligner Vision, Exécution &amp; Humain{% endif %}</p>
+    {%- assign _index_page = site.pages | where: "ref", "home" | where: "lang", page.lang | first -%}
+    <p class="sidebar-tagline">{{ _index_page.tagline }}</p>
   </div>
   <hr class="sidebar-divider">
   <div class="sidebar-social">
