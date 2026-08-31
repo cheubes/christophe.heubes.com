@@ -8,3 +8,5 @@ gem "jekyll"
 gem "logger"
 
 gem "webrick", "~> 1.8"
+
+gem "html-proofer"
