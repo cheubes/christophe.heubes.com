@@ -11,8 +11,7 @@ collections:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - package.json
   - README.md
-  - "*.map"
   - generator/
-  - brief-illustrations.md
+  - CLAUDE.md
+  - specs/
