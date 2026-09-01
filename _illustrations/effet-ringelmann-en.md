@@ -7,6 +7,8 @@ tagline: "The larger the group, the less each member contributes."
 description: "Discovered by Maximilien Ringelmann (1913): individual effort decreases as group size increases. The diffusion of responsibility reduces each person's engagement."
 lang: en
 ref: illustration-effet-ringelmann
+flag: 🇬🇧
+permalink: /en/illustrations/effet-ringelmann/
 ---
 
 ## Definition

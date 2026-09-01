@@ -7,6 +7,8 @@ tagline: "Every working complex system evolved from a simple system that worked.
 description: "Law by John Gall (Systemantics, 1975): a complex system designed from scratch as such is doomed to fail. Functional complexity always emerges from functional simplicity."
 lang: en
 ref: illustration-loi-gall
+flag: 🇬🇧
+permalink: /en/illustrations/loi-gall/
 ---
 
 ## Definition

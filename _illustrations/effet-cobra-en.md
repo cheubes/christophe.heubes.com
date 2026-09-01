@@ -7,6 +7,8 @@ tagline: "An incentive designed to solve a problem ends up making it worse."
 description: "Named after a colonial India anecdote: the British offered a bounty for dead cobras to reduce their numbers. Locals started breeding cobras for profit. When the programme was cancelled, captive cobras were released, causing the population to surge."
 lang: en
 ref: illustration-effet-cobra
+flag: 🇬🇧
+permalink: /en/illustrations/effet-cobra/
 ---
 
 ## Definition

@@ -7,6 +7,8 @@ tagline: "Be liberal in what you accept, conservative in what you send."
 description: "Principle by Jon Postel (RFC 793, 1980): to ensure interoperability, a system must accept varied or imperfect inputs, but produce outputs that strictly conform to standards."
 lang: en
 ref: illustration-principe-postel
+flag: 🇬🇧
+permalink: /en/illustrations/principe-postel/
 ---
 
 ## Definition

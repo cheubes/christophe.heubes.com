@@ -7,6 +7,8 @@ tagline: "Ajouter des développeurs à un projet en retard le retarde davantage.
 description: "Loi de Fred Brooks (The Mythical Man-Month, 1975) : l'ajout de ressources humaines à un projet logiciel en retard aggrave ce retard, en raison du coût exponentiel de la communication."
 lang: fr
 ref: illustration-loi-brooks
+flag: 🇫🇷
+permalink: /illustrations/loi-brooks/
 ---
 
 ## Définition

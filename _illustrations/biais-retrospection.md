@@ -7,6 +7,8 @@ tagline: "« Je le savais depuis le début. »"
 description: "Biais documenté par Baruch Fischhoff (1975) : après avoir connu l'issue d'un événement, on surestime la probabilité qu'on lui aurait attribuée à l'avance : la mémoire se réécrit."
 lang: fr
 ref: illustration-biais-retrospection
+flag: 🇫🇷
+permalink: /illustrations/biais-retrospection/
 ---
 
 ## Définition

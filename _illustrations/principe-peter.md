@@ -7,6 +7,8 @@ tagline: "Dans une hiérarchie, chacun s'élève jusqu'à son niveau d'incompét
 description: "Principe formulé par Laurence J. Peter (1969) : dans toute organisation, un individu compétent est promu jusqu'au poste où il devient incompétent, où il reste."
 lang: fr
 ref: illustration-principe-peter
+flag: 🇫🇷
+permalink: /illustrations/principe-peter/
 ---
 
 ## Définition

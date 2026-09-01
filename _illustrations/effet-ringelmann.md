@@ -7,6 +7,8 @@ tagline: "Plus le groupe est grand, moins chaque membre contribue."
 description: "Découvert par Maximilien Ringelmann (1913) : l'effort individuel diminue à mesure que la taille du groupe augmente. La dilution de la responsabilité réduit l'implication de chacun."
 lang: fr
 ref: illustration-effet-ringelmann
+flag: 🇫🇷
+permalink: /illustrations/effet-ringelmann/
 ---
 
 ## Définition

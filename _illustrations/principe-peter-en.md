@@ -7,6 +7,8 @@ tagline: "In a hierarchy, everyone rises to their level of incompetence."
 description: "Principle formulated by Laurence J. Peter (1969): in any organization, a competent individual is promoted until reaching a position where they become incompetent and stay."
 lang: en
 ref: illustration-principe-peter
+flag: 🇬🇧
+permalink: /en/illustrations/principe-peter/
 ---
 
 ## Definition

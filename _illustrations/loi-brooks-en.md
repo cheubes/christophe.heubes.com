@@ -7,6 +7,8 @@ tagline: "Adding developers to a late project makes it later."
 description: "Law by Fred Brooks (The Mythical Man-Month, 1975): adding human resources to a late software project delays it further, because of the exponential cost of communication."
 lang: en
 ref: illustration-loi-brooks
+flag: 🇬🇧
+permalink: /en/illustrations/loi-brooks/
 ---
 
 ## Definition

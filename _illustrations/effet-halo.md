@@ -7,6 +7,8 @@ tagline: "Un trait positif teinte toute la perception d'une personne."
 description: "Biais cognitif identifié par Edward Thorndike (1920) : l'impression favorable que laisse un trait saillant oriente inconsciemment le jugement porté sur tous les autres traits."
 lang: fr
 ref: illustration-effet-halo
+flag: 🇫🇷
+permalink: /illustrations/effet-halo/
 ---
 
 ## Définition

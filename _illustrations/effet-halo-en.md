@@ -7,6 +7,8 @@ tagline: "One positive trait colors the entire perception of a person."
 description: "Cognitive bias identified by Edward Thorndike (1920): the favorable impression left by one salient trait unconsciously shapes the judgment made on all other traits."
 lang: en
 ref: illustration-effet-halo
+flag: 🇬🇧
+permalink: /en/illustrations/effet-halo/
 ---
 
 ## Definition

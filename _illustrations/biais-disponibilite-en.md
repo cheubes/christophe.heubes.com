@@ -7,6 +7,8 @@ tagline: "We judge as probable what comes easily to mind."
 description: "Heuristic described by Kahneman and Tversky (1973): people assess the probability of an event by how easily examples come to mind, not by actual statistics."
 lang: en
 ref: illustration-biais-disponibilite
+flag: 🇬🇧
+permalink: /en/illustrations/biais-disponibilite/
 ---
 
 ## Definition

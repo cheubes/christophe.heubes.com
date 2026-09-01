@@ -7,6 +7,8 @@ tagline: "We reward A, we hope for B, and we get A."
 description: "Principle by Steven Kerr (1975): reward systems are often decoupled from real objectives, pushing individuals to maximize what is measured rather than what matters."
 lang: en
 ref: illustration-loi-kerr
+flag: 🇬🇧
+permalink: /en/illustrations/loi-kerr/
 ---
 
 ## Definition

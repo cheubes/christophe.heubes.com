@@ -7,6 +7,8 @@ tagline: "On juge probable ce qui vient facilement à l'esprit."
 description: "Heuristique décrite par Kahneman et Tversky (1973) : on évalue la probabilité d'un événement selon la facilité avec laquelle des exemples nous viennent à l'esprit, et non selon les statistiques réelles."
 lang: fr
 ref: illustration-biais-disponibilite
+flag: 🇫🇷
+permalink: /illustrations/biais-disponibilite/
 ---
 
 ## Définition

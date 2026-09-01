@@ -7,6 +7,8 @@ tagline: "On récompense A, on espère B, et on obtient A."
 description: "Principe de Steven Kerr (1975) : les systèmes de récompense sont souvent découplés des objectifs réels, poussant les individus à maximiser ce qui est mesuré plutôt que ce qui compte."
 lang: fr
 ref: illustration-loi-kerr
+flag: 🇫🇷
+permalink: /illustrations/loi-kerr/
 ---
 
 ## Définition

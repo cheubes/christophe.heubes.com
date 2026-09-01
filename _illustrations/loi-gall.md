@@ -7,6 +7,8 @@ tagline: "Tout système complexe qui fonctionne a évolué depuis un système si
 description: "Loi de John Gall (Systemantics, 1975) : un système complexe conçu directement comme tel est voué à l'échec. La complexité fonctionnelle émerge toujours d'une simplicité fonctionnelle."
 lang: fr
 ref: illustration-loi-gall
+flag: 🇫🇷
+permalink: /illustrations/loi-gall/
 ---
 
 ## Définition

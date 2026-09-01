@@ -7,6 +7,8 @@ tagline: "With enough users, all observable behavior becomes a dependency."
 description: "Law stated by Hyrum Wright (Google engineer): regardless of what the documented interface says, users will eventually depend on every observable behavior of a system."
 lang: en
 ref: illustration-loi-hyrum
+flag: 🇬🇧
+permalink: /en/illustrations/loi-hyrum/
 ---
 
 ## Definition

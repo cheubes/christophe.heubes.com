@@ -7,6 +7,8 @@ tagline: "Avec suffisamment d'utilisateurs, tout comportement observable devient
 description: "Loi énoncée par Hyrum Wright (ingénieur Google) : quelle que soit l'interface documentée, les utilisateurs finissent par dépendre de tous les comportements observables d'un système."
 lang: fr
 ref: illustration-loi-hyrum
+flag: 🇫🇷
+permalink: /illustrations/loi-hyrum/
 ---
 
 ## Définition

@@ -7,6 +7,8 @@ tagline: "Sois libéral dans ce que tu acceptes, conservateur dans ce que tu ém
 description: "Principe de Jon Postel (RFC 793, 1980) : pour assurer l'interopérabilité, un système doit accepter des entrées variantes ou imparfaites, mais produire des sorties strictement conformes aux standards."
 lang: fr
 ref: illustration-principe-postel
+flag: 🇫🇷
+permalink: /illustrations/principe-postel/
 ---
 
 ## Définition

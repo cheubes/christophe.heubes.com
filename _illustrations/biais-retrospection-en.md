@@ -7,6 +7,8 @@ tagline: '"I knew it all along."'
 description: "Bias documented by Baruch Fischhoff (1975): after learning the outcome of an event, people overestimate the probability they would have assigned to it beforehand, as memory rewrites itself."
 lang: en
 ref: illustration-biais-retrospection
+flag: 🇬🇧
+permalink: /en/illustrations/biais-retrospection/
 ---
 
 ## Definition

@@ -7,6 +7,8 @@ tagline: "Only ideas within the window are politically viable, and the window mo
 description: "Concept introduced by Joseph Overton: at any given moment, only a narrow range of ideas is politically acceptable. Ideas outside the window are dismissed as radical or unthinkable, until the window shifts."
 lang: en
 ref: illustration-fenetre-overton
+flag: 🇬🇧
+permalink: /en/illustrations/fenetre-overton/
 ---
 
 ## Definition

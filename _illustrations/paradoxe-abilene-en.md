@@ -7,6 +7,8 @@ tagline: "A group can collectively decide what nobody individually wants."
 description: "Described by Jerry Harvey (1974): in a group, each person assumes the others approve of an idea and goes along to be polite, leading to a unanimous decision that nobody wanted."
 lang: en
 ref: illustration-paradoxe-abilene
+flag: 🇬🇧
+permalink: /en/illustrations/paradoxe-abilene/
 ---
 
 ## Definition

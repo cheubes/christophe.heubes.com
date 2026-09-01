@@ -7,6 +7,8 @@ tagline: "Une incitation conçue pour résoudre un problème finit par l'aggrave
 description: "Nommé d'après une anecdote de l'Inde coloniale : les Britanniques offrirent une prime pour chaque cobra mort. Les habitants se mirent à élever des cobras. À l'annulation du programme, les cobras furent relâchés, entraînant une explosion de la population."
 lang: fr
 ref: illustration-effet-cobra
+flag: 🇫🇷
+permalink: /illustrations/effet-cobra/
 ---
 
 ## Définition

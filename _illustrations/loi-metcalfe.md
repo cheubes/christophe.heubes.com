@@ -7,6 +7,8 @@ tagline: "La valeur d'un réseau croît comme le carré du nombre de ses utilisa
 description: "Loi formulée par Robert Metcalfe : la valeur d'un réseau est proportionnelle au carré du nombre de ses utilisateurs (n²), créant des effets réseau exponentiels."
 lang: fr
 ref: illustration-loi-metcalfe
+flag: 🇫🇷
+permalink: /illustrations/loi-metcalfe/
 ---
 
 ## Définition

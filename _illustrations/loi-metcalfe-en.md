@@ -7,6 +7,8 @@ tagline: "The value of a network grows as the square of its number of users."
 description: "Law formulated by Robert Metcalfe: the value of a network is proportional to the square of the number of its users (n²), creating exponential network effects."
 lang: en
 ref: illustration-loi-metcalfe
+flag: 🇬🇧
+permalink: /en/illustrations/loi-metcalfe/
 ---
 
 ## Definition

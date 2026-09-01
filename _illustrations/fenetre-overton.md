@@ -7,6 +7,8 @@ tagline: "Seules les idées dans la fenêtre sont politiquement viables, et la f
 description: "Concept introduit par Joseph Overton : à chaque instant, seule une plage étroite d'idées est politiquement acceptable. Les idées hors de cette fenêtre sont écartées comme radicales ou impensables, jusqu'à ce que la fenêtre se déplace."
 lang: fr
 ref: illustration-fenetre-overton
+flag: 🇫🇷
+permalink: /illustrations/fenetre-overton/
 ---
 
 ## Définition

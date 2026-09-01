@@ -7,6 +7,8 @@ tagline: "Un groupe peut décider collectivement ce que personne ne veut individ
 description: "Décrit par Jerry Harvey (1974) : dans un groupe, chacun suppose que les autres approuvent une idée et valide par politesse, menant à une décision unanime que personne ne souhaitait."
 lang: fr
 ref: illustration-paradoxe-abilene
+flag: 🇫🇷
+permalink: /illustrations/paradoxe-abilene/
 ---
 
 ## Définition
