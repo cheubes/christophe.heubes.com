@@ -461,40 +461,6 @@ section {
     .ill-svg-img { display: block; }
   }
 
-  .ill-download {
-    margin-bottom: 2.5rem;
-  }
-
-  .ill-btn {
-    display: inline-block;
-    background: @ill-bg;
-    color: @ill-gold;
-    border: 1.5px solid @ill-gold;
-    border-radius: 5px;
-    padding: 0.5rem 1.25rem;
-    font-size: 0.88rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.18s ease, color 0.18s ease;
-    font-family: Ubuntu, sans-serif;
-    &:hover {
-      background: @ill-gold;
-      color: @ill-bg;
-    }
-  }
-
-  .ill-btn-outline {
-    display: inline-block;
-    color: @grey;
-    border: 1px solid fadeout(@gold, 50%);
-    border-radius: 5px;
-    padding: 0.45rem 1rem;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: color 0.18s ease, border-color 0.18s ease;
-    &:hover { color: @gold; border-color: @gold; }
-  }
-
   .ill-content {
     max-width: 680px;
     h2 {
@@ -530,29 +496,6 @@ section {
     }
   }
 
-  .ill-footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid fadeout(@light-grey, 70%);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-
-    .ill-license {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      p {
-        font-size: 0.82rem;
-        color: @light-grey;
-        margin: 0;
-        line-height: 1.5;
-        text-align: left;
-      }
-    }
-  }
 }
 
 // --- Mobile footer ---
@@ -571,9 +514,6 @@ section {
     grid-template-columns: 1fr;
   }
   #illustration-detail {
-    .ill-footer {
-      flex-direction: column;
-    }
     .ill-svg-wrapper { max-width: 100%; }
   }
 }
