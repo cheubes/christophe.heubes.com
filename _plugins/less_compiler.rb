@@ -2,7 +2,7 @@ Jekyll::Hooks.register :site, :pre_render do |site|
   less_src = File.join(site.source, "assets/css/hbs.less")
   css_dest = File.join(site.source, "assets/dist/css/hbs.css")
 
-  compiled = IO.popen(["lessc", "--compress", less_src], &:read)
+  compiled = IO.popen(["lessc", "--clean-css", less_src], &:read)
   raise "less_compiler: failed to compile #{less_src} (is lessc installed?)" unless $?.success?
 
   # Only touch the file when the content actually changes: `jekyll serve --watch`
