@@ -356,13 +356,6 @@ section h2 {
   opacity: 0;
   transition: opacity 0.22s ease;
 }
-.illustration-card .ill-card-overlay .ill-card-number {
-  font-size: 0.7rem;
-  color: #8A9BB0;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 0.25rem;
-}
 .illustration-card .ill-card-overlay .ill-card-title {
   font-size: 1rem;
   font-weight: 700;
@@ -421,10 +414,6 @@ section h2 {
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-}
-#illustration-detail .ill-number {
-  font-size: 0.8rem;
-  color: #ACB2B8;
 }
 #illustration-detail .ill-title {
   font-size: 2rem;

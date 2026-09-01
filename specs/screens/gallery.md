@@ -9,7 +9,7 @@ Permettre au visiteur de parcourir l'ensemble des illustrations disponibles et d
 - Sidebar : identique à `screens/home.md` (voir `style-guide.md`).
 - Titre et introduction de la section (traduits par langue).
 - Barre de filtres : un bouton "Tous" (actif par défaut) et un bouton par catégorie présente dans la langue courante (voir "Taxonomie des catégories" dans `data-model.md`), déduits dynamiquement des illustrations existantes plutôt que d'une liste figée.
-- Grille de tuiles (`illustration-card`), une par illustration disponible dans la langue courante : image de couverture (SVG), numéro, titre, tagline, catégorie (voir `style-guide.md`).
+- Grille de tuiles (`illustration-card`), une par illustration disponible dans la langue courante : image de couverture (SVG), titre, tagline, catégorie (voir `style-guide.md`).
 - Footer : identique à `screens/home.md`.
 
 ## Interactions

@@ -16,7 +16,7 @@
           <p class="ill-intro">{% if page.lang == 'en' %}Minimalist illustrations of intellectual concepts, cognitive laws and biases.{% else %}Illustrations minimalistes de concepts intellectuels, lois cognitives et biais.{% endif %}</p>
 
           <!-- Filtres par catégorie -->
-          {% assign illustrations_lang = site.illustrations | where: "lang", page.lang | sort: "number" %}
+          {% assign illustrations_lang = site.illustrations | where: "lang", page.lang %}
           <div class="ill-filters" role="group" aria-label="{% if page.lang == 'en' %}Filter by category{% else %}Filtrer par catégorie{% endif %}">
             <button class="ill-filter-btn active" data-filter="all">{% if page.lang == 'en' %}All{% else %}Tous{% endif %}</button>
             {% assign categories = illustrations_lang | map: 'category' | uniq | sort %}
@@ -39,7 +39,6 @@
                      width="400" height="400"/>
               </div>
               <div class="ill-card-overlay">
-                <span class="ill-card-number">{{ ill.number }}</span>
                 <strong class="ill-card-title">{{ ill.title }}</strong>
                 <span class="ill-card-tagline">{{ ill.tagline }}</span>
                 <span class="ill-card-cat">{{ ill.category }}</span>

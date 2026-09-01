@@ -64,7 +64,6 @@ module.exports = {
   id:          'mon-concept',        // slug URL
   title:       'Mon Concept',
   category:    'Catégorie',
-  number:      '007',
   tagline:     'Une phrase clé courte.',
   description: 'Description complète du concept.',
 
@@ -100,7 +99,6 @@ node index.js --concept=mon-concept
 layout: illustration
 title: "Mon Concept"
 slug: mon-concept
-number: "007"
 category: "Catégorie"
 tagline: "Une phrase clé courte."
 description: "Description SEO."

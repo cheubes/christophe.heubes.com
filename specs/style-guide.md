@@ -43,7 +43,7 @@ Ces valeurs sont définies dans `assets/css/hbs.less` (chrome) et `generator/con
 - **Sidebar** : panneau persistant sur toutes les pages (au-dessus de 767px), contenant photo de profil, titre, tagline, liens sociaux (LinkedIn, GitHub), lien vers la galerie, sélecteur de langue, badge de licence et lien vers `heubes.org`.
 - **Footer** : sélecteur de langue, badge Creative Commons (CC BY-NC-SA 4.0), lien vers `heubes.org`. Au-dessus de 767px, ce contenu vit dans la sidebar ; en dessous, il est déplacé dans un footer mobile dédié en bas de page (`mobile-footer`), la sidebar étant réduite à une barre horizontale (photo, titre, tagline, liens sociaux).
 - **Menu hamburger** : visible uniquement sous 767px, en remplacement du lien vers la galerie normalement présent dans la sidebar ; ne contient que ce lien.
-- **Tuile d'illustration** (`illustration-card`) : image de couverture, overlay avec numéro, titre, tagline et catégorie (voir `screens/gallery.md`).
+- **Tuile d'illustration** (`illustration-card`) : image de couverture, overlay avec titre, tagline et catégorie (voir `screens/gallery.md`).
 - **Boutons de filtre** (`ill-filter-btn`) : un bouton "Tous" + un bouton par catégorie présente dans la langue courante, état actif visuellement distinct.
 - **Badge de catégorie** (`ill-category-badge`) : affiché sur l'écran de détail d'une illustration.
 

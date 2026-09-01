@@ -17,7 +17,6 @@ Portée par la collection Jekyll `illustrations` (voir `_config.yml`, dossier `_
 | `layout` | Toujours `illustration` (voir `_layouts/illustration.html`) |
 | `title` | Titre affiché du concept |
 | `slug` | Identifiant technique, kebab-case, commun aux deux langues (relie SVG, générateur et page) |
-| `number` | Numéro d'ordre du concept |
 | `category` | Libellé de catégorie, traduit par langue (voir "Taxonomie des catégories") |
 | `tagline` | Phrase courte résumant le concept, affichée sous le titre |
 | `description` | Description longue, utilisée pour le SEO (meta description) |
@@ -50,7 +49,7 @@ La catégorie n'est pas un identifiant technique : c'est un libellé affiché te
 
 ### Pipeline de génération (concept → SVG → page)
 
-1. Un fichier `generator/concepts/<slug>.js` décrit le concept (id, title, category, number, tagline, description) et une fonction `render()` qui produit le SVG.
+1. Un fichier `generator/concepts/<slug>.js` décrit le concept (id, title, category, tagline, description) et une fonction `render()` qui produit le SVG.
 2. `node generator/index.js --concept=<slug>` génère `assets/illustrations/<slug>.svg` (et des exports PNG, hors périmètre du rendu du site).
 3. Un fichier `_illustrations/<slug>.md` est créé manuellement, avec un front matter cohérent avec le concept, et le texte explicatif en Markdown.
 4. Les fichiers générés (SVG/PNG) et le Markdown sont committés ensemble.
