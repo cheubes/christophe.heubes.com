@@ -23,7 +23,6 @@ sitemap:
             {%- endif -%}
             {%- if page.ref == "home" %}
             <image:image><image:loc>{{ site.url }}/assets/img/photo.jpg</image:loc></image:image>
-            <image:image><image:loc>{{ site.url }}/assets/img/bg.jpg</image:loc></image:image>
             {%- endif -%}
             {%- assign alternates=site.pages | where:"ref", page.ref | sort: 'lang' -%}
             {%- for alternate in alternates reversed %}
