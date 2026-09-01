@@ -1,7 +1,7 @@
 <aside id="sidebar">
   <div class="sidebar-top">
     {%- assign _index_page = site.pages | where: "ref", "home" | where: "lang", page.lang | first -%}
-    <a href="{{ _index_page.url | default: "/" }}" class="sidebar-home-link" aria-label="Accueil">
+    <a href="{{ _index_page.url | default: "/" }}" class="sidebar-home-link" aria-label="{% if page.lang == 'en' %}Home{% else %}Accueil{% endif %}">
       <picture><source srcset="/assets/img/photo.webp" type="image/webp"><img id="profile-picture" class="rounded-circle" src="/assets/img/photo.jpg" alt="Christophe Heubès"/></picture>
       <div class="sidebar-home-text">
         <h1>{{ page.h1 | default: "Christophe Heubès" }}</h1>
