@@ -25,11 +25,6 @@ sitemap:
             <image:image><image:loc>{{ site.url }}/assets/img/photo.jpg</image:loc></image:image>
             <image:image><image:loc>{{ site.url }}/assets/img/bg.jpg</image:loc></image:image>
             {%- endif -%}
-            {%- if page.ref == "technical-drawing" -%}
-              {%- for item in site.data.technical-drawing %}
-            <image:image><image:loc>{{ site.url }}/technical-drawing/{{ item.id }}-2020.jpg</image:loc></image:image>
-              {%- endfor -%}
-            {%- endif -%}
             {%- assign alternates=site.pages | where:"ref", page.ref | sort: 'lang' -%}
             {%- for alternate in alternates reversed %}
             <xhtml:link rel="alternate" hreflang="{{alternate.lang}}" href="{{site.url }}{{alternate.url}}" />
