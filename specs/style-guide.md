@@ -41,7 +41,7 @@ These values are defined in `assets/css/hbs.less` (chrome) and `generator/config
 ## Base UI components
 
 - **Sidebar**: persistent panel on every page (above 767px), containing the profile picture, title, tagline, social links (LinkedIn, GitHub), link to the gallery, language switcher, license badge and link to `heubes.org`.
-- **Footer**: language switcher, Creative Commons badge (CC BY-NC-SA 4.0), link to `heubes.org`. Above 767px, this content lives in the sidebar; below, it moves to a dedicated mobile footer at the bottom of the page (`mobile-footer`), the sidebar being reduced to a horizontal bar (picture, title, tagline, social links).
+- **Footer**: language switcher, Creative Commons badge (CC0 1.0 Universal, see `LICENSE`), link to `heubes.org`. Above 767px, this content lives in the sidebar; below, it moves to a dedicated mobile footer at the bottom of the page (`mobile-footer`), the sidebar being reduced to a horizontal bar (picture, title, tagline, social links).
 - **Hamburger menu**: only visible below 767px, replacing the gallery link normally shown in the sidebar; it only contains that link.
 - **Illustration tile** (`illustration-card`): cover image, overlay with title, tagline and category (see `screens/gallery.md`).
 - **Filter buttons** (`ill-filter-btn`): an "All" button ("Tous" in French) + one button per category present in the current language, with a visually distinct active state.
@@ -49,4 +49,4 @@ These values are defined in `assets/css/hbs.less` (chrome) and `generator/config
 
 ## Iconography
 
-Font Awesome (loaded via Kit, see `technical-specifications.md`): social network icons (`fa-linkedin-in`, `fa-github`), license icons (`fa-creative-commons*`), navigation icons (`fa-pen-nib` for the illustrations), and topic icons on the profile page (`fa-user-tie`, `fa-screwdriver-wrench`, `fa-rocket`, `fa-seedling`).
+Font Awesome (loaded via Kit, see `technical-specifications.md`): social network icons (`fa-linkedin-in`, `fa-github`), license icons (`fa-creative-commons`, `fa-creative-commons-zero`), navigation icons (`fa-pen-nib` for the illustrations), and topic icons on the profile page (`fa-user-tie`, `fa-screwdriver-wrench`, `fa-rocket`, `fa-seedling`).

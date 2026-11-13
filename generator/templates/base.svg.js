@@ -51,7 +51,7 @@ function buildSVG(concept, opts = {}) {
   <metadata>
     <dc:title>${xmlEscape(concept.title)}</dc:title>
     <dc:creator>Christophe Heubès</dc:creator>
-    <dc:rights>CC BY-NC-SA 4.0 — christophe.heubes.com</dc:rights>
+    <dc:rights>CC0 1.0 Universal — christophe.heubes.com</dc:rights>
     <dc:description>${xmlEscape(concept.description)}</dc:description>
     <dc:subject>${xmlEscape(concept.category)}, concept, illustration, christophe.heubes.com</dc:subject>
     <dc:date>${today}</dc:date>
@@ -95,7 +95,7 @@ function buildSVG(concept, opts = {}) {
         fill="${p.muted}">christophe.heubes.com</text>
   <text x="${W - PAD}" y="${H - 28}" text-anchor="end"
         font-family="Ubuntu, sans-serif" font-weight="400" font-size="20"
-        fill="${p.muted}">CC BY-NC-SA 4.0</text>
+        fill="${p.muted}">CC0 1.0</text>
 
 </svg>`;
 }
