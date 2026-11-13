@@ -10,15 +10,15 @@ module.exports = {
   render(ctx) {
     const { cx, cy, palette: p } = ctx;
 
-    const SIZE   = 260;  // taille de chaque cellule
-    const GAP    = 4;    // espace entre cellules
+    const SIZE   = 260;  // size of each cell
+    const GAP    = 4;    // gap between cells
     const COLS   = 3;
     const totalW = COLS * SIZE + (COLS - 1) * GAP;
     const totalH = COLS * SIZE + (COLS - 1) * GAP;
     const gx     = cx - totalW / 2;
     const gy     = cy - totalH / 2 - 10;
 
-    // Labels des 8 dimensions + centre
+    // Labels for the 8 dimensions + centre
     const labels = [
       'Partage du Savoir',     'Curiosité Systémique',  'Vision Long Terme',
       'Feedback Continu',      'CULTURE\nAPPRENANTE',   'Droit à l\'Erreur',
@@ -27,7 +27,7 @@ module.exports = {
 
     const cells = labels.map((text, i) => {
       const isCenter = i === 4;
-      // Gestion du retour à la ligne dans le label centre
+      // Handle line breaks in the centre label
       const displayText = isCenter ? 'CULTURE' : text;
       const subText = isCenter ? 'APPRENANTE' : '';
 
@@ -43,7 +43,7 @@ module.exports = {
       };
     });
 
-    // Ajuster les coordonnées pour intégrer le gap
+    // Adjust coordinates to account for the gap
     let svg = '';
     for (let row = 0; row < COLS; row++) {
       for (let col = 0; col < COLS; col++) {
@@ -69,7 +69,7 @@ module.exports = {
                 font-family="Ubuntu, sans-serif" font-weight="700" font-size="26"
                 fill="${cell.textColor}">${cell.sub}</text>`;
         } else {
-          // Texte multiligne : split sur les espaces pour centrer
+          // Multiline text: split on spaces to centre
           const words = cell.text.split(' ');
           const lineH  = 26;
           const lines  = [];

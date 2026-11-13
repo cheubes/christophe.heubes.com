@@ -8,12 +8,12 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    // ── Colonnes ──────────────────────────────────────────────────────────
-    const lx = 350;    // centre colonne gauche (causes)
-    const rx = 850;    // centre colonne droite  (effets)
-    const bw = 110;    // demi-largeur colonne
+    // ── Columns ───────────────────────────────────────────────────────────
+    const lx = 350;    // left column centre (causes)
+    const rx = 850;    // right column centre (effects)
+    const bw = 110;    // half column width
 
-    // ── Hauteurs des blocs (total = 640px, de y=185 à y=825) ─────────────
+    // ── Block heights (total = 640px, y=185 to y=825) ────────────────────
     const top    = 185;
     const bottom = 825;
     const total  = bottom - top;   // 640
@@ -21,24 +21,24 @@ module.exports = {
     const smallH = Math.round(total * 0.20);  // 128 px → 20 %
     const largeH = total - smallH;            // 512 px → 80 %
 
-    // Colonne gauche : petit bloc or (20 %) en haut, grand bloc muted (80 %) en bas
+    // Left column: small gold block (20 %) on top, large muted block (80 %) below
     const lGoldTop   = top;
     const lGoldBot   = top + smallH;
     const lMutedTop  = lGoldBot;
     const lMutedBot  = bottom;
 
-    // Colonne droite : grand bloc or (80 %) en haut, petit bloc muted (20 %) en bas
+    // Right column: large gold block (80 %) on top, small muted block (20 %) below
     const rGoldTop   = top;
     const rGoldBot   = top + largeH;
     const rMutedTop  = rGoldBot;
     const rMutedBot  = bottom;
 
-    // ── Séparateur vertical ───────────────────────────────────────────────
+    // ── Vertical separator ────────────────────────────────────────────────
     const sep = `
     <line x1="600" y1="115" x2="600" y2="876"
           stroke="${p.muted}" stroke-width="1" opacity="0.18"/>`;
 
-    // ── Headers de colonnes ───────────────────────────────────────────────
+    // ── Column headers ────────────────────────────────────────────────────
     const headers = `
     <text x="${lx}" y="156" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="500" font-size="21"
@@ -47,41 +47,41 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="500" font-size="21"
           letter-spacing="2" fill="${p.muted}">EFFETS</text>`;
 
-    // ── Barres gauche ─────────────────────────────────────────────────────
+    // ── Left bars ─────────────────────────────────────────────────────────
     const leftBars = `
-    <!-- Bloc or 20 % (causes minoritaires) -->
+    <!-- Gold 20 % block (minority causes) -->
     <rect x="${lx - bw}" y="${lGoldTop}" width="${bw * 2}"
           height="${smallH}" rx="8"
           fill="${p.gold}" opacity="0.90"/>
-    <!-- Bloc muted 80 % -->
+    <!-- Muted 80 % block -->
     <rect x="${lx - bw}" y="${lMutedTop}" width="${bw * 2}"
           height="${largeH}" rx="8"
           fill="${p.muted}" opacity="0.22"/>`;
 
-    // ── Barres droite ─────────────────────────────────────────────────────
+    // ── Right bars ────────────────────────────────────────────────────────
     const rightBars = `
-    <!-- Bloc or 80 % (effets majoritaires) -->
+    <!-- Gold 80 % block (majority effects) -->
     <rect x="${rx - bw}" y="${rGoldTop}" width="${bw * 2}"
           height="${largeH}" rx="8"
           fill="${p.gold}" opacity="0.90"/>
-    <!-- Bloc muted 20 % -->
+    <!-- Muted 20 % block -->
     <rect x="${rx - bw}" y="${rMutedTop}" width="${bw * 2}"
           height="${smallH}" rx="8"
           fill="${p.muted}" opacity="0.22"/>`;
 
-    // ── Labels de pourcentage ─────────────────────────────────────────────
+    // ── Percentage labels ─────────────────────────────────────────────────
     const pctLabels = `
-    <!-- 20 % dans le bloc or gauche -->
+    <!-- 20 % inside left gold block -->
     <text x="${lx}" y="${lGoldTop + smallH / 2 + 20}" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="52"
           fill="${p.bg}">20%</text>
-    <!-- 80 % dans le bloc or droit -->
+    <!-- 80 % inside right gold block -->
     <text x="${rx}" y="${rGoldTop + largeH / 2 + 20}" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="52"
           fill="${p.bg}">80%</text>`;
 
-    // ── Flèche courbe reliant 20 % gauche → 80 % droit ───────────────────
-    // Centre vertical du bloc or gauche → centre vertical du bloc or droit
+    // ── Curved arrow: 20 % left → 80 % right ─────────────────────────────
+    // Vertical centre of left gold block → vertical centre of right gold block
     const arrowY1 = lGoldTop + smallH / 2;   // ≈ 249
     const arrowY2 = rGoldTop + largeH / 2;   // ≈ 441
 

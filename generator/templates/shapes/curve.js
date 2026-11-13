@@ -1,7 +1,7 @@
 /**
- * Courbe de Bézier cubique.
- * Points : [{x, y}, ...] — au moins 2 points.
- * Crée une path SVG lissée.
+ * Cubic Bézier curve.
+ * Points: [{x, y}, ...], at least 2 points.
+ * Creates a smoothed SVG path.
  */
 function bezierCurve({ points, color = '#C9A84C', strokeWidth = 4, fill = 'none' }) {
   if (points.length < 2) return '';
@@ -13,7 +13,7 @@ function bezierCurve({ points, color = '#C9A84C', strokeWidth = 4, fill = 'none'
   } else if (points.length === 3) {
     d += ` Q ${rest[0].x} ${rest[0].y} ${rest[1].x} ${rest[1].y}`;
   } else {
-    // Courbe cubique via points de contrôle automatiques
+    // Cubic curve via automatic control points
     for (let i = 0; i < rest.length - 1; i++) {
       const cp1x = points[i].x + (points[i + 1].x - points[i].x) / 3;
       const cp1y = points[i].y + (points[i + 1].y - points[i].y) / 3;

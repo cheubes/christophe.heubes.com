@@ -6,7 +6,7 @@
   <metadata>
     <dc:title>Rasoir d'Ockham</dc:title>
     <dc:creator>Christophe Heubès</dc:creator>
-    <dc:rights>CC BY-NC-SA 4.0 — christophe.heubes.com</dc:rights>
+    <dc:rights>CC0 1.0 Universal — christophe.heubes.com</dc:rights>
     <dc:description>Principe de parcimonie attribué à Guillaume d'Ockham : à résultat égal, l'explication nécessitant le moins d'hypothèses doit être préférée.</dc:description>
     <dc:subject>Épistémologie, concept, illustration, christophe.heubes.com</dc:subject>
     <dc:date>2026-06-03</dc:date>
@@ -187,6 +187,6 @@
   <text x="1140" y="1174" text-anchor="end"
         font-family="'Ubuntu', 'Helvetica Neue', Arial, sans-serif"
         font-weight="400" font-size="22"
-        fill="#8A9BB0">CC BY-NC-SA 4.0</text>
+        fill="#8A9BB0">CC0 1.0</text>
 
 </svg>

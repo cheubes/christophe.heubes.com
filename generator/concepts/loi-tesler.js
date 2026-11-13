@@ -23,7 +23,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="1.5" fill="${p.gold}" opacity="0.55">COMPLEXITÉ TOTALE = CONSTANTE</text>`;
 
-    // ── Bar A — UI complexe pour l'utilisateur ────────────────────────────
+    // ── Bar A: complex UI for the user ────────────────────────────────────
     const aL = axc - bw / 2;
     const barA = `
     <text x="${axc}" y="${top - 38}" text-anchor="middle"
@@ -46,7 +46,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="18"
           fill="${p.bg}" opacity="0.85">20%</text>`;
 
-    // ── Bar B — UI simple pour l'utilisateur ──────────────────────────────
+    // ── Bar B: simple UI for the user ─────────────────────────────────────
     const bL = bxc - bw / 2;
     const barB = `
     <text x="${bxc}" y="${top - 38}" text-anchor="middle"

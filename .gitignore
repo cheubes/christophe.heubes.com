@@ -7,7 +7,7 @@ _site/*
 .jekyll-cache/*
 .claude/settings.json
 
-# Générateur illustrations
+# Illustration generator
 generator/node_modules/
 generator/fonts/
 brief-illustrations.md

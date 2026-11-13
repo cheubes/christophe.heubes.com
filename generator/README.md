@@ -1,30 +1,30 @@
-# Générateur d'illustrations — Concepts & Lois
+# Illustration generator: Concepts & Laws
 
-Génère les SVG et PNG (1200×1200 + OG 1200×630) pour la série d'illustrations de `christophe.heubes.com`.
+Generates the SVGs and PNGs (1200×1200 + OG 1200×630) for the illustration series of `christophe.heubes.com`.
 
-## Prérequis
+## Prerequisites
 
 - Node.js ≥ 18
-- Les fonts Ubuntu TTF dans `generator/fonts/` (voir ci-dessous)
+- The Ubuntu TTF fonts in `generator/fonts/` (see below)
 
-## Installation
+## Install
 
 ```bash
 cd generator
 npm install
 ```
 
-### Fonts Ubuntu (première installation)
+### Ubuntu fonts (first install)
 
-Télécharger les 3 fichiers TTF depuis Google Fonts et les placer dans `generator/fonts/` :
+Download the 3 TTF files from Google Fonts and put them in `generator/fonts/`:
 
-| Fichier | URL |
+| File | URL |
 |---|---|
 | `Ubuntu-Regular.ttf` | https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Regular.ttf |
 | `Ubuntu-Medium.ttf`  | https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Medium.ttf  |
 | `Ubuntu-Bold.ttf`    | https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Bold.ttf    |
 
-Ou en une commande depuis `generator/fonts/` :
+Or in one go from `generator/fonts/`:
 
 ```bash
 curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Regular.ttf" -o Ubuntu-Regular.ttf
@@ -32,16 +32,16 @@ curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Medi
 curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Bold.ttf"    -o Ubuntu-Bold.ttf
 ```
 
-## Utilisation
+## Usage
 
 ```bash
-# Générer toutes les illustrations
+# Generate all illustrations
 node index.js
 
-# Générer un seul concept
+# Generate a single concept
 node index.js --concept=paradoxe-jevons
 
-# Concepts disponibles
+# Available concepts
 node index.js --concept=paradoxe-jevons
 node index.js --concept=nombre-dunbar
 node index.js --concept=lotus-culture-apprenante
@@ -50,58 +50,58 @@ node index.js --concept=effet-placebo
 node index.js --concept=effet-pygmalion
 ```
 
-Les fichiers sont générés dans `assets/illustrations/` :
-- `{slug}.svg` — source SVG 1200×1200 (embarquée sur le site)
-- `{slug}.png` — export PNG 1200×1200 (téléchargement)
-- `{slug}-og.png` — export PNG 1200×630 (Open Graph / réseaux)
+The files are generated in `assets/illustrations/`:
+- `{slug}.svg`: 1200×1200 SVG source (embedded in the site)
+- `{slug}.png`: 1200×1200 PNG export (download)
+- `{slug}-og.png`: 1200×630 PNG export (Open Graph / social networks)
 
-## Ajouter un nouveau concept
+## Adding a new concept
 
-1. Créer `generator/concepts/mon-concept.js` :
+1. Create `generator/concepts/my-concept.js`:
 
 ```js
 module.exports = {
-  id:          'mon-concept',        // slug URL
-  title:       'Mon Concept',
-  category:    'Catégorie',
-  tagline:     'Une phrase clé courte.',
-  description: 'Description complète du concept.',
+  id:          'my-concept',         // URL slug
+  title:       'My Concept',
+  category:    'Category',
+  tagline:     'A short key sentence.',
+  description: 'Full description of the concept.',
 
   render(ctx) {
     const { cx, cy, x, y, w, h, palette: p } = ctx;
-    // ctx.cx, ctx.cy : centre de la zone principale
-    // ctx.palette    : couleurs { bg, gold, goldLight, text, muted }
-    // Retourner une string de fragments SVG (sans <svg> wrapper)
+    // ctx.cx, ctx.cy: center of the main area
+    // ctx.palette   : colors { bg, gold, goldLight, text, muted }
+    // Return a string of SVG fragments (without the <svg> wrapper)
     return `<circle cx="${cx}" cy="${cy}" r="200" fill="none" stroke="${p.gold}" stroke-width="4"/>`;
   },
 };
 ```
 
-2. L'importer dans `generator/index.js` :
+2. Import it in `generator/index.js`:
 
 ```js
 const concepts = [
-  // ...concepts existants...
-  require('./concepts/mon-concept'),
+  // ...existing concepts...
+  require('./concepts/my-concept'),
 ];
 ```
 
-3. Lancer la génération :
+3. Run the generation:
 
 ```bash
-node index.js --concept=mon-concept
+node index.js --concept=my-concept
 ```
 
-4. Créer la page Markdown `_illustrations/mon-concept.md` :
+4. Create the Markdown page `_illustrations/my-concept.md`:
 
 ```yaml
 ---
 layout: illustration
-title: "Mon Concept"
-slug: mon-concept
-category: "Catégorie"
-tagline: "Une phrase clé courte."
-description: "Description SEO."
+title: "My Concept"
+slug: my-concept
+category: "Category"
+tagline: "A short key sentence."
+description: "SEO description."
 lang: fr
 ---
 
@@ -109,36 +109,36 @@ lang: fr
 ...
 ```
 
-5. Committer les fichiers SVG/PNG générés et le markdown dans le repo.
+5. Commit the generated SVG/PNG files and the Markdown in the repo.
 
-## Structure technique
+## Technical structure
 
 ```
 generator/
-  index.js              ← CLI principal
-  config.js             ← palette, dimensions, chemins
-  font-loader.js        ← embed Ubuntu base64 dans SVG + paths pour resvg
+  index.js              ← main CLI
+  config.js             ← palette, dimensions, paths
+  font-loader.js        ← embeds Ubuntu as base64 in the SVG + paths for resvg
   fonts/                ← Ubuntu-Regular.ttf, Ubuntu-Medium.ttf, Ubuntu-Bold.ttf
   templates/
-    base.svg.js         ← layout (header + zone centrale + footer)
+    base.svg.js         ← layout (header + central area + footer)
     shapes/
-      arrow.js          ← flèches droites et courbes
-      axis.js           ← axes XY avec labels
-      bezierCurve.js    ← courbes de Bézier
-      circle.js         ← cercle avec label
-      grid.js           ← grille N×N
-      pill.js           ← capsule médicale
-  concepts/             ← un fichier .js par concept
+      arrow.js          ← straight and curved arrows
+      axis.js           ← XY axes with labels
+      bezierCurve.js    ← Bézier curves
+      circle.js         ← circle with label
+      grid.js           ← N×N grid
+      pill.js           ← medical capsule
+  concepts/             ← one .js file per concept
 ```
 
 ## Design system
 
-| Rôle | Hex |
+| Role | Hex |
 |---|---|
-| Fond | `#0D1B2A` |
-| Or principal | `#C9A84C` |
-| Or pâle | `#E8D5A3` |
-| Texte principal | `#F0EDE4` |
-| Texte secondaire | `#8A9BB0` |
+| Background | `#0D1B2A` |
+| Main gold | `#C9A84C` |
+| Pale gold | `#E8D5A3` |
+| Main text | `#F0EDE4` |
+| Secondary text | `#8A9BB0` |
 
-Format : 1200×1200 px, police Ubuntu (embarquée en base64), fond bleu nuit.
+Format: 1200×1200 px, Ubuntu font (embedded as base64), midnight blue background.

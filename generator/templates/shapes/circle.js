@@ -1,5 +1,5 @@
 /**
- * Cercle avec label optionnel.
+ * Circle with optional label.
  */
 function circle({ cx, cy, r, fill = 'none', stroke = '#C9A84C', strokeWidth = 2, label = '', labelColor = '#F0EDE4', fontSize = 24 }) {
   return `

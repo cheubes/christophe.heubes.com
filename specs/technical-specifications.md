@@ -1,53 +1,53 @@
-# Spécifications techniques
+# Technical specifications
 
 ## Stack
 
-- Générateur de site statique : Jekyll, Ruby (version fixée par `.ruby-version`, actuellement 3.3.12).
-- Feuilles de style : LESS (`assets/css/hbs.less`), compilé par un plugin Jekyll custom (`_plugins/less_compiler.rb`).
-- Optimisation CSS : PurgeCSS (`_plugins/purgecss_optimizer.rb`), pour ne livrer que les classes réellement utilisées.
-- Grille et utilitaires : Bootstrap (grid + utilities, voir `_includes/head.html`).
-- Icônes : Font Awesome, chargé via Font Awesome Kit (voir `_includes/scripts.html`).
-- Police : Ubuntu (Google Fonts), voir `style-guide.md`.
-- Vérification de liens : `html-proofer` (gem, voir `Gemfile`).
+- Static site generator: Jekyll, Ruby (version pinned by `.ruby-version`, currently 3.3.12).
+- Stylesheets: LESS (`assets/css/hbs.less`), compiled by a custom Jekyll plugin (`_plugins/less_compiler.rb`).
+- CSS optimization: PurgeCSS (`_plugins/purgecss_optimizer.rb`), to ship only the classes actually used.
+- Grid and utilities: Bootstrap (grid + utilities, see `_includes/head.html`).
+- Icons: Font Awesome, loaded via Font Awesome Kit (see `_includes/scripts.html`).
+- Font: Ubuntu (Google Fonts), see `style-guide.md`.
+- Link checking: `html-proofer` (gem, see `Gemfile`).
 
-## Générateur d'illustrations
+## Illustration generator
 
-Outil Node.js séparé (`generator/`), non déployé sur le site : génère les SVG/PNG des illustrations à partir de fichiers de concept. Voir `generator/README.md` pour l'utilisation et `data-model.md` pour le pipeline concept → SVG → page. Exclu du build Jekyll (voir `exclude` dans `_config.yml`).
+Separate Node.js tool (`generator/`), not deployed with the site: generates the SVG/PNG illustrations from concept files. See `generator/README.md` for usage and `data-model.md` for the concept → SVG → page pipeline. Excluded from the Jekyll build (see `exclude` in `_config.yml`).
 
-## Hébergement et déploiement
+## Hosting and deployment
 
-- Hébergement : GitHub Pages, domaine personnalisé `christophe.heubes.com` (voir `CNAME`).
-- Déploiement : workflow GitHub Actions (`.github/workflows/jekyll.yml`), déclenché sur push vers `master` ou manuellement.
-  - Build Jekyll, borné à 15 minutes (`timeout-minutes`).
-  - Vérification des liens morts (`html-proofer`) après le build, non bloquante (`continue-on-error: true`) ; les URLs `fonts.googleapis.com` et `fonts.gstatic.com` sont ignorées (faux positifs connus).
-  - Déploiement vers GitHub Pages via les actions officielles (`upload-pages-artifact`, `deploy-pages`).
-- Dépendances des workflows GitHub Actions tenues à jour par Dependabot (`.github/dependabot.yml`).
+- Hosting: GitHub Pages, custom domain `christophe.heubes.com` (see `CNAME`).
+- Deployment: GitHub Actions workflow (`.github/workflows/jekyll.yml`), triggered on push to `master` or manually.
+  - Jekyll build, capped at 15 minutes (`timeout-minutes`).
+  - Dead link check (`html-proofer`) after the build, non-blocking (`continue-on-error: true`); the `fonts.googleapis.com` and `fonts.gstatic.com` URLs are ignored (known false positives).
+  - Deployment to GitHub Pages via the official actions (`upload-pages-artifact`, `deploy-pages`).
+- GitHub Actions workflow dependencies kept up to date by Dependabot (`.github/dependabot.yml`).
 
 ## Architecture
 
-- Rendu : entièrement statique, généré au build, aucune logique serveur.
-- Collections Jekyll : `illustrations` (voir `data-model.md`), avec `permalink` explicite par entrée.
-- Routing bilingue : pages françaises à la racine (`/`, `/illustrations/<slug>/`), pages anglaises sous `/en/` (`/en/`, `/en/illustrations/<slug>/`). Chaque page porte son propre `permalink` en front matter (pas de génération automatique par dossier de langue).
-- Interactivité côté client : JavaScript vanilla minimal (menu hamburger, filtres de catégorie dans la galerie), pas de framework JS ni de bundler pour le site lui-même.
+- Rendering: fully static, generated at build time, no server-side logic.
+- Jekyll collections: `illustrations` (see `data-model.md`), with an explicit `permalink` per entry.
+- Bilingual routing: French pages at the root (`/`, `/illustrations/<slug>/`), English pages under `/en/` (`/en/`, `/en/illustrations/<slug>/`). Each page carries its own `permalink` in its front matter (no automatic generation per language folder).
+- Client-side interactivity: minimal vanilla JavaScript (hamburger menu, category filters in the gallery), no JS framework or bundler for the site itself.
 
 ## Performance
 
-- Chargement différé (lazy loading) des images de tuiles dans la galerie (voir `screens/gallery.md`).
-- SVG des illustrations chargés en priorité (`loading="eager"`) sur l'écran de détail, car unique contenu visuel de la page (voir `screens/technical-drawing.md`).
-- CSS purgé (PurgeCSS) pour limiter le poids des feuilles de style livrées.
-- Formats d'image modernes utilisés en complément (WebP avec repli JPEG, voir `assets/img/photo.webp`).
+- Lazy loading of the tile images in the gallery (see `screens/gallery.md`).
+- Illustration SVGs loaded with priority (`loading="eager"`) on the detail screen, as they are the page's only visual content (see `screens/technical-drawing.md`).
+- Purged CSS (PurgeCSS) to limit the weight of the shipped stylesheets.
+- Modern image formats used as a complement (WebP with JPEG fallback, see `assets/img/photo.webp`).
 
-## Accessibilité
+## Accessibility
 
-- Attributs `alt` descriptifs sur les images et SVG d'illustration.
-- Attributs ARIA sur le menu hamburger (`aria-expanded`, `aria-hidden`) et les groupes de filtres (`role="group"`, `aria-label`).
-- Icônes décoratives marquées `aria-hidden="true"`.
+- Descriptive `alt` attributes on illustration images and SVGs.
+- ARIA attributes on the hamburger menu (`aria-expanded`, `aria-hidden`) and the filter groups (`role="group"`, `aria-label`).
+- Decorative icons marked `aria-hidden="true"`.
 
 ## SEO
 
-- Balises meta par page : description, Open Graph, Twitter Card, `hreflang` pour les alternatives linguistiques, JSON-LD `Person` (voir `_includes/head.html`).
-- `robots.txt` autorisant l'indexation complète et référençant le sitemap.
-- `sitemap.xml` généré dynamiquement à partir de `site.pages`, filtré aux pages ayant un `title` et `page.lang == "fr"` : seules les pages françaises sont listées dans le sitemap, le français agissant de fait comme langue canonique de ce fichier. Les pages anglaises restent indexables (liens internes, `hreflang` du `<head>`) mais n'apparaissent pas dans le sitemap ; à confirmer si ce filtrage est un choix délibéré ou un oubli.
-- Chaque entrée du sitemap redéclare ses alternates linguistiques via `<xhtml:link rel="alternate" hreflang="...">`, en plus des balises `hreflang` déjà présentes dans le `<head>` de chaque page.
-- `lastmod` par page : priorité à `page.sitemap.lastmod`, sinon `page.date`, sinon la date de build (`site.time`).
-- Une page peut s'exclure du sitemap via `sitemap.exclude: yes` en front matter (mécanisme utilisé par `sitemap.xml` lui-même pour s'auto-exclure).
+- Meta tags per page: description, Open Graph, Twitter Card, `hreflang` for the language alternates, `Person` JSON-LD (see `_includes/head.html`).
+- `robots.txt` allowing full indexing and referencing the sitemap.
+- `sitemap.xml` generated dynamically from `site.pages`, filtered to pages with a `title` and `page.lang == "fr"`: only French pages are listed in the sitemap, French de facto acting as the canonical language of that file. English pages remain indexable (internal links, `hreflang` in the `<head>`) but do not appear in the sitemap; to be confirmed whether this filtering is a deliberate choice or an oversight.
+- Each sitemap entry redeclares its language alternates via `<xhtml:link rel="alternate" hreflang="...">`, in addition to the `hreflang` tags already present in the `<head>` of each page.
+- `lastmod` per page: `page.sitemap.lastmod` first, otherwise `page.date`, otherwise the build date (`site.time`).
+- A page can exclude itself from the sitemap via `sitemap.exclude: yes` in its front matter (mechanism used by `sitemap.xml` itself to exclude itself).

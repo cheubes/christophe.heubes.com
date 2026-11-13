@@ -1,5 +1,5 @@
 /**
- * Flèche directionnelle entre deux points.
+ * Directional arrow between two points.
  */
 function arrow({ x1, y1, x2, y2, color = '#C9A84C', strokeWidth = 3, id = 'arr' }) {
   const markerId = `arrow-${id}`;
@@ -17,7 +17,7 @@ function arrow({ x1, y1, x2, y2, color = '#C9A84C', strokeWidth = 3, id = 'arr' 
 }
 
 /**
- * Flèche courbe (arc SVG) entre deux points.
+ * Curved arrow (SVG arc) between two points.
  */
 function curvedArrow({ x1, y1, x2, y2, sweep = 1, color = '#C9A84C', strokeWidth = 3, id = 'carrow' }) {
   const markerId = `carrow-${id}`;

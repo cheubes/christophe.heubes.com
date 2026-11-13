@@ -8,12 +8,12 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    const ox   = 300;   // axe Y
-    const oy   = 900;   // axe X
+    const ox   = 300;   // Y axis
+    const oy   = 900;   // X axis
     const xEnd = 1110;
     const yTop = 135;
 
-    // Deux points annotés
+    // Two annotated points
     //   P_A = oy-ay = 470,  Q_A = ax-ox = 150  → Pa/Pb ≈ 2  ✓
     //   P_B = oy-by = 230,  Q_B = bx-ox = 560  → Qb/Qa ≈ 3.7 >> 1.5  ✓
     const ax = 450, ay = 430;
@@ -21,16 +21,16 @@ module.exports = {
     const midPY = (ay + by) / 2;   // 550
     const midQX = (ax + bx) / 2;   // 655
 
-    // ── Courbe de demande ──────────────────────────────────────────────────
-    // Hyperbole élastique P = 7139 × Q^(-0.543)
-    // Paramètres ajustés pour passer exactement par A (Q=150, P=470)
-    // et B (Q=560, P=230) — vérifiés analytiquement.
+    // ── Demand curve ───────────────────────────────────────────────────────
+    // Elastic hyperbola P = 7139 × Q^(-0.543)
+    // Parameters fitted to pass exactly through A (Q=150, P=470)
+    // and B (Q=560, P=230), verified analytically.
     //
-    // Points calculés en coordonnées écran : x = ox+Q, y = oy-P
-    // Le premier point (Q=50) est hors zone visible pour créer l'effet
-    // d'émergence depuis l'axe Y grâce au clipPath #cz.
+    // Points computed in screen coordinates: x = ox+Q, y = oy-P
+    // The first point (Q=50) lies outside the visible area to create the effect
+    // of emerging from the Y axis, via the clipPath #cz.
     const curvePts = [
-      [350,  46], // Q=50   (hors clip → curve émerge de yTop)
+      [350,  46], // Q=50   (outside clip → curve emerges from yTop)
       [362, 141], // Q=62
       [370, 189], // Q=70
       [380, 240], // Q=80
@@ -57,7 +57,7 @@ module.exports = {
       .map(([x, y], i) => `${i === 0 ? 'M' : 'L'} ${x},${y}`)
       .join(' ');
 
-    // ── Éléments SVG ──────────────────────────────────────────────────────
+    // ── SVG elements ──────────────────────────────────────────────────────
     const defs = `
     <defs>
       <marker id="axArr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -128,7 +128,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="23"
           fill="${p.gold}">de plus de moitié</text>`;
 
-    // Label de la courbe : juste au-dessus et à droite de Point B
+    // Curve label: just above and to the right of Point B
     const curveLabel = `
     <text x="878" y="655" text-anchor="start"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="27" font-style="italic"

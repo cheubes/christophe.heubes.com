@@ -4,10 +4,10 @@ const p = c.palette;
 const today = new Date().toISOString().slice(0, 10);
 
 /**
- * Génère le SVG complet pour un concept.
- * @param {object} concept - Le module concept exporté
+ * Generates the complete SVG for a concept.
+ * @param {object} concept - The exported concept module
  * @param {object} opts    - { w, h } dimensions
- * @returns {string}       - SVG complet
+ * @returns {string}       - Complete SVG
  */
 function xmlEscape(str) {
   return String(str)
@@ -21,14 +21,14 @@ function buildSVG(concept, opts = {}) {
   const H = opts.h || c.size.h;
 
   // Zones
-  const PAD     = 60;             // marge horizontale
-  const HEADER_H = 100;           // hauteur header
-  const FOOTER_H = 200;           // hauteur footer
+  const PAD     = 60;             // horizontal margin
+  const HEADER_H = 100;           // header height
+  const FOOTER_H = 200;           // footer height
   const MAIN_Y   = HEADER_H;
   const MAIN_H   = H - HEADER_H - FOOTER_H;
   const FOOTER_Y = H - FOOTER_H;
 
-  // Zone de dessin du concept (centrée dans la zone principale)
+  // Concept drawing area (centred in the main area)
   const ctx = {
     x: PAD,
     y: MAIN_Y,
@@ -51,7 +51,7 @@ function buildSVG(concept, opts = {}) {
   <metadata>
     <dc:title>${xmlEscape(concept.title)}</dc:title>
     <dc:creator>Christophe Heubès</dc:creator>
-    <dc:rights>CC BY-NC-SA 4.0 — christophe.heubes.com</dc:rights>
+    <dc:rights>CC0 1.0 Universal — christophe.heubes.com</dc:rights>
     <dc:description>${xmlEscape(concept.description)}</dc:description>
     <dc:subject>${xmlEscape(concept.category)}, concept, illustration, christophe.heubes.com</dc:subject>
     <dc:date>${today}</dc:date>
@@ -59,43 +59,43 @@ function buildSVG(concept, opts = {}) {
 
   ${fontStyle}
 
-  <!-- Fond -->
+  <!-- Background -->
   <rect width="${W}" height="${H}" fill="${p.bg}"/>
 
   <!-- Header -->
   <text x="${PAD}" y="58"
         font-family="Ubuntu, sans-serif" font-weight="500" font-size="22"
         fill="${p.muted}" letter-spacing="2">${xmlEscape(concept.category.toUpperCase())}</text>
-  <!-- Séparateur header -->
+  <!-- Header separator -->
   <line x1="${PAD}" y1="78" x2="${W - PAD}" y2="78"
         stroke="${p.muted}" stroke-width="1" opacity="0.3"/>
 
-  <!-- Zone principale -->
+  <!-- Main area -->
   <g transform="translate(0,0)">
     ${conceptSVG}
   </g>
 
-  <!-- Séparateur footer -->
+  <!-- Footer separator -->
   <line x1="${PAD}" y1="${FOOTER_Y}" x2="${W - PAD}" y2="${FOOTER_Y}"
         stroke="${p.muted}" stroke-width="1" opacity="0.3"/>
 
-  <!-- Footer : titre -->
+  <!-- Footer: title -->
   <text x="${PAD}" y="${FOOTER_Y + 60}"
         font-family="Ubuntu, sans-serif" font-weight="700" font-size="52"
         fill="${p.gold}">${concept.title}</text>
 
-  <!-- Footer : tagline -->
+  <!-- Footer: tagline -->
   <text x="${PAD}" y="${FOOTER_Y + 110}"
         font-family="Ubuntu, sans-serif" font-weight="400" font-size="28"
         fill="${p.text}">${concept.tagline}</text>
 
-  <!-- Footer : attribution -->
+  <!-- Footer: attribution -->
   <text x="${PAD}" y="${H - 28}"
         font-family="Ubuntu, sans-serif" font-weight="400" font-size="20"
         fill="${p.muted}">christophe.heubes.com</text>
   <text x="${W - PAD}" y="${H - 28}" text-anchor="end"
         font-family="Ubuntu, sans-serif" font-weight="400" font-size="20"
-        fill="${p.muted}">CC BY-NC-SA 4.0</text>
+        fill="${p.muted}">CC0 1.0</text>
 
 </svg>`;
 }

@@ -15,7 +15,7 @@
           <h2>{% if page.lang == 'en' %}Thought Figures{% else %}Figures de pensée{% endif %}</h2>
           <p class="ill-intro">{% if page.lang == 'en' %}Minimalist illustrations of intellectual concepts, cognitive laws and biases.{% else %}Illustrations minimalistes de concepts intellectuels, lois cognitives et biais.{% endif %}</p>
 
-          <!-- Filtres par catégorie -->
+          <!-- Category filters -->
           {% assign illustrations_lang = site.illustrations | where: "lang", page.lang %}
           <div class="ill-filters" role="group" aria-label="{% if page.lang == 'en' %}Filter by category{% else %}Filtrer par catégorie{% endif %}">
             <button class="ill-filter-btn active" data-filter="all">{% if page.lang == 'en' %}All{% else %}Tous{% endif %}</button>
@@ -25,7 +25,7 @@
             {% endfor %}
           </div>
 
-          <!-- Grille -->
+          <!-- Grid -->
           <div class="illustrations-grid">
             {% for ill in illustrations_lang %}
             <a href="{{ ill.url }}"
@@ -58,7 +58,7 @@
 {% include scripts.html %}
 
 <script>
-  // Filtres catégorie
+  // Category filters
   document.querySelectorAll('.ill-filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.ill-filter-btn').forEach(b => b.classList.remove('active'));

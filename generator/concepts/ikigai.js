@@ -8,33 +8,33 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    // ── Centres des 4 cercles ─────────────────────────────────────────────
-    //   Arrangement center : (600, 540)
-    //   dx/dy choisis pour que le centre soit à l'intérieur des 4 cercles
-    //   (distance centre → cercle ≈ 176 < r=185)
+    // ── Centres of the 4 circles ──────────────────────────────────────────
+    //   Arrangement center: (600, 540)
+    //   dx/dy chosen so the center point lies inside all 4 circles
+    //   (distance center → circle ≈ 176 < r=185)
     const dx = 122, dy = 127, r = 185;
-    const TL = { x: 600 - dx, y: 540 - dy };  // (478, 413) — Tu aimes
-    const TR = { x: 600 + dx, y: 540 - dy };  // (722, 413) — Tu excelles
-    const BL = { x: 600 - dx, y: 540 + dy };  // (478, 667) — Le monde a besoin
-    const BR = { x: 600 + dx, y: 540 + dy };  // (722, 667) — Tu peux être payé
+    const TL = { x: 600 - dx, y: 540 - dy };  // (478, 413): what you love
+    const TR = { x: 600 + dx, y: 540 - dy };  // (722, 413): what you're good at
+    const BL = { x: 600 - dx, y: 540 + dy };  // (478, 667): what the world needs
+    const BR = { x: 600 + dx, y: 540 + dy };  // (722, 667): what you can be paid for
 
-    // ── Cercles ───────────────────────────────────────────────────────────
+    // ── Circles ───────────────────────────────────────────────────────────
     const circles = [TL, TR, BL, BR].map(c => `
     <circle cx="${c.x}" cy="${c.y}" r="${r}"
             fill="${p.gold}" fill-opacity="0.055"
             stroke="${p.gold}" stroke-width="1.5" stroke-opacity="0.48"/>`).join('');
 
-    // ── Petit cercle central (matérialise le cœur IKIGAI) ─────────────────
+    // ── Small centre circle (highlights the IKIGAI core) ──────────────────
     const centerCircle = `
     <circle cx="600" cy="540" r="56"
             fill="${p.gold}" fill-opacity="0.13"
             stroke="${p.gold}" stroke-width="1" stroke-opacity="0.38"/>`;
 
-    // ── Labels extérieurs (région exclusive de chaque cercle) ─────────────
-    //   Chaque label est dans le quadrant extérieur de son cercle,
-    //   vérifié hors de l'intersection avec les autres cercles.
+    // ── Outer labels (each circle's exclusive region) ─────────────────────
+    //   Each label sits in its circle's outer quadrant,
+    //   checked to be outside the intersection with the other circles.
     const outerLabels = `
-    <!-- TL : Ce que tu aimes — quadrant haut-gauche → centre ≈ (408, 298) -->
+    <!-- TL: what you love, top-left quadrant → centre ≈ (408, 298) -->
     <text x="408" y="285" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="1.8" fill="${p.muted}">CE QUE</text>
@@ -42,7 +42,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="16"
           letter-spacing="1.5" fill="${p.text}">TU AIMES</text>
 
-    <!-- TR : Ce en quoi tu excelles — quadrant haut-droit → centre ≈ (792, 298) -->
+    <!-- TR: what you're good at, top-right quadrant → centre ≈ (792, 298) -->
     <text x="792" y="280" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="1.8" fill="${p.muted}">CE EN QUOI</text>
@@ -50,7 +50,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="16"
           letter-spacing="1.5" fill="${p.text}">TU EXCELLES</text>
 
-    <!-- BL : Ce dont le monde a besoin — quadrant bas-gauche → centre ≈ (408, 778) -->
+    <!-- BL: what the world needs, bottom-left quadrant → centre ≈ (408, 778) -->
     <text x="408" y="768" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="1.8" fill="${p.muted}">CE DONT LE MONDE</text>
@@ -58,7 +58,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="16"
           letter-spacing="1.5" fill="${p.text}">A BESOIN</text>
 
-    <!-- BR : Ce pour quoi tu peux être payé — quadrant bas-droit → centre ≈ (792, 762) -->
+    <!-- BR: what you can be paid for, bottom-right quadrant → centre ≈ (792, 762) -->
     <text x="792" y="752" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="1.8" fill="${p.muted}">CE POUR QUOI</text>
@@ -69,34 +69,34 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="16"
           letter-spacing="1.5" fill="${p.text}">ÊTRE PAYÉ</text>`;
 
-    // ── Labels d'intersection ─────────────────────────────────────────────
-    //   Positionnés au point médian de chaque paire de cercles adjacents.
+    // ── Intersection labels ───────────────────────────────────────────────
+    //   Placed at the midpoint of each pair of adjacent circles.
     //   Passion  = TL ∩ TR  → (600, 413)
     //   Mission  = TL ∩ BL  → (478, 540)
     //   Profession = TR ∩ BR → (722, 540)
     //   Vocation = BL ∩ BR  → (600, 667)
     const interLabels = `
-    <!-- PASSION (haut, TL∩TR) -->
+    <!-- PASSION (top, TL∩TR) -->
     <text x="600" y="408" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="500" font-size="17"
           letter-spacing="1.5" fill="${p.goldLight}">PASSION</text>
 
-    <!-- MISSION (gauche, TL∩BL) -->
+    <!-- MISSION (left, TL∩BL) -->
     <text x="462" y="546" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="500" font-size="17"
           letter-spacing="1.5" fill="${p.goldLight}">MISSION</text>
 
-    <!-- PROFESSION (droite, TR∩BR) -->
+    <!-- PROFESSION (right, TR∩BR) -->
     <text x="738" y="546" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="500" font-size="17"
           letter-spacing="1.5" fill="${p.goldLight}">PROFESSION</text>
 
-    <!-- VOCATION (bas, BL∩BR) -->
+    <!-- VOCATION (bottom, BL∩BR) -->
     <text x="600" y="672" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="500" font-size="17"
           letter-spacing="1.5" fill="${p.goldLight}">VOCATION</text>`;
 
-    // ── IKIGAI au centre ──────────────────────────────────────────────────
+    // ── IKIGAI at centre ──────────────────────────────────────────────────
     const center = `
     <text x="600" y="533" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="30"

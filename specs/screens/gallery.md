@@ -1,29 +1,29 @@
-# Écran : galerie des figures de pensée
+# Screen: Thought Figures gallery
 
-## Objectif
+## Goal
 
-Permettre au visiteur de parcourir l'ensemble des illustrations disponibles et d'accéder à celle qui l'intéresse, éventuellement filtrée par catégorie.
+Let visitors browse all the available illustrations and reach the one they are interested in, optionally filtered by category.
 
-## Contenu et structure
+## Content and structure
 
-- Sidebar : identique à `screens/home.md` (voir `style-guide.md`).
-- Titre et introduction de la section (traduits par langue).
-- Barre de filtres : un bouton "Tous" (actif par défaut) et un bouton par catégorie présente dans la langue courante (voir "Taxonomie des catégories" dans `data-model.md`), déduits dynamiquement des illustrations existantes plutôt que d'une liste figée.
-- Grille de tuiles (`illustration-card`), une par illustration disponible dans la langue courante : image de couverture (SVG), titre, tagline, catégorie (voir `style-guide.md`).
-- Footer : identique à `screens/home.md`.
+- Sidebar: identical to `screens/home.md` (see `style-guide.md`).
+- Section title and introduction (translated per language).
+- Filter bar: an "All" button ("Tous" in French, active by default) and one button per category present in the current language (see "Category taxonomy" in `data-model.md`), derived dynamically from the existing illustrations rather than from a fixed list.
+- Grid of tiles (`illustration-card`), one per illustration available in the current language: cover image (SVG), title, tagline, category (see `style-guide.md`).
+- Footer: identical to `screens/home.md`.
 
 ## Interactions
 
-- Clic sur un bouton de filtre : affiche uniquement les tuiles de la catégorie sélectionnée, entièrement côté client (JavaScript, sans rechargement de page ni appel réseau), voir `_layouts/illustrations-index.html`.
-- Clic sur une tuile : navigue vers le détail de l'illustration correspondante (`screens/technical-drawing.md`).
-- Changement de langue via le sélecteur : recharge la galerie dans l'autre langue, avec la liste d'illustrations et les filtres recalculés pour cette langue (une illustration non traduite disparaît, voir "Bilinguisme" dans `functional-specifications.md`).
+- Click on a filter button: only shows the tiles of the selected category, entirely client-side (JavaScript, no page reload or network call), see `_layouts/illustrations-index.html`.
+- Click on a tile: navigates to the detail of the corresponding illustration (`screens/technical-drawing.md`).
+- Language change via the switcher: reloads the gallery in the other language, with the list of illustrations and the filters recomputed for that language (an untranslated illustration disappears, see "Bilingualism" in `functional-specifications.md`).
 
-## États (chargement, erreur, vide)
+## States (loading, error, empty)
 
-- Vide : aucune illustration disponible dans la langue courante → cas non rencontré aujourd'hui (toutes les illustrations existent dans les deux langues), comportement à définir le jour où il se présente.
-- Chargement : page statique, pas d'état de chargement pour la grille elle-même ; les images de couverture se chargent individuellement en lazy loading (voir `technical-specifications.md`).
-- Filtre sans résultat : n'existe pas dans les faits, toutes les catégories affichées proviennent d'illustrations réellement présentes.
+- Empty: no illustration available in the current language → case not encountered today (all illustrations exist in both languages), behavior to be defined when it arises.
+- Loading: static page, no loading state for the grid itself; cover images load individually with lazy loading (see `technical-specifications.md`).
+- Filter with no result: does not occur in practice, all displayed categories come from illustrations that actually exist.
 
 ## Responsive
 
-La grille s'adapte à la largeur de l'écran : plusieurs colonnes au-delà de 1100px, deux colonnes entre 767px et 1100px, une colonne en dessous de 767px (voir `assets/css/hbs.less`). Sidebar → barre horizontale avec hamburger sous 767px, comme sur tous les écrans (voir `style-guide.md`).
+The grid adapts to the screen width: several columns above 1100px, two columns between 767px and 1100px, one column below 767px (see `assets/css/hbs.less`). Sidebar → horizontal bar with hamburger below 767px, as on every screen (see `style-guide.md`).

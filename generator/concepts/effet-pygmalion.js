@@ -8,15 +8,15 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    // ── Constantes de mise en page ────────────────────────────────────────
+    // ── Layout constants ──────────────────────────────────────────────────
     const groundY = 862;
 
-    // Miroir : centré à gauche (x≈380)
+    // Mirror: centred on the left (x≈380)
     const mCx = 382, mCy = 490;
-    const fRx  = 172, fRy = 244;   // cadre (extérieur)
-    const gRx  = 150, gRy = 220;   // verre (intérieur)
+    const fRx  = 172, fRy = 244;   // frame (outer)
+    const gRx  = 150, gRy = 220;   // glass (inner)
 
-    // ── Clip path : verre du miroir ───────────────────────────────────────
+    // ── Clip path: mirror glass ───────────────────────────────────────────
     const defs = `
     <defs>
       <clipPath id="mc">
@@ -24,12 +24,12 @@ module.exports = {
       </clipPath>
     </defs>`;
 
-    // ── Sol ───────────────────────────────────────────────────────────────
+    // ── Floor ─────────────────────────────────────────────────────────────
     const ground = `
     <rect x="80" y="${groundY}" width="1040" height="16" rx="5"
           fill="${p.muted}" opacity="0.28"/>`;
 
-    // ── Pied du miroir ────────────────────────────────────────────────────
+    // ── Mirror stand ──────────────────────────────────────────────────────
     const standTop = mCy + fRy;  // y = 734
     const stand = `
     <rect x="${mCx - 10}" y="${standTop}" width="20" height="${groundY - standTop}"
@@ -37,24 +37,24 @@ module.exports = {
     <rect x="${mCx - 74}" y="${groundY - 14}" width="148" height="18" rx="6"
           fill="${p.muted}" opacity="0.72"/>`;
 
-    // ── Miroir (cadre elliptique + verre) ─────────────────────────────────
+    // ── Mirror (elliptical frame + glass) ─────────────────────────────────
     const mirror = `
     <ellipse cx="${mCx}" cy="${mCy}" rx="${fRx}" ry="${fRy}"
              fill="${p.muted}" opacity="0.68"/>
     <ellipse cx="${mCx}" cy="${mCy}" rx="${gRx}" ry="${gRy}"
              fill="#0e1d2c"/>`;
 
-    // ── Lion dans le miroir (doré, crinière en étoile) ────────────────────
+    // ── Lion in the mirror (gold, starburst mane) ─────────────────────────
     //
-    // Le chat fait face à GAUCHE → sa réflexion fait face à DROITE.
-    // Le lion (reflet agrandi) est donc orienté vers la droite dans le miroir.
-    // Centre de la crinière : légèrement à droite du centre du miroir.
-    const lx = 392, ly = 426;               // centre crinière / tête
-    const mOut = 130, mIn = 88, nS = 12;   // starburst : r ext., r int., nb pointes
+    // Cat faces LEFT → its reflection faces RIGHT.
+    // The lion (enlarged reflection) therefore faces right inside the mirror.
+    // Mane centre: slightly right of the mirror centre.
+    const lx = 392, ly = 426;               // mane / head centre
+    const mOut = 130, mIn = 88, nS = 12;   // starburst: outer r, inner r, point count
 
     const mPts = [];
     for (let i = 0; i < nS * 2; i++) {
-      const a = (i * Math.PI / nS) - Math.PI / 2;   // commence en haut (12h)
+      const a = (i * Math.PI / nS) - Math.PI / 2;   // starts at the top (12 o'clock)
       const r = i % 2 === 0 ? mOut : mIn;
       mPts.push(
         `${(lx + r * Math.cos(a)).toFixed(1)},${(ly + r * Math.sin(a)).toFixed(1)}`
@@ -62,25 +62,25 @@ module.exports = {
     }
 
     const lion = `
-    <!-- Corps du lion (clippé au verre du miroir) -->
+    <!-- Lion body (clipped to mirror glass) -->
     <ellipse cx="${lx - 14}" cy="650" rx="92" ry="108"
              fill="${p.gold}" clip-path="url(#mc)"/>
-    <!-- Crinière : starburst ${nS} pointes -->
+    <!-- Mane: ${nS}-point starburst -->
     <polygon points="${mPts.join(' ')}"
              fill="${p.gold}" clip-path="url(#mc)"/>
-    <!-- Tête (cercle intérieur à la crinière) -->
+    <!-- Head (circle inside mane) -->
     <circle cx="${lx + 4}" cy="${ly + 6}" r="72"
             fill="${p.gold}" clip-path="url(#mc)"/>`;
 
-    // ── Chat (silhouette muted, face gauche, assis à droite) ──────────────
+    // ── Cat (muted silhouette, facing left, sitting on the right) ─────────
     //
-    // Le chat est assis sur le sol, profil orienté vers la gauche (vers le miroir).
-    // Tête à gauche du corps, queue enroulée derrière à droite.
-    const hx = 796, hy = 716, hr = 56;         // tête : centre et rayon
-    const bx = 872, by = 800, brx = 70, bry = 56; // corps : centre et demi-axes
+    // Cat sits on the floor, profile facing left (toward the mirror).
+    // Head left of body, tail curled behind on the right.
+    const hx = 796, hy = 716, hr = 56;         // head: centre and radius
+    const bx = 872, by = 800, brx = 70, bry = 56; // body: centre and semi-axes
 
-    // Queue : trait épais courbé partant du flanc droit du corps, montant puis recourbant
-    const qx0 = bx + brx, qy0 = by + 18;      // départ queue (flanc droit)
+    // Tail: thick curved stroke from the right flank of the body, rising then curling back
+    const qx0 = bx + brx, qy0 = by + 18;      // tail start (right flank)
     const tail = `
     <path d="M ${qx0},${qy0}
              C ${qx0 + 46},${qy0 - 42} ${qx0 + 60},${qy0 - 100}
@@ -90,27 +90,27 @@ module.exports = {
           fill="none" stroke="${p.muted}" stroke-width="26" stroke-linecap="round"/>`;
 
     const cat = `
-    <!-- Corps -->
+    <!-- Body -->
     <ellipse cx="${bx}" cy="${by}" rx="${brx}" ry="${bry}" fill="${p.muted}"/>
-    <!-- Tête -->
+    <!-- Head -->
     <circle cx="${hx}" cy="${hy}" r="${hr}" fill="${p.muted}"/>
-    <!-- Oreille avant (côté face, gauche dans le profil) -->
+    <!-- Front ear (face side, left in profile) -->
     <polygon points="${hx - 38},${hy - 34}
                      ${hx - 60},${hy - 92}
                      ${hx - 4},${hy - 52}"
              fill="${p.muted}"/>
-    <!-- Oreille arrière (côté nuque, droite dans le profil) -->
+    <!-- Back ear (nape side, right in profile) -->
     <polygon points="${hx + 8},${hy - 40}
                      ${hx - 4},${hy - 90}
                      ${hx + 40},${hy - 62}"
              fill="${p.muted}"/>
     ${tail}
-    <!-- Pattes avant (visibles devant le corps, sous la poitrine) -->
+    <!-- Front paws (visible in front of the body, under the chest) -->
     <ellipse cx="${hx - 20}" cy="${groundY - 6}" rx="27" ry="14" fill="${p.muted}"/>
-    <!-- Masse assise : pattes arrière et base -->
+    <!-- Sitting mass: hind legs and base -->
     <ellipse cx="${bx + 4}" cy="${groundY - 6}" rx="62" ry="18" fill="${p.muted}"/>`;
 
-    // Ordre de dessin : fond → sol → pied → miroir → lion → chat
+    // Draw order: background → floor → stand → mirror → lion → cat
     return defs + ground + stand + mirror + lion + cat;
   },
 };

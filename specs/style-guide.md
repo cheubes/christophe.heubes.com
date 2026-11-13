@@ -1,52 +1,52 @@
-# Charte graphique
+# Style guide
 
-## Couleurs
+## Colors
 
-Deux palettes distinctes coexistent : celle de l'habillage du site (sidebar, pages, footer) et celle des illustrations SVG elles-mêmes (générées séparément, voir `generator/README.md` et `data-model.md`). Ne pas les confondre ni les mélanger.
+Two distinct palettes coexist: the one for the site chrome (sidebar, pages, footer) and the one for the SVG illustrations themselves (generated separately, see `generator/README.md` and `data-model.md`). Do not confuse or mix them.
 
-### Palette du site (chrome)
+### Site palette (chrome)
 
-| Rôle | Variable LESS | Hex |
+| Role | LESS variable | Hex |
 |---|---|---|
-| Bleu principal | `@blue` | `#2C374C` |
-| Or / accent | `@gold` | `#C7B299` |
-| Gris clair | `@light-grey` | `#ACB2B8` |
-| Gris | `@grey` | `#666` |
-| Gris foncé | `@dark-grey` | `#444` |
+| Primary blue | `@blue` | `#2C374C` |
+| Gold / accent | `@gold` | `#C7B299` |
+| Light grey | `@light-grey` | `#ACB2B8` |
+| Grey | `@grey` | `#666` |
+| Dark grey | `@dark-grey` | `#444` |
 
-### Palette des illustrations (générées)
+### Illustration palette (generated)
 
-| Rôle | Variable LESS | Hex |
+| Role | LESS variable | Hex |
 |---|---|---|
-| Fond | `@ill-bg` | `#0D1B2A` |
-| Or | `@ill-gold` | `#C9A84C` |
-| Or pâle | (non repris en LESS, voir `generator/config.js`) | `#E8D5A3` |
-| Texte atténué | `@ill-muted` | `#8A9BB0` |
-| Texte principal | `@ill-text` | `#F0EDE4` |
+| Background | `@ill-bg` | `#0D1B2A` |
+| Gold | `@ill-gold` | `#C9A84C` |
+| Pale gold | (not mirrored in LESS, see `generator/config.js`) | `#E8D5A3` |
+| Muted text | `@ill-muted` | `#8A9BB0` |
+| Main text | `@ill-text` | `#F0EDE4` |
 
-Ces valeurs sont définies dans `assets/css/hbs.less` (chrome) et `generator/config.js` (rendu SVG). Ne pas introduire de nouvelle couleur ailleurs : l'ajouter ici et dans le fichier correspondant.
+These values are defined in `assets/css/hbs.less` (chrome) and `generator/config.js` (SVG rendering). Do not introduce a new color anywhere else: add it here and in the corresponding file.
 
-## Typographie
+## Typography
 
-- Police unique : Ubuntu (Google Fonts, graisses 400 et 700), avec repli `sans-serif`.
-- Les illustrations SVG embarquent leur propre copie de la police (base64, via `generator/font-loader.js`) pour rester autonomes, indépendamment du CSS du site.
+- Single typeface: Ubuntu (Google Fonts, weights 400 and 700), with a `sans-serif` fallback.
+- The SVG illustrations embed their own copy of the font (base64, via `generator/font-loader.js`) to stay self-contained, independently of the site CSS.
 
-## Espacements et grille
+## Spacing and grid
 
-- Largeur de la sidebar : `@sidebar-width` = 260px (desktop).
-- Mise en page basée sur la grille Bootstrap (`col-2` / `col-10` pour les lignes icône + contenu de la page de profil).
-- Point de rupture responsive : 767px, bascule de la sidebar (panneau fixe) vers une barre horizontale avec menu hamburger, voir `assets/css/hbs.less`.
-- Point de rupture intermédiaire à 1100px : ajuste uniquement le nombre de colonnes de la grille de la galerie (voir `screens/gallery.md`), sans effet sur la sidebar.
+- Sidebar width: `@sidebar-width` = 260px (desktop).
+- Layout based on the Bootstrap grid (`col-2` / `col-10` for the icon + content rows of the profile page).
+- Responsive breakpoint: 767px, the sidebar switches from a fixed panel to a horizontal bar with a hamburger menu, see `assets/css/hbs.less`.
+- Intermediate breakpoint at 1100px: only adjusts the number of columns of the gallery grid (see `screens/gallery.md`), with no effect on the sidebar.
 
-## Composants UI de base
+## Base UI components
 
-- **Sidebar** : panneau persistant sur toutes les pages (au-dessus de 767px), contenant photo de profil, titre, tagline, liens sociaux (LinkedIn, GitHub), lien vers la galerie, sélecteur de langue, badge de licence et lien vers `heubes.org`.
-- **Footer** : sélecteur de langue, badge Creative Commons (CC BY-NC-SA 4.0), lien vers `heubes.org`. Au-dessus de 767px, ce contenu vit dans la sidebar ; en dessous, il est déplacé dans un footer mobile dédié en bas de page (`mobile-footer`), la sidebar étant réduite à une barre horizontale (photo, titre, tagline, liens sociaux).
-- **Menu hamburger** : visible uniquement sous 767px, en remplacement du lien vers la galerie normalement présent dans la sidebar ; ne contient que ce lien.
-- **Tuile d'illustration** (`illustration-card`) : image de couverture, overlay avec titre, tagline et catégorie (voir `screens/gallery.md`).
-- **Boutons de filtre** (`ill-filter-btn`) : un bouton "Tous" + un bouton par catégorie présente dans la langue courante, état actif visuellement distinct.
-- **Badge de catégorie** (`ill-category-badge`) : affiché sur l'écran de détail d'une illustration.
+- **Sidebar**: persistent panel on every page (above 767px), containing the profile picture, title, tagline, social links (LinkedIn, GitHub), link to the gallery, language switcher, license badge and link to `heubes.org`.
+- **Footer**: language switcher, Creative Commons badge (CC0 1.0 Universal, see `LICENSE`), link to `heubes.org`. Above 767px, this content lives in the sidebar; below, it moves to a dedicated mobile footer at the bottom of the page (`mobile-footer`), the sidebar being reduced to a horizontal bar (picture, title, tagline, social links).
+- **Hamburger menu**: only visible below 767px, replacing the gallery link normally shown in the sidebar; it only contains that link.
+- **Illustration tile** (`illustration-card`): cover image, overlay with title, tagline and category (see `screens/gallery.md`).
+- **Filter buttons** (`ill-filter-btn`): an "All" button ("Tous" in French) + one button per category present in the current language, with a visually distinct active state.
+- **Category badge** (`ill-category-badge`): displayed on the illustration detail screen.
 
-## Iconographie
+## Iconography
 
-Font Awesome (chargé via Kit, voir `technical-specifications.md`) : icônes de réseaux sociaux (`fa-linkedin-in`, `fa-github`), de licence (`fa-creative-commons*`), de navigation (`fa-pen-nib` pour les illustrations), et icônes métier sur la page de profil (`fa-user-tie`, `fa-screwdriver-wrench`, `fa-rocket`, `fa-seedling`).
+Font Awesome (loaded via Kit, see `technical-specifications.md`): social network icons (`fa-linkedin-in`, `fa-github`), license icons (`fa-creative-commons`, `fa-creative-commons-zero`), navigation icons (`fa-pen-nib` for the illustrations), and topic icons on the profile page (`fa-user-tie`, `fa-screwdriver-wrench`, `fa-rocket`, `fa-seedling`).

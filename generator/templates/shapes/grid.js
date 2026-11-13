@@ -1,5 +1,5 @@
 /**
- * Grille N×N de cellules rectangulaires.
+ * N×N grid of rectangular cells.
  */
 function grid({ x, y, w, h, cols, rows, cells = [], strokeColor = '#C9A84C', strokeWidth = 2, fontSize = 22 }) {
   const cellW = w / cols;

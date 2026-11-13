@@ -8,29 +8,29 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    // ── Colonnes ──────────────────────────────────────────────────────────
-    const lx = 300;   // centre colonne gauche  (fragmenté)
-    const rx = 900;   // centre colonne droite   (continu)
-    const hw = 56;    // demi-largeur des barres
+    // ── Columns ───────────────────────────────────────────────────────────
+    const lx = 300;   // left column centre  (fragmented)
+    const rx = 900;   // right column centre (continuous)
+    const hw = 56;    // bar half-width
 
-    // ── Blocs de travail ──────────────────────────────────────────────────
-    const bh     = 60;   // hauteur d'un bloc de travail
-    const gh     = 80;   // hauteur d'un gap (interruption)
-    const n      = 4;    // nombre de sessions fragmentées
+    // ── Work blocks ───────────────────────────────────────────────────────
+    const bh     = 60;   // work block height
+    const gh     = 80;   // gap height (interruption)
+    const n      = 4;    // number of fragmented sessions
     const startY = 215;
 
-    // Colonne gauche : n blocs + (n-1) gaps
+    // Left column: n blocks + (n-1) gaps
     // Span total = n*bh + (n-1)*gh = 240 + 240 = 480 px → ×2
     const leftEndY  = startY + n * bh + (n - 1) * gh;   // 695
-    const workH     = n * bh;                            // 240 px — même travail réel
+    const workH     = n * bh;                            // 240 px, same actual work
     const rightEndY = startY + workH;                    // 455
 
-    // ── Séparateur vertical ───────────────────────────────────────────────
+    // ── Vertical separator ────────────────────────────────────────────────
     const sep = `
     <line x1="600" y1="115" x2="600" y2="876"
           stroke="${p.muted}" stroke-width="1" opacity="0.18"/>`;
 
-    // ── En-têtes ──────────────────────────────────────────────────────────
+    // ── Headers ───────────────────────────────────────────────────────────
     const headers = `
     <text x="${lx}" y="155" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="17"
@@ -45,7 +45,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="22"
           letter-spacing="2.5" fill="${p.gold}">CONTINU</text>`;
 
-    // ── Colonne gauche : blocs + lignes pointillées dans les gaps ─────────
+    // ── Left column: blocks + dotted lines in the gaps ────────────────────
     let leftSVG = '';
     for (let i = 0; i < n; i++) {
       const by = startY + i * (bh + gh);
@@ -55,7 +55,7 @@ module.exports = {
 
       if (i < n - 1) {
         const gy = by + bh;
-        // 3 lignes pointillées qui s'estompent — suggèrent le temps perdu
+        // 3 fading dotted lines, suggesting lost time
         for (let d = 1; d <= 3; d++) {
           const dy  = gy + d * (gh / 4);
           const op  = (0.36 - d * 0.08).toFixed(2);
@@ -66,18 +66,18 @@ module.exports = {
       }
     }
 
-    // ── Colonne droite : bloc continu + zone de temps économisé ──────────
+    // ── Right column: continuous block + saved-time zone ─────────────────
     const savedH  = leftEndY - rightEndY;         // 240 px
     const savedCY = rightEndY + savedH / 2;       // 575
     const rightSVG = `
     <rect x="${rx - hw}" y="${startY}" width="${hw * 2}" height="${workH}"
           rx="5" fill="${p.gold}" opacity="0.88"/>
-    <!-- Zone "temps économisé" : cadre pointillé -->
+    <!-- Saved-time zone: dashed outline -->
     <rect x="${rx - hw}" y="${rightEndY + 5}" width="${hw * 2}" height="${savedH - 10}"
           rx="5" fill="none" stroke="${p.muted}" stroke-width="1"
           stroke-dasharray="6,4" opacity="0.22"/>`;
 
-    // ── Label dans la zone économisée ─────────────────────────────────────
+    // ── Label inside the saved zone ───────────────────────────────────────
     const savedLabel = `
     <text x="${rx}" y="${savedCY - 11}" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="15"
@@ -86,7 +86,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="15"
           letter-spacing="1.8" fill="${p.muted}" opacity="0.50">ÉCONOMISÉ</text>`;
 
-    // ── Labels de ratio (bas de chaque colonne) ───────────────────────────
+    // ── Ratio labels (bottom of each column) ──────────────────────────────
     const ratioY = leftEndY + 48;
     const unitY  = leftEndY + 76;
     const ratioLabels = `
