@@ -9,8 +9,8 @@ module.exports = {
     const { palette: p } = ctx;
 
     const nowX = 600;
-    const ay = 370, ah = 54;  // Entity A (récent)
-    const by = 650, bh = 54;  // Entity B (établi)
+    const ay = 370, ah = 54;  // Entity A (recent)
+    const by = 650, bh = 54;  // Entity B (established)
 
     // ── "MAINTENANT" dividing line ────────────────────────────────────────
     const nowLine = `
@@ -29,8 +29,8 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="2" fill="${p.muted}" opacity="0.42">FUTUR ESTIMÉ</text>`;
 
-    // ── Entity A — 2 ans ──────────────────────────────────────────────────
-    //   Past: 120px  |  Future: 120px (même durée → espérance = âge actuel)
+    // ── Entity A: 2 years ─────────────────────────────────────────────────
+    //   Past: 120px  |  Future: 120px (same duration → expectancy = current age)
     const aPast = nowX - 120, aFuture = nowX + 120;
     const aRows = `
     <rect x="${aPast}" y="${ay - ah / 2}" width="120" height="${ah}" rx="4"
@@ -47,8 +47,8 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="1" fill="${p.gold}" opacity="0.62">≈ 2 ans</text>`;
 
-    // ── Entity B — 50 ans ─────────────────────────────────────────────────
-    //   Past: 395px  |  Future: 440px (Lindy : futur ≥ passé)
+    // ── Entity B: 50 years ────────────────────────────────────────────────
+    //   Past: 395px  |  Future: 440px (Lindy: future ≥ past)
     const bPast = nowX - 395, bFuture = nowX + 440;
     const bRows = `
     <rect x="${bPast}" y="${by - bh / 2}" width="395" height="${bh}" rx="4"

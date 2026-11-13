@@ -1,5 +1,5 @@
 /**
- * Capsule médicale (rectangle à coins arrondis + ligne centrale).
+ * Medical capsule (rounded rectangle + centre line).
  */
 function pill({ cx, cy, w = 80, h = 40, color = '#C9A84C', strokeWidth = 3, fill = 'none' }) {
   const rx = h / 2;

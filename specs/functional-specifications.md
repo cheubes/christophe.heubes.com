@@ -1,44 +1,44 @@
-# Spécifications fonctionnelles
+# Functional specifications
 
-## Périmètre
+## Scope
 
-Le site présente deux types de contenu :
-- une page de profil professionnel (parcours, compétences, réalisations) servant de CV en ligne ;
-- une série d'illustrations pédagogiques ("Figures de pensée") présentant des concepts intellectuels, lois cognitives et biais, sous forme de dessins techniques minimalistes accompagnés d'un texte explicatif.
+The site presents two types of content:
+- a professional profile page (career, skills, achievements) serving as an online resume;
+- a series of educational illustrations ("Thought Figures", "Figures de pensée" in French) presenting intellectual concepts, cognitive laws and biases, as minimalist technical drawings accompanied by an explanatory text.
 
-Site statique, sans compte utilisateur, sans backend applicatif, bilingue français / anglais.
+Static site, no user accounts, no application backend, bilingual French / English.
 
-## Utilisateurs cibles
+## Target users
 
-- Recruteurs, partenaires et réseau professionnel consultant le profil de Christophe Heubès.
-- Visiteurs découvrant les illustrations "Figures de pensée" (recherche, réseaux sociaux, partage de lien direct vers une illustration).
+- Recruiters, partners and professional network looking at Christophe Heubès's profile.
+- Visitors discovering the "Thought Figures" illustrations (search engines, social networks, direct link to an illustration).
 
-## Parcours utilisateurs
+## User journeys
 
-- **Découverte du profil** : arrivée sur la page d'accueil (`screens/home.md`), lecture du parcours, accès aux profils LinkedIn / GitHub.
-- **Découverte des illustrations depuis le profil** : clic sur le lien "Figures de pensée" (sidebar ou menu hamburger) → galerie (`screens/gallery.md`).
-- **Exploration de la galerie** : filtrage par catégorie, clic sur une tuile → détail d'une illustration (`screens/technical-drawing.md`).
-- **Arrivée directe sur une illustration** : via un lien partagé ou un moteur de recherche, sans passer par la galerie ni la page de profil.
+- **Profile discovery**: landing on the home page (`screens/home.md`), reading the career path, access to the LinkedIn / GitHub profiles.
+- **Discovering the illustrations from the profile**: click on the "Thought Figures" link (sidebar or hamburger menu) → gallery (`screens/gallery.md`).
+- **Gallery exploration**: filtering by category, click on a tile → illustration detail (`screens/technical-drawing.md`).
+- **Direct arrival on an illustration**: via a shared link or a search engine, without going through the gallery or the profile page.
 
-## Règles transverses
+## Cross-cutting rules
 
-### Bilinguisme
+### Bilingualism
 
-- Le site existe en français (`/`) et en anglais (`/en/`), chaque page ayant une URL dédiée par langue.
-- Chaque contenu (page de profil, illustration) est un fichier distinct par langue, relié par un `ref` commun (voir `data-model.md`).
-- Un contenu non traduit dans une langue n'apparaît pas dans cette langue (pas de repli automatique vers l'autre langue).
-- Le sélecteur de langue (sidebar / footer mobile) ne propose que les langues dans lesquelles le contenu courant existe réellement (voir `style-guide.md`).
+- The site exists in French (`/`) and English (`/en/`), each page having a dedicated URL per language.
+- Each piece of content (profile page, illustration) is a separate file per language, linked by a common `ref` (see `data-model.md`).
+- Content not translated into a language does not appear in that language (no automatic fallback to the other language).
+- The language switcher (sidebar / mobile footer) only offers the languages in which the current content actually exists (see `style-guide.md`).
 
 ### Navigation
 
-- Navigation transversale via une sidebar persistante (desktop) qui devient un menu hamburger (mobile), commune à tous les écrans (voir `style-guide.md`).
-- Le lien vers la galerie est toujours accessible depuis n'importe quel écran (sidebar ou hamburger), quelle que soit la langue.
-- Pas de fil d'Ariane sur la page de profil (écran racine) ; un fil d'Ariane de retour existe sur le détail d'une illustration (voir `screens/technical-drawing.md`).
+- Site-wide navigation through a persistent sidebar (desktop) that becomes a hamburger menu (mobile), shared by all screens (see `style-guide.md`).
+- The link to the gallery is always reachable from any screen (sidebar or hamburger), whatever the language.
+- No breadcrumb on the profile page (root screen); a back breadcrumb exists on the illustration detail (see `screens/technical-drawing.md`).
 
-## Hors périmètre
+## Out of scope
 
-- Pas de compte utilisateur, pas d'authentification.
-- Pas de formulaire de contact ni de soumission de contenu par les visiteurs.
-- Pas de recherche texte libre (le seul filtrage disponible est le filtrage par catégorie dans la galerie).
-- Pas de commentaires ni d'interactions sociales sur les illustrations.
-- Pas de blog ni de contenu daté/chronologique au-delà du parcours professionnel.
+- No user accounts, no authentication.
+- No contact form or content submission by visitors.
+- No free-text search (the only filtering available is by category in the gallery).
+- No comments or social interactions on the illustrations.
+- No blog or dated/chronological content beyond the professional career path.

@@ -8,7 +8,7 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    // ── Positions des nœuds (même topologie en triangle des 2 côtés) ──────
+    // ── Node positions (same triangle topology on both sides) ─────────────
     const L = {
       top: { x: 300, y: 345 },
       bl:  { x: 185, y: 545 },
@@ -20,12 +20,12 @@ module.exports = {
       br:  { x: 1015, y: 545 },
     };
 
-    // ── Séparateur vertical ───────────────────────────────────────────────
+    // ── Vertical separator ────────────────────────────────────────────────
     const sep = `
     <line x1="600" y1="115" x2="600" y2="876"
           stroke="${p.muted}" stroke-width="1" opacity="0.18"/>`;
 
-    // ── En-têtes de panneaux ──────────────────────────────────────────────
+    // ── Panel headers ─────────────────────────────────────────────────────
     const headers = `
     <text x="300" y="170" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="18"
@@ -34,8 +34,8 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="18"
           letter-spacing="2.5" fill="${p.gold}">ARCHITECTURE</text>`;
 
-    // ── Arêtes — dessinées en premier, sous les nœuds ────────────────────
-    //   Même topologie sur les deux panneaux (triangle complet)
+    // ── Edges, drawn first, beneath the nodes ────────────────────────────
+    //   Same topology on both panels (complete triangle)
     const edgeLine = (a, b, col, op) =>
       `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"
              stroke="${col}" stroke-width="1.5" opacity="${op}"/>`;
@@ -48,7 +48,7 @@ module.exports = {
     ${edgeLine(R.top, R.br, p.goldLight, 0.28)}
     ${edgeLine(R.bl,  R.br, p.goldLight, 0.28)}`;
 
-    // ── Nœuds gauche : cercles (équipes humaines) ─────────────────────────
+    // ── Left nodes: circles (human teams) ─────────────────────────────────
     const rL = 36;
     const circleNode = (pos, label) => `
     <circle cx="${pos.x}" cy="${pos.y}" r="${rL}"
@@ -62,7 +62,7 @@ module.exports = {
                     + circleNode(L.bl,  'FRONT')
                     + circleNode(L.br,  'BACK');
 
-    // ── Nœuds droite : rectangles arrondis (composants système) ──────────
+    // ── Right nodes: rounded rectangles (system components) ──────────────
     const rw = 84, rh = 38;
     const rectNode = (pos, label) => `
     <rect x="${pos.x - rw / 2}" y="${pos.y - rh / 2}"
@@ -77,7 +77,7 @@ module.exports = {
                      + rectNode(R.bl,  'WEB')
                      + rectNode(R.br,  'API');
 
-    // ── Labels contextuels sous chaque panneau ────────────────────────────
+    // ── Context labels under each panel ───────────────────────────────────
     const botLabels = `
     <text x="300" y="634" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="14"
@@ -86,8 +86,8 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="14"
           letter-spacing="1" fill="${p.muted}" opacity="0.50">interfaces entre services</text>`;
 
-    // ── Légende centrale ──────────────────────────────────────────────────
-    //   Deux courtes lignes pointillées + label "SE REFLÈTE" au centre
+    // ── Central legend ────────────────────────────────────────────────────
+    //   Two short dotted lines + "SE REFLÈTE" label in the centre
     const centerLegend = `
     <line x1="448" y1="448" x2="570" y2="448"
           stroke="${p.muted}" stroke-width="1" stroke-dasharray="5,4" opacity="0.28"/>
@@ -97,7 +97,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="2" fill="${p.muted}" opacity="0.45">SE REFLÈTE</text>`;
 
-    // Ordre de dessin : fond → arêtes → nœuds → labels
+    // Draw order: background → edges → nodes → labels
     return sep + headers + edges + leftNodes + rightNodes + centerLegend + botLabels;
   },
 };

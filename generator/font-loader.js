@@ -3,8 +3,8 @@ const path = require('path');
 const config = require('./config');
 
 /**
- * Charge les fonts Ubuntu TTF depuis generator/fonts/
- * et retourne un bloc <style> SVG avec @font-face base64.
+ * Loads the Ubuntu TTF fonts from generator/fonts/
+ * and returns an SVG <style> block with base64 @font-face.
  */
 function buildFontStyle() {
   const fontsDir = config.fonts.dir;
@@ -33,7 +33,7 @@ function buildFontStyle() {
 }
 
 /**
- * Retourne les chemins des fichiers TTF pour resvg-js.
+ * Returns the TTF file paths for resvg-js.
  */
 function getFontPaths() {
   const fontsDir = config.fonts.dir;

@@ -8,22 +8,22 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    // ── Colonnes ──────────────────────────────────────────────────────────
+    // ── Columns ───────────────────────────────────────────────────────────
     const lx = 300, rx = 900, hw = 58;
 
-    // ── Blocs ─────────────────────────────────────────────────────────────
+    // ── Blocks ────────────────────────────────────────────────────────────
     const startY  = 215;
-    const coreH   = 200;   // travail réel — identique dans les deux cas
-    const expH    = 300;   // expansion Parkinson (×1.5 de travail supplémentaire)
-    const coreEnd = startY + coreH;   // 415 — niveau "résultat"
-    const rightEnd = coreEnd + expH;  // 715 — fin du délai long
+    const coreH   = 200;   // real work, identical on both sides
+    const expH    = 300;   // Parkinson expansion (×1.5 extra work)
+    const coreEnd = startY + coreH;   // 415: "result" level
+    const rightEnd = coreEnd + expH;  // 715: end of long deadline
 
-    // ── Séparateur vertical ───────────────────────────────────────────────
+    // ── Vertical separator ────────────────────────────────────────────────
     const sep = `
     <line x1="600" y1="115" x2="600" y2="876"
           stroke="${p.muted}" stroke-width="1" opacity="0.18"/>`;
 
-    // ── En-têtes de colonnes ──────────────────────────────────────────────
+    // ── Column headers ────────────────────────────────────────────────────
     const headers = `
     <text x="${lx}" y="155" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="17"
@@ -38,25 +38,25 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="22"
           letter-spacing="2.5" fill="${p.muted}">LONG</text>`;
 
-    // ── Bloc gauche : travail concentré dans le délai court ───────────────
+    // ── Left block: work contained within the short deadline ──────────────
     const leftBlock = `
     <rect x="${lx - hw}" y="${startY}" width="${hw * 2}" height="${coreH}"
           rx="5" fill="${p.gold}" opacity="0.88"/>`;
 
-    // ── Bloc droit : même travail réel + zone d'expansion ─────────────────
+    // ── Right block: same real work + expansion zone ──────────────────────
     const rightBlock = `
-    <!-- Même noyau de travail qu'à gauche -->
+    <!-- Same core work as left -->
     <rect x="${rx - hw}" y="${startY}" width="${hw * 2}" height="${coreH}"
           rx="5" fill="${p.gold}" opacity="0.88"/>
-    <!-- Zone d'expansion — le travail se dilate -->
+    <!-- Expansion zone: work dilates to fill time -->
     <rect x="${rx - hw}" y="${coreEnd + 3}" width="${hw * 2}" height="${expH - 6}"
           rx="5" fill="${p.goldLight}" opacity="0.12"/>
     <rect x="${rx - hw}" y="${coreEnd + 3}" width="${hw * 2}" height="${expH - 6}"
           rx="5" fill="none" stroke="${p.muted}" stroke-width="1"
           stroke-dasharray="6,4" opacity="0.28"/>`;
 
-    // ── Marqueur "RÉSULTAT IDENTIQUE" au niveau coreEnd ───────────────────
-    //   Deux petits traits horizontaux dans chaque colonne, label centré
+    // ── "RÉSULTAT IDENTIQUE" marker at coreEnd level ──────────────────────
+    //   Two short horizontal ticks in each column, centred label
     const connector = `
     <line x1="${lx - hw - 10}" y1="${coreEnd}" x2="${lx + hw + 10}" y2="${coreEnd}"
           stroke="${p.goldLight}" stroke-width="2" opacity="0.55"/>
@@ -66,7 +66,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="500" font-size="15"
           letter-spacing="1.5" fill="${p.goldLight}" opacity="0.68">RÉSULTAT IDENTIQUE</text>`;
 
-    // ── Label dans la zone d'expansion ───────────────────────────────────
+    // ── Label inside expansion zone ──────────────────────────────────────
     const expMidY = coreEnd + expH / 2;
     const expLabel = `
     <text x="${rx}" y="${expMidY - 10}" text-anchor="middle"
@@ -76,7 +76,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="15"
           letter-spacing="1.8" fill="${p.muted}" opacity="0.50">DILATÉ</text>`;
 
-    // ── Ratios en bas de chaque colonne ──────────────────────────────────
+    // ── Ratio labels below each column ───────────────────────────────────
     const ratioLabels = `
     <text x="${lx}" y="${coreEnd + 44}" text-anchor="middle"
           font-family="Ubuntu, sans-serif" font-weight="700" font-size="48"

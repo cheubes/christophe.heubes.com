@@ -279,7 +279,7 @@ for filename, new_body in NEW_EXAMPLES.items():
     print(f'  ✓ {filename}')
     updated += 1
 
-print(f'\n{updated} fichiers mis à jour.')
+print(f'\n{updated} files updated.')
 
 # Verify no bullet lists remain in examples sections
 remaining = []

@@ -1,29 +1,29 @@
-# Écran : page de profil
+# Screen: profile page
 
-## Objectif
+## Goal
 
-Présenter le profil professionnel de Christophe Heubès (parcours, compétences, réalisations) et donner accès aux illustrations "Figures de pensée".
+Present Christophe Heubès's professional profile (career, skills, achievements) and give access to the "Thought Figures" illustrations.
 
-## Contenu et structure
+## Content and structure
 
-- Sidebar : photo, titre, tagline, liens sociaux, lien vers la galerie, sélecteur de langue (voir `style-guide.md`).
-- Section "À propos" (`section-about`) : quatre blocs texte (présentation générale, compétences, expérience Xebia, activité d'investisseur), chacun associé à une icône (voir `_layouts/index.html` et `style-guide.md`).
-- Section "Parcours" (`section-resume`) : liste chronologique d'expériences professionnelles, chacune associée au logo de l'entreprise (Flint, Xebia ×2, Dreamsoft, EPITA) et à un texte descriptif.
-- Footer : sélecteur de langue, badge Creative Commons, lien `heubes.org` (voir `style-guide.md`).
+- Sidebar: picture, title, tagline, social links, link to the gallery, language switcher (see `style-guide.md`).
+- "About" section (`section-about`): four text blocks (general introduction, skills, Xebia experience, investor activity), each associated with an icon (see `_layouts/index.html` and `style-guide.md`).
+- "Resume" section (`section-resume`): chronological list of professional experiences, each associated with the company logo (Flint, Xebia ×2, Dreamsoft, EPITA) and a descriptive text.
+- Footer: language switcher, Creative Commons badge, `heubes.org` link (see `style-guide.md`).
 
-Le contenu de ces sections est figé (pas de collection, pas de pagination) : chaque bloc correspond à un champ de front matter dédié dans `index.md` / `index-en.md` (voir `data-model.md`).
+The content of these sections is fixed (no collection, no pagination): each block maps to a dedicated front matter field in `index.md` / `index-en.md` (see `data-model.md`).
 
 ## Interactions
 
-- Clic sur le lien "Figures de pensée" (sidebar ou hamburger) : navigue vers la galerie (`screens/gallery.md`).
-- Clic sur les liens sociaux : ouvre LinkedIn ou GitHub dans un nouvel onglet.
-- Changement de langue via le sélecteur : navigue vers l'équivalent anglais/français de la page de profil.
+- Click on the "Thought Figures" link (sidebar or hamburger): navigates to the gallery (`screens/gallery.md`).
+- Click on the social links: opens LinkedIn or GitHub in a new tab.
+- Language change via the switcher: navigates to the English/French equivalent of the profile page.
 
-## États (chargement, erreur, vide)
+## States (loading, error, empty)
 
-Page entièrement statique : pas d'état de chargement, d'erreur ou de vide applicable (le contenu est toujours présent au build).
+Fully static page: no loading, error or empty state applies (the content is always present at build time).
 
 ## Responsive
 
-- Au-delà de 767px : sidebar fixe à gauche (`@sidebar-width`), contenu à droite.
-- En dessous de 767px : sidebar réduite à une barre horizontale, menu hamburger pour accéder à la galerie, footer repositionné en bas de page (voir `style-guide.md`).
+- Above 767px: sidebar fixed on the left (`@sidebar-width`), content on the right.
+- Below 767px: sidebar reduced to a horizontal bar, hamburger menu to access the gallery, footer moved to the bottom of the page (see `style-guide.md`).

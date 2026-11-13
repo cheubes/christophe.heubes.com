@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Met à jour les catégories dans les fichiers JS (concepts) et MD (_illustrations).
-Nouvelles catégories (6 au total) :
-  FR : Biais & Heuristiques / Psychologie & Comportement / Épistémologie /
+Updates the categories in the JS (concepts) and MD (_illustrations) files.
+New categories (6 in total):
+  FR: Biais & Heuristiques / Psychologie & Comportement / Épistémologie /
        Économie & Incitations / Management & Organisations / Ingénierie & Technologie
-  EN : Biases & Heuristics / Psychology & Behaviour / Epistemology /
+  EN: Biases & Heuristics / Psychology & Behaviour / Epistemology /
        Economics & Incentives / Management & Organisations / Engineering & Technology
 """
 import os, re
@@ -15,7 +15,7 @@ ILLUS   = os.path.join(BASE, '_illustrations')
 
 # (slug, new_fr_category, new_en_category)
 MAPPING = [
-    # ── BIAIS & HEURISTIQUES ───────────────────────────────────────────────
+    # ── BIASES & HEURISTICS ────────────────────────────────────────────────
     ('ancrage-cognitif',      'Biais & Heuristiques', 'Biases & Heuristics'),
     ('aversion-pertes',       'Biais & Heuristiques', 'Biases & Heuristics'),
     ('biais-confirmation',    'Biais & Heuristiques', 'Biases & Heuristics'),
@@ -25,7 +25,7 @@ MAPPING = [
     ('effet-cadrage',         'Biais & Heuristiques', 'Biases & Heuristics'),
     ('effet-halo',            'Biais & Heuristiques', 'Biases & Heuristics'),
     ('marteau-maslow',        'Biais & Heuristiques', 'Biases & Heuristics'),
-    # ── PSYCHOLOGIE & COMPORTEMENT ─────────────────────────────────────────
+    # ── PSYCHOLOGY & BEHAVIOUR ────────────────────────────────────────────
     ('effet-dunning-kruger',  'Psychologie & Comportement', 'Psychology & Behaviour'),
     ('effet-projecteur',      'Psychologie & Comportement', 'Psychology & Behaviour'),
     ('effet-placebo',         'Psychologie & Comportement', 'Psychology & Behaviour'),
@@ -33,7 +33,7 @@ MAPPING = [
     ('effet-ringelmann',      'Psychologie & Comportement', 'Psychology & Behaviour'),
     ('loi-hick',              'Psychologie & Comportement', 'Psychology & Behaviour'),
     ('loi-miller',            'Psychologie & Comportement', 'Psychology & Behaviour'),
-    # ── ÉPISTÉMOLOGIE ──────────────────────────────────────────────────────
+    # ── EPISTEMOLOGY ───────────────────────────────────────────────────────
     ('cloture-chesterton',    'Épistémologie', 'Epistemology'),
     ('effet-lindy',           'Épistémologie', 'Epistemology'),
     ('ikigai',                'Épistémologie', 'Epistemology'),
@@ -41,7 +41,7 @@ MAPPING = [
     ('loi-brandolini',        'Épistémologie', 'Epistemology'),
     ('principe-hanlon',       'Épistémologie', 'Epistemology'),
     ('rasoir-ockham',         'Épistémologie', 'Epistemology'),
-    # ── ÉCONOMIE & INCITATIONS ─────────────────────────────────────────────
+    # ── ECONOMICS & INCENTIVES ─────────────────────────────────────────────
     ('effet-cobra',           'Économie & Incitations', 'Economics & Incentives'),
     ('fenetre-overton',       'Économie & Incitations', 'Economics & Incentives'),
     ('loi-goodhart',          'Économie & Incitations', 'Economics & Incentives'),
@@ -57,7 +57,7 @@ MAPPING = [
     ('paradoxe-abilene',      'Management & Organisations', 'Management & Organisations'),
     ('principe-peter',        'Management & Organisations', 'Management & Organisations'),
     ('principe-shirky',       'Management & Organisations', 'Management & Organisations'),
-    # ── INGÉNIERIE & TECHNOLOGIE ───────────────────────────────────────────
+    # ── ENGINEERING & TECHNOLOGY ───────────────────────────────────────────
     ('loi-brooks',            'Ingénierie & Technologie', 'Engineering & Technology'),
     ('loi-conway',            'Ingénierie & Technologie', 'Engineering & Technology'),
     ('loi-gall',              'Ingénierie & Technologie', 'Engineering & Technology'),
@@ -114,4 +114,4 @@ for slug, fr_cat, en_cat in MAPPING:
         print(f"  MD  EN  {slug}-en.md → {en_cat}")
         updated += 1
 
-print(f"\n✅ {updated} fichiers mis à jour.")
+print(f"\n✅ {updated} files updated.")

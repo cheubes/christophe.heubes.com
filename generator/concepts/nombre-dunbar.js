@@ -8,20 +8,20 @@ module.exports = {
   render(ctx) {
     const { palette: p } = ctx;
 
-    // Centre légèrement au-dessus du milieu de la zone principale
+    // Centre slightly above the middle of the main area
     const cx = 600;
     const cy = 540;
 
-    // Cercles dessinés du plus grand au plus petit :
-    // chaque cercle intérieur "couvre" le remplissage du précédent.
+    // Circles drawn from largest to smallest:
+    // each inner circle "covers" the fill of the previous one.
     //
-    // cy = 540  →  sommets des cercles :
+    // cy = 540  →  circle tops:
     //   r=385 → y_top = 155
     //   r=285 → y_top = 255
     //   r=185 → y_top = 355
     //   r=90  → y_top = 450
     //
-    // Bandes (zone "top") :
+    // Bands ("top" area):
     //   150 Relations    : y ∈ [155, 255]
     //   50  Amis         : y ∈ [255, 355]
     //   15  Amis proches : y ∈ [355, 450]
@@ -34,7 +34,7 @@ module.exports = {
       { r: 90,  stroke: p.gold,      sw: 3.0 },
     ];
 
-    // numY = baseline du numéro, centré dans la portion haute de chaque bande
+    // numY = number baseline, centred in the upper part of each band
     const bands = [
       { num: '150', grp: 'Relations',    numY: 205, numC: p.muted,     grpC: p.muted  },
       { num: '50',  grp: 'Amis',         numY: 305, numC: p.text,      grpC: p.muted  },
@@ -44,16 +44,16 @@ module.exports = {
 
     let svg = '';
 
-    // Cercles (extérieur → intérieur)
+    // Circles (outer → inner)
     for (const ring of rings) {
       svg += `\n    <circle cx="${cx}" cy="${cy}" r="${ring.r}"
             fill="${p.bg}" stroke="${ring.stroke}" stroke-width="${ring.sw}"/>`;
     }
 
-    // Point central
+    // Centre dot
     svg += `\n    <circle cx="${cx}" cy="${cy}" r="7" fill="${p.gold}"/>`;
 
-    // Labels dans la portion haute de chaque bande
+    // Labels in the upper part of each band
     for (const b of bands) {
       svg += `
     <text x="${cx}" y="${b.numY}" text-anchor="middle"

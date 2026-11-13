@@ -145,7 +145,7 @@ for fp in sorted(glob.glob(os.path.join(ILLUSTRATIONS_DIR, '*.md'))):
         print(f'  ✓ {os.path.basename(fp)}')
         updated += 1
 
-print(f'\n{updated} fichiers mis à jour.')
+print(f'\n{updated} files updated.')
 
 # Verify no em dashes remain (except in citations)
 remaining = []

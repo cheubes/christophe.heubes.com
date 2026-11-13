@@ -6,7 +6,7 @@ const path   = require('path');
 const config = require('./config');
 const { buildSVG } = require('./templates/base.svg');
 
-// Charger tous les concepts (FR + EN)
+// Load all concepts (FR + EN)
 const concepts = [
   require('./concepts/paradoxe-jevons'),
   require('./concepts/nombre-dunbar'),
@@ -98,7 +98,7 @@ const concepts = [
   require('./concepts/principe-postel-en'),
 ];
 
-// Parser les arguments CLI
+// Parse CLI arguments
 const args    = process.argv.slice(2);
 const slug    = args.find(a => a.startsWith('--concept='))?.split('=')[1];
 const targets = slug ? concepts.filter(c => c.id === slug) : concepts;
@@ -109,7 +109,7 @@ if (targets.length === 0) {
   process.exit(1);
 }
 
-// Créer le dossier de sortie
+// Create the output directory
 fs.mkdirSync(config.outputDir, { recursive: true });
 
 function generate(concept) {

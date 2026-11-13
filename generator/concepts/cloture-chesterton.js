@@ -35,7 +35,7 @@ module.exports = {
     <line x1="600" y1="538" x2="600" y2="820"
           stroke="${p.muted}" stroke-width="1" stroke-dasharray="5 7" opacity="0.20"/>`;
 
-    // ── LEFT zone — retirer sans comprendre ───────────────────────────────
+    // ── LEFT zone: remove without understanding ───────────────────────────
     const leftZone = `
     <line x1="238" y1="614" x2="268" y2="644"
           stroke="${p.muted}" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
@@ -48,7 +48,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="12"
           letter-spacing="1" fill="${p.muted}" opacity="0.40">sans comprendre pourquoi</text>`;
 
-    // ── RIGHT zone — comprendre d'abord ──────────────────────────────────
+    // ── RIGHT zone: understand first ──────────────────────────────────────
     const rightZone = `
     <polyline points="918,648 932,664 958,620"
               fill="none" stroke="${p.gold}" stroke-width="3.5"

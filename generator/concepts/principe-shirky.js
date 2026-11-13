@@ -33,7 +33,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="12"
           letter-spacing="1" fill="${p.gold}" opacity="0.55">survit</text>`;
 
-    // ── Top arc: Institution → résout partiellement → Problème ───────────
+    // ── Top arc: Institution → partially solves → Problem ────────────────
     //   Arc from top of c2 curving above to top of c1
     const topArc = `
     <path d="M ${c2.x},${c2.y - r2} C ${c2.x},280 ${c1.x},280 ${c1.x},${c1.y - r1}"
@@ -45,7 +45,7 @@ module.exports = {
           font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
           letter-spacing="1" fill="${p.muted}" opacity="0.55">résout partiellement</text>`;
 
-    // ── Bottom arc: Problème → perpétue → Institution ─────────────────────
+    // ── Bottom arc: Problem → sustains → Institution ──────────────────────
     //   Arc from bottom of c1 curving below to bottom of c2
     const bottomArc = `
     <path d="M ${c1.x},${c1.y + r1} C ${c1.x},740 ${c2.x},740 ${c2.x},${c2.y + r2}"

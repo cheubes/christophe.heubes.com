@@ -1,14 +1,14 @@
 /**
- * Axes XY avec flèches et labels.
+ * XY axes with arrows and labels.
  * @param {object} opts
- *   x, y         : origine des axes
- *   xLen, yLen   : longueur des axes
- *   xLabel       : label axe X
- *   yLabel       : label axe Y
- *   color        : couleur (défaut muted)
+ *   x, y         : axes origin
+ *   xLen, yLen   : axes length
+ *   xLabel       : X axis label
+ *   yLabel       : Y axis label
+ *   color        : color (default: muted)
  */
 function axis({ x, y, xLen, yLen, xLabel = '', yLabel = '', color = '#8A9BB0' }) {
-  const aw = 10; // taille flèche
+  const aw = 10; // arrow size
   return `
   <defs>
     <marker id="arrowhead-${color.replace('#','')}" markerWidth="10" markerHeight="7"
@@ -16,11 +16,11 @@ function axis({ x, y, xLen, yLen, xLabel = '', yLabel = '', color = '#8A9BB0' })
       <polygon points="0 0, 10 3.5, 0 7" fill="${color}"/>
     </marker>
   </defs>
-  <!-- Axe X -->
+  <!-- X axis -->
   <line x1="${x}" y1="${y}" x2="${x + xLen}" y2="${y}"
         stroke="${color}" stroke-width="2"
         marker-end="url(#arrowhead-${color.replace('#','')})"/>
-  <!-- Axe Y -->
+  <!-- Y axis -->
   <line x1="${x}" y1="${y}" x2="${x}" y2="${y - yLen}"
         stroke="${color}" stroke-width="2"
         marker-end="url(#arrowhead-${color.replace('#','')})"/>

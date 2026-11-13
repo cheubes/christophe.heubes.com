@@ -1,43 +1,43 @@
-# Modèle de données
+# Data model
 
-## Vue d'ensemble
+## Overview
 
-Le site n'a pas de backend ni de base de données : le "modèle de données" désigne ici la structure des fichiers de contenu Jekyll et leurs conventions. Deux natures de contenu coexistent :
-- la page de profil (`index.md` / `index-en.md`) : contenu figé, porté par des champs de front matter dédiés (pas une entité réutilisable, un seul exemplaire par langue) ;
-- la collection `illustrations` : une vraie entité répétée, décrite ci-dessous.
+The site has no backend or database: the "data model" here refers to the structure of the Jekyll content files and their conventions. Two kinds of content coexist:
+- the profile page (`index.md` / `index-en.md`): fixed content, carried by dedicated front matter fields (not a reusable entity, a single instance per language);
+- the `illustrations` collection: an actual repeated entity, described below.
 
-## Entité Illustration
+## Illustration entity
 
-Portée par la collection Jekyll `illustrations` (voir `_config.yml`, dossier `_illustrations/`).
+Backed by the Jekyll `illustrations` collection (see `_config.yml`, `_illustrations/` folder).
 
-### Attributs (front matter)
+### Attributes (front matter)
 
-| Attribut | Rôle |
+| Attribute | Role |
 |---|---|
-| `layout` | Toujours `illustration` (voir `_layouts/illustration.html`) |
-| `title` | Titre affiché du concept |
-| `slug` | Identifiant technique, kebab-case, commun aux deux langues (relie SVG, générateur et page) |
-| `category` | Libellé de catégorie, traduit par langue (voir "Taxonomie des catégories") |
-| `tagline` | Phrase courte résumant le concept, affichée sous le titre |
-| `description` | Description longue, utilisée pour le SEO (meta description) |
-| `lang` | `fr` ou `en` |
-| `ref` | Identifiant reliant les deux versions linguistiques d'une même illustration (ex : `illustration-ikigai`) |
-| `flag` | Emoji de drapeau utilisé par le sélecteur de langue |
-| `permalink` | URL finale de la page (`/illustrations/<slug>/` ou `/en/illustrations/<slug>/`) |
+| `layout` | Always `illustration` (see `_layouts/illustration.html`) |
+| `title` | Displayed title of the concept |
+| `slug` | Technical identifier, kebab-case, shared by both languages (links the SVG, the generator and the page) |
+| `category` | Category label, translated per language (see "Category taxonomy") |
+| `tagline` | Short sentence summarizing the concept, displayed below the title |
+| `description` | Long description, used for SEO (meta description) |
+| `lang` | `fr` or `en` |
+| `ref` | Identifier linking the two language versions of the same illustration (e.g. `illustration-ikigai`) |
+| `flag` | Flag emoji used by the language switcher |
+| `permalink` | Final URL of the page (`/illustrations/<slug>/` or `/en/illustrations/<slug>/`) |
 
-Le contenu Markdown du fichier (après le front matter) porte le texte explicatif, structuré en sections (voir `screens/technical-drawing.md` pour la structure attendue).
+The Markdown content of the file (after the front matter) holds the explanatory text, structured in sections (see `screens/technical-drawing.md` for the expected structure).
 
-### Convention de nommage des fichiers
+### File naming convention
 
-- Contenu : `_illustrations/<slug>.md` (français) et `_illustrations/<slug>-en.md` (anglais).
-- SVG : `assets/illustrations/<slug>.svg` (français) et `assets/illustrations/<slug>-en.svg` (anglais).
-- Génération : `generator/concepts/<slug>.js` (français) et `generator/concepts/<slug>-en.js` (anglais).
+- Content: `_illustrations/<slug>.md` (French) and `_illustrations/<slug>-en.md` (English).
+- SVG: `assets/illustrations/<slug>.svg` (French) and `assets/illustrations/<slug>-en.svg` (English).
+- Generation: `generator/concepts/<slug>.js` (French) and `generator/concepts/<slug>-en.js` (English).
 
-Le `slug` est la clé qui relie ces trois fichiers : renommer un concept implique de renommer les trois de façon cohérente.
+The `slug` is the key linking these three files: renaming a concept means renaming all three consistently.
 
-### Taxonomie des catégories
+### Category taxonomy
 
-Catégories existantes (français / anglais) :
+Existing categories (French / English):
 - Biais & Heuristiques / Biases & Heuristics
 - Économie & Incitations / Economics & Incentives
 - Ingénierie & Technologie / Engineering & Technology
@@ -45,20 +45,20 @@ Catégories existantes (français / anglais) :
 - Management & Organisations
 - Psychologie & Comportement / Psychology & Behaviour
 
-La catégorie n'est pas un identifiant technique : c'est un libellé affiché tel quel dans la galerie (voir `screens/gallery.md`), traduit par langue. Ajouter une catégorie n'exige pas de fichier de configuration séparé, elle est déduite dynamiquement des illustrations existantes.
+The category is not a technical identifier: it is a label displayed as-is in the gallery (see `screens/gallery.md`), translated per language. Adding a category requires no separate configuration file, it is derived dynamically from the existing illustrations.
 
-### Pipeline de génération (concept → SVG → page)
+### Generation pipeline (concept → SVG → page)
 
-1. Un fichier `generator/concepts/<slug>.js` décrit le concept (id, title, category, tagline, description) et une fonction `render()` qui produit le SVG.
-2. `node generator/index.js --concept=<slug>` génère `assets/illustrations/<slug>.svg` (et des exports PNG, hors périmètre du rendu du site).
-3. Un fichier `_illustrations/<slug>.md` est créé manuellement, avec un front matter cohérent avec le concept, et le texte explicatif en Markdown.
-4. Les fichiers générés (SVG/PNG) et le Markdown sont committés ensemble.
+1. A `generator/concepts/<slug>.js` file describes the concept (id, title, category, tagline, description) and a `render()` function that produces the SVG.
+2. `node generator/index.js --concept=<slug>` generates `assets/illustrations/<slug>.svg` (and PNG exports, outside the scope of the site rendering).
+3. An `_illustrations/<slug>.md` file is created manually, with a front matter consistent with the concept, and the explanatory text in Markdown.
+4. The generated files (SVG/PNG) and the Markdown are committed together.
 
-Voir `generator/README.md` pour le détail des commandes et `technical-specifications.md` pour la pile technique du générateur.
+See `generator/README.md` for the command details and `technical-specifications.md` for the generator's tech stack.
 
-### Contraintes de validation
+### Validation constraints
 
-- Un `slug` est unique et identique entre la version française et anglaise d'une même illustration.
-- Un `ref` est unique par illustration et partagé entre ses deux versions linguistiques.
-- Une illustration existant dans une seule langue est valide (voir "Bilinguisme" dans `functional-specifications.md`) : elle n'apparaît alors que dans cette langue.
-- `category` doit être traduite de façon cohérente entre les deux langues (même regroupement conceptuel, libellé différent).
+- A `slug` is unique and identical between the French and English versions of the same illustration.
+- A `ref` is unique per illustration and shared between its two language versions.
+- An illustration existing in a single language is valid (see "Bilingualism" in `functional-specifications.md`): it then only appears in that language.
+- `category` must be translated consistently between the two languages (same conceptual grouping, different label).
