@@ -31,7 +31,7 @@
             <a href="{{ ill.url }}"
                class="illustration-card"
                data-category="{{ ill.category | slugify: 'latin' }}"
-               aria-label="{{ ill.title }} : {{ ill.tagline }}">
+               aria-label="{{ ill.title | escape }} : {{ ill.tagline | escape }}">
               <div class="ill-card-img-wrap">
                 <img src="/assets/illustrations/{{ ill.slug }}{% if ill.lang == 'en' %}-en{% endif %}.svg"
                      alt="{{ ill.title }}"

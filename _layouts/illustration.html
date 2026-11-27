@@ -24,7 +24,7 @@
 
         <div class="ill-svg-wrapper">
           <img src="/assets/illustrations/{{ page.slug }}{% if page.lang == 'en' %}-en{% endif %}.svg"
-               alt="{{ page.title }} : {{ page.tagline }}"
+               alt="{{ page.title | escape }} : {{ page.tagline | escape }}"
                class="ill-svg-img" width="100%" loading="eager"/>
         </div>
 
