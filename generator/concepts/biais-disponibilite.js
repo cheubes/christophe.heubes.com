@@ -5,66 +5,55 @@ module.exports = {
   title:       'Biais de disponibilité',
   category:    'Biais & Heuristiques',
   tagline:     "On juge probable ce qui vient facilement à l'esprit.",
-  description: "Heuristique décrite par Kahneman et Tversky (1973) : on évalue la probabilité d'un événement selon la facilité avec laquelle des exemples nous viennent à l'esprit — pas selon les statistiques réelles.",
+  description: "Heuristique décrite par Tversky et Kahneman (1973) : on évalue la probabilité d'un événement selon la facilité avec laquelle des exemples nous viennent à l'esprit, et non selon les statistiques réelles.",
 
   render(ctx) {
-    const { palette: p } = ctx;
+    const { palette: p, font } = ctx;
 
-    const bx = 460, maxW = 490, barH = 30, innerGap = 14, exGap = 90;
+    // Fixed seed so that the school of fish is identical on every generation
+    let seed = 5;
+    const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
 
-    // Column headers
-    const headers = `
-    <text x="260" y="240" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="500" font-size="13"
-          letter-spacing="2" fill="${p.muted}" opacity="0.40">EXEMPLE</text>
-    <rect x="${bx}" y="220" width="16" height="12" rx="2"
-          fill="${p.gold}" fill-opacity="0.30" stroke="${p.gold}" opacity="0.55"/>
-    <text x="${bx + 24}" y="231" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-weight="500" font-size="12"
-          letter-spacing="1" fill="${p.gold}" opacity="0.60">RISQUE PERÇU</text>
-    <rect x="${bx + 180}" y="220" width="16" height="12" rx="2"
-          fill="${p.muted}" fill-opacity="0.22" stroke="${p.muted}" opacity="0.40"/>
-    <text x="${bx + 204}" y="231" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-weight="500" font-size="12"
-          letter-spacing="1" fill="${p.muted}" opacity="0.45">RISQUE RÉEL</text>`;
+    const surface = 400;
 
-    const examples = [
-      { label: 'Crash d\'avion',      perceived: 0.78, real: 0.07 },
-      { label: 'Attaque de requin',   perceived: 0.62, real: 0.01 },
-      { label: 'Accident de voiture', perceived: 0.32, real: 0.90 },
-    ];
+    const fish = (x, y, size, color, opacity, direction = 1) => {
+      const w = size, h = size * 0.45, stroke = Math.max(1.5, size / 40);
+      const tailX = x - direction * (w / 2 + h * 0.8);
+      return `
+    <g opacity="${opacity}">
+      <ellipse cx="${x}" cy="${y}" rx="${w / 2}" ry="${h / 2}"
+               fill="${color}" fill-opacity="0.35" stroke="${color}" stroke-width="${stroke}"/>
+      <polygon points="${x - direction * w / 2},${y} ${tailX},${y - h * 0.55} ${tailX},${y + h * 0.55}"
+               fill="${color}" fill-opacity="0.35" stroke="${color}" stroke-width="${stroke}" stroke-linejoin="round"/>
+      <circle cx="${x + direction * w * 0.3}" cy="${y - h * 0.1}" r="${Math.max(2, size / 30)}" fill="${color}"/>
+    </g>`;
+    };
 
-    let bars = '';
-    let y = 290;
-    for (const ex of examples) {
-      const pw = Math.round(maxW * ex.perceived);
-      const rw = Math.round(maxW * ex.real);
-      const midY = y + barH + innerGap / 2;
-
-      bars += `
-      <text x="${bx - 16}" y="${midY + 5}" text-anchor="end"
-            font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
-            fill="${p.muted}" opacity="0.55">${ex.label}</text>
-      <rect x="${bx}" y="${y}" width="${pw}" height="${barH}" rx="4"
-            fill="${p.gold}" fill-opacity="0.22" stroke="${p.gold}" stroke-width="1" opacity="0.55"/>
-      <rect x="${bx}" y="${y + barH + innerGap}" width="${rw}" height="${barH}" rx="4"
-            fill="${p.muted}" fill-opacity="0.18" stroke="${p.muted}" stroke-width="1" opacity="0.38"/>`;
-
-      y += barH * 2 + innerGap + exGap;
+    let school = '';
+    for (let i = 0; i < 46; i++) {
+      const x = Math.round(200 + random() * 800), y = Math.round(620 + random() * 310);
+      school += fish(x, y, 46, p.muted, 0.55, random() < 0.5 ? 1 : -1);
     }
 
-    // Insight note for car accident (counterexample)
-    const noteY = y - exGap + 18;
-    const note = `
-    <text x="${bx}" y="${noteY}" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-weight="400" font-size="12"
-          font-style="italic" fill="${p.muted}" opacity="0.30">← les accidents de voiture sont sous-estimés car moins saillants</text>`;
+    let waves = `M160,${surface}`;
+    for (let i = 0; i < 30; i++) waves += ' q14.7,-6 29.3,0';
 
-    const caption = `
-    <text x="600" y="858" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
-          letter-spacing="1.5" fill="${p.muted}" opacity="0.32">Ce qui est mémorable n'est pas ce qui est probable.</text>`;
-
-    return headers + bars + note + caption;
+    return `
+    <rect x="160" y="${surface}" width="880" height="${960 - surface}" fill="${p.muted}" opacity="0.06"/>
+    <path d="${waves}" fill="none" stroke="${p.text}" stroke-width="2" opacity="0.55"/>
+    <line x1="640" y1="230" x2="640" y2="452" stroke="${p.text}" stroke-width="1.5" opacity="0.8"/>
+    <path d="M640,452 v18 a12,12 0 0 1 -24,0"
+          fill="none" stroke="${p.text}" stroke-width="3" stroke-linecap="round"/>`
+      + fish(600, 480, 170, p.gold, 1)
+      + school + `
+    <text x="760" y="470"
+          font-family="${font}" font-weight="700" font-size="19"
+          letter-spacing="2" fill="${p.gold}">CE QUI REMONTE</text>
+    <text x="760" y="498"
+          font-family="${font}" font-size="16"
+          letter-spacing="1.5" fill="${p.gold}" opacity="0.8">rare, frappant</text>
+    <text x="200" y="600"
+          font-family="${font}" font-weight="700" font-size="19"
+          letter-spacing="2" fill="${p.muted}">CE QUI EST FRÉQUENT</text>`;
   },
 };
