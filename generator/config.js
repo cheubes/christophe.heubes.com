@@ -14,6 +14,7 @@ module.exports = {
   },
   fonts: {
     family:  'Ubuntu',
+    stack:   "'Ubuntu', 'Helvetica Neue', Arial, sans-serif",
     regular: 400,
     medium:  500,
     bold:    700,

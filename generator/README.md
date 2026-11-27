@@ -20,16 +20,16 @@ Download the 3 TTF files from Google Fonts and put them in `generator/fonts/`:
 
 | File | URL |
 |---|---|
-| `Ubuntu-Regular.ttf` | https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Regular.ttf |
-| `Ubuntu-Medium.ttf`  | https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Medium.ttf  |
-| `Ubuntu-Bold.ttf`    | https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Bold.ttf    |
+| `Ubuntu-Regular.ttf` | https://github.com/google/fonts/raw/main/ufl/ubuntu/Ubuntu-Regular.ttf |
+| `Ubuntu-Medium.ttf`  | https://github.com/google/fonts/raw/main/ufl/ubuntu/Ubuntu-Medium.ttf  |
+| `Ubuntu-Bold.ttf`    | https://github.com/google/fonts/raw/main/ufl/ubuntu/Ubuntu-Bold.ttf    |
 
 Or in one go from `generator/fonts/`:
 
 ```bash
-curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Regular.ttf" -o Ubuntu-Regular.ttf
-curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Medium.ttf"  -o Ubuntu-Medium.ttf
-curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/static/Ubuntu-Bold.ttf"    -o Ubuntu-Bold.ttf
+curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/Ubuntu-Regular.ttf" -o Ubuntu-Regular.ttf
+curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/Ubuntu-Medium.ttf"  -o Ubuntu-Medium.ttf
+curl -sL "https://github.com/google/fonts/raw/main/ufl/ubuntu/Ubuntu-Bold.ttf"    -o Ubuntu-Bold.ttf
 ```
 
 ## Usage
