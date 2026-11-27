@@ -4,77 +4,57 @@ module.exports = {
   id:          'aversion-pertes-en',
   title:       'Loss Aversion',
   category:    'Biases & Heuristics',
-  tagline:     "Losing £100 hurts more than gaining £100 feels good.",
+  tagline:     "Losing $100 hurts more than gaining $100 feels good.",
   description: "Principle from prospect theory (Kahneman &amp; Tversky): losses have roughly twice the psychological impact of equivalent gains.",
 
   render(ctx) {
-    const { palette: p } = ctx;
+    const { palette: p, font } = ctx;
 
-    const ox = 600, oy = 540;
+    const beamY = 470, leftX = 330, rightX = 870, panY = 700;
 
-    const axes = `
-    <line x1="165" y1="${oy}" x2="1030" y2="${oy}"
-          stroke="${p.muted}" stroke-width="1.5" opacity="0.30"/>
-    <polygon points="1030,${oy - 6} 1030,${oy + 6} 1048,${oy}"
-             fill="${p.muted}" opacity="0.30"/>
-    <line x1="${ox}" y1="820" x2="${ox}" y2="240"
-          stroke="${p.muted}" stroke-width="1.5" opacity="0.30"/>
-    <polygon points="${ox - 6},240 ${ox + 6},240 ${ox},222"
-             fill="${p.muted}" opacity="0.30"/>
-    <text x="180" y="${oy - 12}" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-weight="500" font-size="14"
-          letter-spacing="1.5" fill="${p.muted}" opacity="0.45">← LOSSES</text>
-    <text x="1020" y="${oy - 12}" text-anchor="end"
-          font-family="Ubuntu, sans-serif" font-weight="500" font-size="14"
-          letter-spacing="1.5" fill="${p.gold}" opacity="0.55">GAINS →</text>
-    <text x="${ox + 14}" y="240" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-size="12"
-          letter-spacing="1" fill="${p.muted}" opacity="0.35">VALUE ↑</text>
-    <text x="${ox + 14}" y="820" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-size="12"
-          letter-spacing="1" fill="${p.muted}" opacity="0.35">PAIN ↓</text>`;
+    const pan = (x, color) => `
+    <line x1="${x}" y1="${beamY}" x2="${x - 110}" y2="${panY}"
+          stroke="${color}" stroke-width="1.5" opacity="0.6"/>
+    <line x1="${x}" y1="${beamY}" x2="${x + 110}" y2="${panY}"
+          stroke="${color}" stroke-width="1.5" opacity="0.6"/>
+    <path d="M${x - 130},${panY} Q${x},${panY + 60} ${x + 130},${panY}"
+          fill="${color}" fill-opacity="0.18" stroke="${color}" stroke-width="2.5" opacity="0.9"/>`;
 
-    const curve = `
-    <path d="M 175,795 C 300,720 460,620 ${ox},${oy} C 720,460 870,400 1040,360"
-          fill="none" stroke="${p.gold}" stroke-width="3" opacity="0.75"/>`;
+    const coin = (x, label, color) => {
+      const y = panY - 22, r = 46;
+      return `
+    <circle cx="${x}" cy="${y}" r="${r}" fill="${p.bg}"/>
+    <circle cx="${x}" cy="${y}" r="${r}"
+            fill="${color}" fill-opacity="0.22" stroke="${color}" stroke-width="3" opacity="0.95"/>
+    <circle cx="${x}" cy="${y}" r="${r - 9}"
+            fill="none" stroke="${color}" stroke-width="1.5" opacity="0.5"/>
+    <text x="${x}" y="${y + 8}" text-anchor="middle"
+          font-family="${font}" font-weight="700" font-size="21" fill="${color}">${label}</text>`;
+    };
 
-    const gainX = ox + 174, gainY = 425;
-    const lossX = ox - 174, lossY = 745;
-
-    const annotations = `
-    <line x1="${ox}" y1="${oy}" x2="${gainX}" y2="${oy}"
-          stroke="${p.muted}" stroke-width="1" opacity="0.20" stroke-dasharray="3 4"/>
-    <line x1="${gainX}" y1="${oy}" x2="${gainX}" y2="${gainY}"
-          stroke="${p.muted}" stroke-width="1" opacity="0.20" stroke-dasharray="3 4"/>
-    <text x="${gainX + 14}" y="${(oy + gainY) / 2 + 5}" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-weight="700" font-size="18"
-          fill="${p.gold}" opacity="0.70">+ ${oy - gainY}</text>
-    <text x="${gainX + 14}" y="${(oy + gainY) / 2 + 24}" text-anchor="start"
-          font-family="Ubuntu, sans-serif" font-size="12"
-          letter-spacing="1" fill="${p.gold}" opacity="0.42">pts of pleasure</text>
-
-    <line x1="${ox}" y1="${oy}" x2="${lossX}" y2="${oy}"
-          stroke="${p.muted}" stroke-width="1" opacity="0.20" stroke-dasharray="3 4"/>
-    <line x1="${lossX}" y1="${oy}" x2="${lossX}" y2="${lossY}"
-          stroke="${p.muted}" stroke-width="1" opacity="0.20" stroke-dasharray="3 4"/>
-    <text x="${lossX - 14}" y="${(oy + lossY) / 2 + 5}" text-anchor="end"
-          font-family="Ubuntu, sans-serif" font-weight="700" font-size="18"
-          fill="${p.muted}" opacity="0.60">− ${lossY - oy}</text>
-    <text x="${lossX - 14}" y="${(oy + lossY) / 2 + 24}" text-anchor="end"
-          font-family="Ubuntu, sans-serif" font-size="12"
-          letter-spacing="1" fill="${p.muted}" opacity="0.38">pts of pain</text>`;
-
-    const ratio = `
-    <text x="600" y="860" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="700" font-size="22"
-          fill="${p.muted}" opacity="0.50">× 2.25</text>
-    <text x="600" y="886" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="400" font-size="13"
-          letter-spacing="1.5" fill="${p.muted}" opacity="0.32">the impact of a loss vs an equivalent gain</text>`;
-
-    const origin = `
-    <circle cx="${ox}" cy="${oy}" r="5" fill="${p.muted}" opacity="0.40"/>`;
-
-    return axes + curve + annotations + origin + ratio;
+    return `
+    <text x="600" y="300" text-anchor="middle"
+          font-family="${font}" font-weight="500" font-size="19"
+          letter-spacing="2" fill="${p.muted}" opacity="0.85">IT TAKES TWO GAINS TO OFFSET ONE LOSS</text>
+    <polygon points="600,${beamY + 6} 548,900 652,900"
+             fill="${p.muted}" fill-opacity="0.15" stroke="${p.muted}" stroke-width="2" opacity="0.8"/>
+    <line x1="470" y1="900" x2="730" y2="900"
+          stroke="${p.muted}" stroke-width="2" opacity="0.6"/>
+    <line x1="${leftX}" y1="${beamY}" x2="${rightX}" y2="${beamY}"
+          stroke="${p.text}" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+    <circle cx="600" cy="${beamY}" r="10"
+            fill="${p.bg}" stroke="${p.text}" stroke-width="3" opacity="0.9"/>`
+      + pan(leftX, p.muted)
+      + pan(rightX, p.gold)
+      + coin(leftX, '−$100', p.muted)
+      + coin(rightX - 50, '+$100', p.gold)
+      + coin(rightX + 50, '+$100', p.gold)
+      + `
+    <text x="${leftX}" y="${panY + 100}" text-anchor="middle"
+          font-family="${font}" font-weight="500" font-size="18"
+          letter-spacing="2" fill="${p.muted}" opacity="0.9">ONE LOSS</text>
+    <text x="${rightX}" y="${panY + 100}" text-anchor="middle"
+          font-family="${font}" font-weight="500" font-size="18"
+          letter-spacing="2" fill="${p.gold}" opacity="0.9">TWO GAINS</text>`;
   },
 };
