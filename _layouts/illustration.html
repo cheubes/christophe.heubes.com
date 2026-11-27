@@ -20,12 +20,7 @@
           {% endif %}
         </nav>
 
-        <div class="ill-meta">
-          <span class="ill-category-badge">{{ page.category }}</span>
-        </div>
-
         <h1 class="ill-title">{{ page.title }}</h1>
-        <p class="ill-tagline">{{ page.tagline }}</p>
 
         <div class="ill-svg-wrapper">
           <img src="/assets/illustrations/{{ page.slug }}{% if page.lang == 'en' %}-en{% endif %}.svg"

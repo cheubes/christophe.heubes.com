@@ -417,38 +417,17 @@ section {
     }
   }
 
-  .ill-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .ill-category-badge {
-    background: @ill-bg;
-    color: @ill-gold;
-    border: 1.5px solid @ill-gold;
-    border-radius: 4px;
-    padding: 0.2rem 0.65rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
+  // Title, tagline and category are drawn in the SVG; the h1 stays for screen readers and SEO
   .ill-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: @blue;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.15;
-  }
-
-  .ill-tagline {
-    font-size: 1.05rem;
-    color: @grey;
-    font-style: italic;
-    margin-bottom: 2rem;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .ill-svg-wrapper {
