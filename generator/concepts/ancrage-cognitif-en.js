@@ -5,7 +5,7 @@ module.exports = {
   title:       'Anchoring Bias',
   category:    'Biases & Heuristics',
   tagline:     "The first number heard distorts all those that follow.",
-  description: "Cognitive bias whereby the first piece of information received (the anchor) disproportionately influences subsequent estimates and judgements.",
+  description: "Cognitive bias whereby the first piece of information received (the anchor) disproportionately influences subsequent estimates and judgments.",
 
   render(ctx) {
     const { palette: p, font } = ctx;

@@ -28,6 +28,7 @@ Static site, no user accounts, no application backend, bilingual French / Englis
 - Each piece of content (profile page, illustration) is a separate file per language, linked by a common `ref` (see `data-model.md`).
 - Content not translated into a language does not appear in that language (no automatic fallback to the other language).
 - The language switcher (sidebar / mobile footer) only offers the languages in which the current content actually exists (see `style-guide.md`).
+- English content uses American spelling, and amounts are expressed in US dollars (euros in French content).
 
 ### Navigation
 
