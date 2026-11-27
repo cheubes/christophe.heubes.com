@@ -17,28 +17,28 @@ permalink: /en/illustrations/ancrage-cognitif/
 
 Once an "anchor" is set, whether relevant or arbitrary, all subsequent adjustments remain close to it. Even when we consciously know the anchor is irrelevant, it continues to influence the final outcome.
 
-> "People make estimates by starting from an initial value that is adjusted to yield the final answer. Adjustments are typically insufficient." — Kahneman & Tversky, 1974
+> The anchor doesn't need to be credible to work.
 
 ## Why it matters
 
 Anchoring is one of the most robust and exploited cognitive biases:
 
-**In negotiation**: the first offer placed on the table (even an absurd one) sets the reference frame. A seller who opens at £120,000 makes £90,000 seem "reasonable": even if the property is worth £70,000.
+**In negotiation**: the first offer placed on the table (even an absurd one) sets the reference frame. A seller who opens at £120,000 makes £90,000 seem "reasonable", even if the property is worth £70,000.
 
 **In retail**: displaying a "struck-through" price (old price) before the promotional price directly exploits anchoring. The perception of the discount depends on the anchor, not the real value.
 
 **In medicine**: the first diagnosis given by a doctor acts as an anchor for all subsequent ones. Diagnostic errors often persist because no one questions the initial anchor.
 
-**In management**: targets set at the start of the year act as anchors for year-end reviews, even when the context has radically changed.
+## Examples
 
-## Concrete examples
+**The lottery wheel experiment**: Kahneman and Tversky asked subjects to spin a wheel (rigged to stop at 10 or 65), then estimate the percentage of African countries in the UN. The group that got 65 gave a median estimate of 45%, versus 25% for the group that got 10.
 
-**The lottery wheel experiment**: Kahneman and Tversky asked subjects to spin a wheel (rigged to stop at 10 or 65), then estimate the percentage of African countries in the UN. The group that got 65 gave an average of 45%, versus 25% for the group that got 10.
+**Judges and dice**: Englich, Mussweiler and Strack (2006) had experienced German judges roll loaded dice (landing on 3 or 9) before sentencing a shoplifting case. Those who rolled 9 handed down nearly 8 months in prison on average, versus about 5 months for those who rolled 3.
 
-**Salary negotiations**: in many recruitment processes, whoever announces a number first (candidate or employer) anchors the negotiation. Revealing your current salary immediately fixes the discussion range.
+## Counter-measures
 
-**Fines and penalties**: the initial amount of a fine, even an absurd one, acts as an anchor in reduction negotiations. Courts do the same with damages claims.
+**Estimate first**: generate your own estimate before hearing others'.
 
-**Counter-measures**: generate your own estimate before hearing others', deliberately expose several alternative ranges, and create decision procedures where the initial anchor is not visible (e.g., sealed-bid auctions).
+**Multiply the references**: deliberately expose several alternative ranges.
 
-> The anchor doesn't need to be credible to work.
+**Hide the anchor**: create decision procedures where the initial anchor is not visible (e.g., sealed-bid auctions).

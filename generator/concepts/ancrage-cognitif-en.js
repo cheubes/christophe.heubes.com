@@ -8,81 +8,66 @@ module.exports = {
   description: "Cognitive bias whereby the first piece of information received (the anchor) disproportionately influences subsequent estimates and judgements.",
 
   render(ctx) {
-    const { palette: p } = ctx;
+    const { palette: p, font } = ctx;
 
-    const toX = v => 165 + v * 870 / 1000;
-    const axYA = 390, axYB = 660;
+    const toX = v => 165 + v * 0.87;
+    const trueValue = 500;
+    const xTrue = toX(trueValue);
 
-    const makeAxis = (y) => {
-      let ticks = '';
-      for (const v of [0, 200, 400, 600, 800, 1000]) {
-        ticks += `
-        <line x1="${toX(v)}" y1="${y - 5}" x2="${toX(v)}" y2="${y + 5}"
-              stroke="${p.muted}" stroke-width="1.5" opacity="0.25"/>
-        <text x="${toX(v)}" y="${y + 20}" text-anchor="middle"
-              font-family="Ubuntu, sans-serif" font-size="11"
-              fill="${p.muted}" opacity="0.30">${v}</text>`;
+    // Each adjustment halves the previous one, so the estimate stops short of the true value
+    const row = (y, anchorValue, direction, color, opacity, title, titleAnchor) => {
+      let value = anchorValue, hops = '';
+      for (const step of [140, 70, 35]) {
+        const next = value + direction * step;
+        const x0 = toX(value), x1 = toX(next);
+        const midX = (x0 + x1) / 2, controlY = y - 6 - (22 + step * 0.45) * 2;
+        const tipX = x1 - direction * 4, tipY = y - 16;
+        const dx = tipX - midX, dy = tipY - controlY, length = Math.hypot(dx, dy);
+        const ux = dx / length, uy = dy / length;
+        const baseX = tipX - ux * 12, baseY = tipY - uy * 12;
+        hops += `
+    <path d="M${x0},${y - 16} Q${midX},${controlY} ${baseX},${baseY}"
+          fill="none" stroke="${color}" stroke-width="2" opacity="${opacity * 0.75}"/>
+    <polygon points="${tipX},${tipY} ${baseX - uy * 6},${baseY + ux * 6} ${baseX + uy * 6},${baseY - ux * 6}"
+             fill="${color}" opacity="${opacity}"/>`;
+        value = next;
       }
-      return `<line x1="165" y1="${y}" x2="1035" y2="${y}"
-          stroke="${p.muted}" stroke-width="1.5" opacity="0.25"/>` + ticks;
+
+      const xAnchor = toX(anchorValue), xEnd = toX(value);
+      const gap0 = direction > 0 ? xEnd + 18 : xTrue + 4;
+      const gap1 = direction > 0 ? xTrue - 4 : xEnd - 18;
+      const titleX = titleAnchor === 'end' ? 1035 : 165;
+
+      return `
+    <text x="${titleX}" y="${y - 140}" text-anchor="${titleAnchor}"
+          font-family="${font}" font-weight="500" font-size="19"
+          letter-spacing="2" fill="${color}" opacity="${opacity}">${title}</text>
+    <line x1="165" y1="${y}" x2="1035" y2="${y}"
+          stroke="${p.muted}" stroke-width="1.5" opacity="0.35"/>
+    <rect x="${xAnchor - 9}" y="${y - 9}" width="18" height="18"
+          fill="${color}" opacity="${opacity}" transform="rotate(45 ${xAnchor} ${y})"/>
+    <text x="${xAnchor}" y="${y + 40}" text-anchor="middle"
+          font-family="${font}" font-weight="700" font-size="18"
+          fill="${color}" opacity="${opacity}">ANCHOR: ${anchorValue}</text>${hops}
+    <circle cx="${xEnd}" cy="${y}" r="13"
+            fill="${color}" fill-opacity="0.6" stroke="${color}" stroke-width="2" opacity="${opacity}"/>
+    <text x="${xEnd}" y="${y + 40}" text-anchor="middle"
+          font-family="${font}" font-weight="700" font-size="18"
+          fill="${color}" opacity="${opacity}">${value}</text>
+    <path d="M${gap0},${y + 54} V${y + 70} M${gap0},${y + 62} H${gap1} M${gap1},${y + 54} V${y + 70}"
+          fill="none" stroke="${p.text}" stroke-width="1.5" opacity="0.6"/>
+    <text x="${(gap0 + gap1) / 2}" y="${y + 94}" text-anchor="middle"
+          font-family="${font}" font-weight="500" font-size="17"
+          letter-spacing="2" fill="${p.text}" opacity="0.75">GAP</text>`;
     };
 
-    const anchA = 80, estA = 165;
-    const xAnchA = toX(anchA), xEstA = toX(estA);
-
-    const scenarioA = `
-    <text x="600" y="240" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="500" font-size="14"
-          letter-spacing="2" fill="${p.muted}" opacity="0.45">SCENARIO A — LOW ANCHOR</text>
-    <line x1="${xAnchA}" y1="${axYA - 80}" x2="${xAnchA}" y2="${axYA}"
-          stroke="${p.muted}" stroke-width="1.5" opacity="0.35" stroke-dasharray="4 3"/>
-    <polygon points="${xAnchA - 8},${axYA - 80} ${xAnchA + 8},${axYA - 80} ${xAnchA},${axYA - 64}"
-             fill="${p.muted}" opacity="0.50"/>
-    <text x="${xAnchA}" y="${axYA - 88}" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="700" font-size="20"
-          fill="${p.muted}" opacity="0.65">ANCHOR: ${anchA}</text>
-    <line x1="${xAnchA}" y1="${axYA}" x2="${xEstA - 12}" y2="${axYA}"
-          stroke="${p.muted}" stroke-width="1.5" opacity="0.20" stroke-dasharray="3 3"/>
-    <polygon points="${xEstA - 12},${axYA - 5} ${xEstA - 12},${axYA + 5} ${xEstA},${axYA}"
-             fill="${p.muted}" opacity="0.30"/>
-    <circle cx="${xEstA}" cy="${axYA}" r="14"
-            fill="${p.muted}" fill-opacity="0.35" stroke="${p.muted}" stroke-width="2" opacity="0.60"/>
-    <text x="${xEstA}" y="${axYA + 40}" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="700" font-size="18"
-          fill="${p.muted}" opacity="0.60">ESTIMATE: ${estA}</text>`;
-
-    const anchB = 920, estB = 840;
-    const xAnchB = toX(anchB), xEstB = toX(estB);
-
-    const scenarioB = `
-    <text x="600" y="510" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="500" font-size="14"
-          letter-spacing="2" fill="${p.gold}" opacity="0.50">SCENARIO B — HIGH ANCHOR</text>
-    <line x1="${xAnchB}" y1="${axYB + 80}" x2="${xAnchB}" y2="${axYB}"
-          stroke="${p.gold}" stroke-width="1.5" opacity="0.45" stroke-dasharray="4 3"/>
-    <polygon points="${xAnchB - 8},${axYB + 80} ${xAnchB + 8},${axYB + 80} ${xAnchB},${axYB + 64}"
-             fill="${p.gold}" opacity="0.65"/>
-    <text x="${xAnchB}" y="${axYB + 100}" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="700" font-size="20"
-          fill="${p.gold}" opacity="0.70">ANCHOR: ${anchB}</text>
-    <line x1="${xEstB + 12}" y1="${axYB}" x2="${xAnchB - 16}" y2="${axYB}"
-          stroke="${p.gold}" stroke-width="1.5" opacity="0.25" stroke-dasharray="3 3"/>
-    <polygon points="${xEstB + 12},${axYB - 5} ${xEstB + 12},${axYB + 5} ${xEstB},${axYB}"
-             fill="${p.gold}" opacity="0.40"/>
-    <circle cx="${xEstB}" cy="${axYB}" r="14"
-            fill="${p.gold}" fill-opacity="0.40" stroke="${p.gold}" stroke-width="2" opacity="0.72"/>
-    <text x="${xEstB}" y="${axYB - 26}" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="700" font-size="18"
-          fill="${p.gold}" opacity="0.65">ESTIMATE: ${estB}</text>`;
-
-    const tv = 500, xTV = toX(tv);
-    const trueRef = `
-    <line x1="${xTV}" y1="${axYA - 40}" x2="${xTV}" y2="${axYB + 40}"
-          stroke="${p.muted}" stroke-width="1" opacity="0.15" stroke-dasharray="3 5"/>
-    <text x="${xTV}" y="${(axYA + axYB) / 2 + 6}" text-anchor="middle"
-          font-family="Ubuntu, sans-serif" font-weight="400" font-size="12"
-          letter-spacing="1.5" fill="${p.muted}" opacity="0.28">ACTUAL VALUE ?</text>`;
-
-    return makeAxis(axYA) + makeAxis(axYB) + trueRef + scenarioA + scenarioB;
+    return `
+    <line x1="${xTrue}" y1="300" x2="${xTrue}" y2="930"
+          stroke="${p.text}" stroke-width="1.5" opacity="0.45" stroke-dasharray="3 5"/>
+    <text x="${xTrue}" y="960" text-anchor="middle"
+          font-family="${font}" font-size="17" letter-spacing="1.5"
+          fill="${p.text}" opacity="0.7">ACTUAL VALUE</text>`
+      + row(450, 80, 1, p.muted, 0.9, 'LOW ANCHOR', 'start')
+      + row(780, 920, -1, p.gold, 0.95, 'HIGH ANCHOR', 'end');
   },
 };
